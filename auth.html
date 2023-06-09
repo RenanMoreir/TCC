@@ -57,7 +57,34 @@
                     console.log(error);
                     Swal.fire({
                         title: 'Oops!',
-                        text: error.statusText,
+                        text: error.statusText, 
+                        icon: 'error',
+                        confirmButtonText: 'Tentar novamente'
+                    })
+                }
+            });
+        });
+
+        $('#register').on('submit', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'post',
+                url: 'process/registration.php',
+                data: $('#register').serialize(),
+                beforeSend: function () {
+                    $('#loading').show();
+                },
+                complete: function () {
+                    $('#loading').hide();
+                },
+                success: function (data) {
+                    location.href = "./";
+                },
+                error: function (error) {
+                    console.log(error);
+                    Swal.fire({
+                        title: 'algo não esta correto!',
+                        text: error.statusText, 
                         icon: 'error',
                         confirmButtonText: 'Tentar novamente'
                     })
