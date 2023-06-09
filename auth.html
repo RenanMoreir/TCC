@@ -13,5 +13,57 @@
 </head>
 <body>
     <div id="loading">Loading&#8330;</div>   
+    <div class="bg"></div>
+
+    <div class=" auth login">
+        <p class="title"> QuickTalk</p>
+        <form method="post" id="login">
+            <input type="text" name="email" class="field" placeholder="E-mail ou username" required>
+            <input type="password" name="password" class="field" placeholder="Senha" required>
+            <button>Entrar</button>
+            </form>
+        <p class="toogle" onclick="$('.register').fadeIn()">Não tenho conta</p>    
+    </div>
+
+    <div class=" auth register">
+        <p class="title"> Criar uma conta</p>
+        <form method="post" id="register">
+            <input type="text" name="username" minlength="5" maxlength="15" class="field" placeholder="username" required>
+            <input type="email" name="email" class="field" placeholder="E-mail" required>
+            <input type="password" name="password" class="field" minlength="8" placeholder="Senha" required>
+            <input type="password" name="RepPassword" class="field" minlength="8" placeholder="Repita a senha" required>
+            <button>Entrar</button>
+            </form>
+        <p class="toogle" onclick="$('.register').fadeOut()">já tenho uma conta</p>    
+    </div>
+
+    <script>
+        $('#login').on('submit', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'post',
+                url: 'process/login.php',
+                data: $('#login').serialize(),
+                beforeSend: function () {
+                    $('#loading').show();
+                },
+                complete: function () {
+                    $('#loading').hide();
+                },
+                success: function (data) {
+                    location.href = "./";
+                },
+                error: function (error) {
+                    console.log(error);
+                    Swal.fire({
+                        title: 'Oops!',
+                        text: error.statusText,
+                        icon: 'error',
+                        confirmButtonText: 'Tentar novamente'
+                    })
+                }
+            });
+        });
+    </script>
 </body>
 </html>
