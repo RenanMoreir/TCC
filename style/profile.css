@@ -1,0 +1,24 @@
+@import "global.css";
+
+#profile div.menu{
+    position: absolute;
+    bottom: 0;
+    width: 25%;
+
+}
+#profile div.menu button{
+    display: block;
+    margin: auto;
+    width: 90%;
+    border: none;
+    border-top: 1px solid #ccc;
+    font-size: 16pt;
+    background: transparent url(../img/logout.png) no-repeat scroll 10px 17px;
+    background-size: 30px;
+    padding: 15px 0px;
+    text-align: right;
+}
+
+#profile div.menu button:hover{
+    width: 60%;
+}
