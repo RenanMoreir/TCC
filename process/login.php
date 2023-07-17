@@ -1,7 +1,7 @@
 <?php
     include("conneection/conect.php");
 
-    if(isset($_POST["email"] && isset($_POST["password"]))){
+    if(isset($_POST["email"]) && isset($_POST["password"])){
         $email = $_POST["email"];
         $password = $_POST["password"];
 
@@ -26,4 +26,4 @@
     } else {
         die(header("HTTP/1.0 401 Formulário de autenticação inválido"));
     }
-?>
+?> 
