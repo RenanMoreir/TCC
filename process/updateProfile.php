@@ -2,19 +2,9 @@
     include("check.php");
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        //Stores the filename as it was on the client computer.
+        
         $imagename = $username."_".rand(999, 999999).$_FILES['imgInp']['name'];
-
-        //Stores the filetype e.g image/jpeg
-        //$imagetype = $_FILES['pic']['type'];
-
-        //Stores any error codes from the upload.
-        //$imageerror = $_FILES['pic']['error'];
-
-        //Stores the tempname as it is given by the host when uploaded.
         $imagetemp = $_FILES['imgInp']['tmp_name'];
-
-        //The path you wish to upload the image to
         $imagePath = "../profilePics/";
 
         if (is_uploaded_file($imagetemp)) {
