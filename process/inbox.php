@@ -27,7 +27,7 @@
 
         if ($user) {
             ?>
-            <div class="chat <?php if($inbox["Unread"] == "y") { echo "new"; } ?>" onclick="chat('<?php echo $user['Id']; ?>')">
+            <div class="chat <?php if($inbox["Unread"] == "y") { echo "new"; } ?>" onclick="chat('<?php echo $user['Id']; ?>') ">
                 <img src="profilePics/<?php echo $user["Picture"]; ?>" />
                 <p><?php echo $user["Username"]; ?></p>
             </div>

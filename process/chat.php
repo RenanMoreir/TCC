@@ -26,7 +26,9 @@
         </form>
 
         <script>
-            function sendMessage() {
+          //var intervalo = setInterval();
+          
+          function sendMessage() {
                 var formData = new FormData($("#sendMessage")[0]);
                 $.ajax({
                     type: 'post',
@@ -60,7 +62,14 @@
                 console.log("SEND");
             });
 
-            setInterval(() => {
+            //clearInterval(intervalo);
+            
+           function StopInterval(){
+            clearInterval(intervalo);
+           };
+
+           StopInterval();
+           var intervalo = setInterval(() => {
                 $.ajax({
                     url: 'process/retrieve.php?id=<?php echo $user_id; ?>',
                     success: function (data) {
@@ -76,7 +85,9 @@
                         })
                     }
                 });
-            }, 1500);
+            },1500);
+           
+          
         </script>
         <?php
     } else {

@@ -52,7 +52,7 @@
         $stmt->bind_param("iiss", $uid, $user_id, $message, $image);
         $stmt->execute();
 
-        if (!$stmt || !$update) {
+        if (!$stmt || (!$update && !$createChat)) {
             die(header("HTTP/1.0 401 Ocorreu um erro ao enviar a sua mensagem"));
         }
     } else {
