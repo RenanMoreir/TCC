@@ -17,7 +17,21 @@
     </head>
 <body>
     <div id="loading">Loading&#8230</div>
-     
+
+    <div id="profile" class="column">
+        <div class="container" style="display: block;"></div> 
+        <button class="title" onclick="alterar(container)">Perfil</button>
+
+        <button class="title">Usuarios</button>
+        <button class="title">Abrigos</button>
+
+        <div class="menu">
+            <button onclick="logout()">Sair</button>
+        </div>
+    </div>
+
+    <div id="chat" class="column"></div>
+
     <div id="inbox" class="column">
         <p class="title">Conversas</p>
         <input type="text" maxlength="15" name="username" class="searchField" onkeyup="search()" placeholder="Pesquisar Utilizador">
@@ -25,17 +39,11 @@
         <div class="container"></div>
     </div>
 
-    <div id="chat" class="column"></div>
-
-    <div id="profile" class="column">
-        <p class="title">Perfil</p>
-        <div class="container"></div>
-        <div class="menu">
-            <button onclick="logout()">Sair</button>
-        </div>
-    </div>
-
     <script>
+        function alterar() {
+                div.style.display = 'none';
+        }
+
         function loadInbox() {
             $.ajax({
                 url: 'process/inbox.php',
