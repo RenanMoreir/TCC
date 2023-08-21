@@ -1,137 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>QuickTalk</title>
-        <link rel="icon" type="imagem/png" href="img/favicon.png">
-        <link type="text/css" rel="stylesheet" href="style/homepage.css">
-        <link type="text/css" rel="stylesheet" href="style/inbox.css">
-        <link type="text/css" rel="stylesheet" href="style/chat.css">
-        <link type="text/css" rel="stylesheet" href="style/profile.css">
+<html lang="pt-br">
 
-        <link rel="stylesheet" href="style/sweetalert2.css">
-        <script src="js/jquery.js"></script>
-        <script src="js/sweetalert2.js"></script>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/homePage/estiloHeader.css">
+    <link rel="stylesheet" href="css/homePage/estiloContent.css">
+
+    <title>Home Page</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Tela Inicial -->
+</head>
+
 <body>
-    <div id="loading">Loading&#8230</div>
-
-    <div id="profile" class="column">
-        <div class="container" style="display: block;"></div> 
-        <button class="title" onclick="alterar(container)">Perfil</button>
-
-        <button class="title">Usuarios</button>
-        <button class="title">Abrigos</button>
-
-        <div class="menu">
-            <button onclick="logout()">Sair</button>
+    <header>
+        <div class="top-header">
+            <nav>
+                <a class="logo" href="#">MatchPet</a>
+                <div class="mobile-menu">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+                <ul class="nav-list">
+                    <li><a href="#sobre" target="_self">Sobre</a></li>
+                    <li><a href="#contato" target="_self">Contato</a></li>
+                    <li><a href="page/auth.html" target="_self" id="principal">Entrar/Cadastre-se</a></li>
+                </ul>
+            </nav>
         </div>
-    </div>
+    </header>
+    <main class="wrapper">
+        <section class="module parallax parallax-1">
+            <h2>Bem Vindo ao</h2>
+            <h1 class="title">MatchPet</h1>
+            <h3>Adoção & Cuidado</h3>
+        </section>
 
-    <div id="chat" class="column"></div>
+        <section class="module content" id="sobre">
+            <div class="container">
+                <h2>Qualquer texto aqui..</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut quisquam reiciendis unde voluptatem
+                    dignissimos! Adipisci alias rerum commodi ad excepturi. Quod aut maxime non architecto numquam vel
+                    et, magnam eius!
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut quisquam reiciendis unde voluptatem
+                    dignissimos! Adipisci alias rerum commodi ad excepturi. Quod aut maxime non architecto numquam vel
+                    et, magnam eius!
+                </p>
+            </div>
+        </section>
 
-    <div id="inbox" class="column">
-        <p class="title">Conversas</p>
-        <input type="text" maxlength="15" name="username" class="searchField" onkeyup="search()" placeholder="Pesquisar Utilizador">
-        <div id="searchContainer"></div>
-        <div class="container"></div>
-    </div>
+        <section class="module parallax parallax-2">
+            <h1>Algum texto aqui</h1>
+        </section>
 
-    <script>
-        function alterar() {
-                div.style.display = 'none';
-        }
+        <section class="module content">
+            <div class="container">
+                <h2>Qualquer texto aqui..</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut quisquam reiciendis unde voluptatem
+                    dignissimos! Adipisci alias rerum commodi ad excepturi. Quod aut maxime non architecto numquam vel
+                    et, magnam eius!
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut quisquam reiciendis unde voluptatem
+                    dignissimos! Adipisci alias rerum commodi ad excepturi. Quod aut maxime non architecto numquam vel
+                    et, magnam eius!
+                </p>
+            </div>
+        </section>
 
-        function loadInbox() {
-            $.ajax({
-                url: 'process/inbox.php',
-                success: function (data) {
-                    $('#inbox .container').html(data);
-                },
-                error: function (error) {
-                    console.log(error);
-                    Swal.fire({
-                        title: 'Erro',
-                        text: error.statusText,
-                        icon: 'error',
-                        confirmButtonText: 'Ok'
-                    })
-                }
-            });
-        }
-        function loadProfile(id = 0) {
-            $.ajax( {
-                url: 'process/profile.php?id=' + id,
-                success: function(data){
-                    $('#profile .container').html(data);
-                },
-                error: function (error) {
-                    console.log(error);
-                    Swal.fire({
-                        title: 'Erro',
-                        text: error.statusText, 
-                        icon: 'error',
-                        confirmButtonText: 'Ok'
-                    })
-                }
-            });
-        }
+        <section class="module parallax parallax-3">
+            <h1>Terceiro titulo aqui</h1>
+        </section>
 
-        function chat(id = 0) {
-            $.ajax({
-                url: 'process/chat.php?id=' + id,
-                success: function (data) {
-                    $('#chat').html(data);
-                    loadProfile(id);
-                },
-                error: function (error) {
-                    console.log(error);
-                    Swal.fire({
-                        title: 'Erro',
-                        text: error.statusText,
-                        icon: 'error',
-                        confirmButtonText: 'Ok'
-                    })
-                }
-            });
-        }
+        <section class="module content">
+            <div class="container" id="contato">
+                <h2>Qualquer texto aqui..</h2>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut quisquam reiciendis unde voluptatem
+                    dignissimos! Adipisci alias rerum commodi ad excepturi. Quod aut maxime non architecto numquam vel
+                    et, magnam eius!
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut quisquam reiciendis unde voluptatem
+                    dignissimos! Adipisci alias rerum commodi ad excepturi. Quod aut maxime non architecto numquam vel
+                    et, magnam eius!
+                </p>
+            </div>
+        </section>
+    </main>
+    <footer>
 
-        function search() {
-            var term = $('input.searchField').val();
-            if (term.length >= 3){
-                $.ajax({
-                    url: 'process/search.php?term=' + term,
-                    success: function(data) {
-                        $('#searchContainer').html(data);
-                        $('#searchContainer').show();
-                    }
-                })
-            } else {
-                $('#searchContainer').hide();
-            }
-        }
-
-        function logout() {
-            $.ajax({
-                url: 'process/logout.php',
-                beforeSend: function () {
-                    $('#loading').show();
-                },
-                success: function () {
-                    location.href = 'auth.html';
-                }
-            });
-        }
-
-        $( document ).ready(function() {
-            setInterval(() => {
-                loadInbox();
-            }, 3000);
-            loadProfile();
-            chat();
-        });
-    </script>
+    </footer>
+    <script src="js/homePage/mobile-navbar.js"></script>
 </body>
+
 </html>

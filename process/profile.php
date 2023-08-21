@@ -58,7 +58,7 @@
                 var formData = new FormData($("#uploadPic")[0]);
                 $.ajax({
                     type: 'post',
-                    url: 'process/updateProfile.php',
+                    url: '../process/updateProfile.php',
                     data: formData,
                     cache: false,
                     contentType: false,

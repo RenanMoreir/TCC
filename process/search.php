@@ -16,7 +16,7 @@
             while ($user = $result->fetch_assoc()){
                 ?>
                 <div class="row" onclick="$('#searchContainer').hide(); chat('<?php echo $user['Id'];?>');">
-                    <img src="profilePics/<?php echo $user["Picture"];?>" />
+                    <img src="../profilePics/<?php echo $user["Picture"];?>" />
                     <p> <?php echo $user['Username']; ?></p>
                 </div>
                 <?php

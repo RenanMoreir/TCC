@@ -12,7 +12,7 @@
 
         ?>
         <div class="topMenu">
-            <img src="img/close.png" onclick="chat()" />
+            <img src="../img/close.png" onclick="chat()" />
             <p class="title"><?php echo $user["Username"]; ?></p>
         </div>
 
@@ -22,7 +22,7 @@
             <input type="number" value="<?php echo $user_id; ?>" name="id" hidden />
             <input type="text" maxlength="500" name="message" id="messageInput" placeholder="Escreva aqui a sua mensagem" />
             <input type='file' name="image" accept="image/x-png,image/jpeg" id="sendImage" hidden />
-            <label for="sendImage"><img src="img/image.png" /></label>
+            <label for="sendImage"><img src="../img/image.png" /></label>
         </form>
 
         <script>
@@ -32,7 +32,7 @@
                 var formData = new FormData($("#sendMessage")[0]);
                 $.ajax({
                     type: 'post',
-                    url: 'process/send.php',
+                    url: '../process/send.php',
                     data: formData,
                     cache: false,
                     contentType: false,
@@ -71,7 +71,7 @@
            StopInterval();
            var intervalo = setInterval(() => {
                 $.ajax({
-                    url: 'process/retrieve.php?id=<?php echo $user_id; ?>',
+                    url: '../process/retrieve.php?id=<?php echo $user_id; ?>',
                     success: function (data) {
                         $('#chat .innerContainer').html(data);
                         $('#chat .innerContainer').scrollTop($('#chat .innerContainer').prop("scrollHeight"));
@@ -93,7 +93,7 @@
     } else {
         ?>
         <div class="empty">
-            <img src="img/empty-chat.png" />
+            <img src="../img/empty-chat.png" />
             <p>Selecione uma conversa para socializar com esse utilizador</p>
         </div>
         <?php

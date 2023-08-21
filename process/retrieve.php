@@ -23,7 +23,7 @@
                 if($message["Sender"] == $uid && $message["Image"] != "") {
                     ?>
                     <div class="row sent">
-                        <img src="uploads/<?php echo $message["Image"] ?>" />
+                        <img src="../uploads/<?php echo $message["Image"] ?>" />
                     </div>
                     <?php
                 } elseif($message["Sender"] == $uid) {
@@ -35,7 +35,7 @@
                 } elseif($message["Image"] != "") {
                     ?>
                     <div class="row recieved">
-                        <img src="uploads/<?php echo $message["Image"] ?>" />
+                        <img src="../uploads/<?php echo $message["Image"] ?>" />
                     </div>
                     <?php
                 } else {
