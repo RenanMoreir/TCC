@@ -46,6 +46,10 @@ main {
     letter-spacing: 3px;
     margin-left: 32px;
 }
+.nav-list li:hover{
+    transform: scale(0.91);
+    transition: 100ms linear ;
+}
 
 .mobile-menu {
     display: none;
