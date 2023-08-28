@@ -113,6 +113,7 @@ nav {
     }
 }
 
+
 .mobile-menu.active .line1 {
     transform: rotate(-45deg) translate(-8px, 8px);
 }
@@ -124,19 +125,30 @@ nav {
 .mobile-menu.active .line3 {
     transform: rotate(45deg) translate(-5px, -7px);
 }
-.forms p{
-    position: relative;
-    display: flex;
-}
 .forms{
-    width: 350px;
-    height: 300px;
+    width: 650px;
+    height: 650px;
+    padding: 50px;
     background-color: red;
-    position: relative;
     border-radius: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items:flex-start;
+    flex-direction: column;
+}
+.forms label{
+    font-size: 25px;
+}
+.forms div{
+    padding: 25px;
+    margin: 25px;
+}
+.forms input{
+    width: 350px;
+    height: 27px;
+}
+#enviar{
+    width:100px;
 }
 section {
     display: flex;
