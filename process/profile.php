@@ -15,7 +15,7 @@
         <form method="POST" enctype="multipart/form-data" id="uploadPic">
             <input type='file' name="imgInp" accept="image/x-png,image/jpeg" id="imgInp" hidden />
             <div class="pictureContainer">
-                <img id="userImg" src="profilePics/<?php echo $user_picture; ?>" />
+                <img id="userImg" src="../profilePics/<?php echo $user_picture; ?>" />
                 <label for="imgInp"></label>
             </div>
         </form>
@@ -39,7 +39,7 @@
 
         ?>
         <div class="pictureContainer">
-            <img id="userImg" src="profilePics/<?php echo $user_picture; ?>" />
+            <img id="userImg" src="../profilePics/<?php echo $user_picture; ?>" />
         </div>
         <?php
     }

@@ -7,6 +7,11 @@
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
+drop database if exists quicktalk;
+
+create database quicktalk;
+
+use quicktalk;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -62,7 +67,7 @@ CREATE TABLE `user` (
   `Username` varchar(15) NOT NULL,
   `Email` varchar(200) NOT NULL,
   `Password` varchar(70) NOT NULL,
-  `Picture` varchar(1000) NOT NULL,
+  `Picture` varchar(1000) default "user.jpg" NOT NULL,
   `Online` datetime NOT NULL,
   `Token` varchar(100) NOT NULL,
   `Secure` bigint(20) NOT NULL,
