@@ -23,28 +23,36 @@
 
 <body>
     <div class="container-fluid">
-    <div class="row">
-        <div id="loading">Loading&#8230</div>
+        <div>
+            <div class="minimizar">
+                <button id="minimizeBtn" onclick="toggleInbox()" class="btn btn-primary btn-lg">
+                    <span id="minimizeIcon">
+                        <img src="../img/chaticon.svg" alt="Minimize Icon">
+                    </span>
+                </button>
+            </div>
+            <div class="row">
+                <div id="loading">Loading&#8230</div>
 
-        <div id="profile" class="column col-lg-3 ">
-            <p class="title">Perfil</p>
-            <div class="container"></div>
-            <div class="menu">
-                <button onclick="logout()">Sair</button>
+                <div id="profile" class="column col-lg-3 ">
+                    <p class="title">Perfil</p>
+                    <div class="container"></div>
+                    <div class="menu">
+                        <button onclick="logout()">Sair</button>
+                    </div>
+                </div>
+
+                <div id="chat" class="column col-lg-6"></div>
+
+                <div id="inbox" class="column col-lg-3 ">
+                    <p class="title">Conversas</p>
+                    <input type="text" maxlength="15" name="username" class="searchField" onkeyup="search()"
+                        placeholder="Pesquisar Utilizador">
+                    <div id="searchContainer"></div>
+                    <div class="container"></div>
+                </div>
             </div>
         </div>
-
-        <div id="chat" class="column col-lg-6"></div>
-
-
-        <div id="inbox" class="column col-lg-3">
-            <p class="title">Conversas</p>
-            <input type="text" maxlength="15" name="username" class="searchField" onkeyup="search()"
-                placeholder="Pesquisar Utilizador">
-            <div id="searchContainer"></div>
-            <div class="container"></div>
-        </div>
-    </div>
     </div>
 
 
@@ -59,6 +67,32 @@
 
 
     <script>
+        var isChatMinimized = false;
+
+        function toggleInbox() {
+            isChatMinimized = !isChatMinimized;
+
+            if (isChatMinimized) {
+                $('#inbox').hide();
+                $('#chat').removeClass('col-lg-6').addClass('col-lg-9');
+                 $('#minimizeBtn').text('Expandir'); // Mude o texto para "Expandir"
+                 $('div.empty').css('width', '69%');
+                 $('div.topMenu').css('width', '65%');
+                 $('div.innerContainer').css('width', '90%');
+                 $('#sendMessage').css('width', '65%');
+
+
+            } else {
+                $('#inbox').show();
+                 $('#chat').removeClass('col-lg-9').addClass('col-lg-6');
+                 $('#minimizeBtn').text('Minimizar'); // Mude o texto para "Minimizar"
+                 $('div.empty').css('width', '49%');
+                 $('div.topMenu').css('width', '49%');
+                 $('div.innerContainer').css('width', '100%');
+                 $('#sendMessage').css('width', '49%');
+            }
+        }
+
         function loadInbox() {
             $.ajax({
                 url: '../process/inbox.php',

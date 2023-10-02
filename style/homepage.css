@@ -44,3 +44,11 @@ div.empty p {
     margin-top: 20px;
     font-size: 14pt;
 }
+div.minimizar {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1000; /* Isso garante que o botão esteja acima de outros elementos */
+    padding: 10px;
+}

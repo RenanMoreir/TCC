@@ -24,6 +24,7 @@
     height: 80vh;
     margin-top: 10vh;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #chat .innerContainer p.info{
@@ -87,3 +88,6 @@
     max-height: 300px;
 }
 
+.rom .innerContainer{
+    overflow-x: hidden;
+}
