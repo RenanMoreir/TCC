@@ -93,7 +93,7 @@
     } else {
         ?>
         <div class="empty">
-            <img src="../img/empty-chat.png" />
+            <img src="../img/logo.svg" />
             <p>Selecione uma conversa para socializar com esse utilizador</p>
         </div>
         <?php
