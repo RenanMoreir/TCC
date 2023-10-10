@@ -48,40 +48,14 @@
                 placeholder="Pesquisar Utilizador">
         <div id="searchContainer"></div>
 
-        <div class="exibir">
-            <ul id="lista"></ul>
+        <div id="teste">
         </div>
+        <input type="submit" value="salvar">
 
-        <button>Cadastrar</button>
+
+
     </form> 
     
-    <?php
-    include("../../process/connection/connect.php");
-
-    if( isset($_GET["term"])){
-        $pesquisa = mysqli_real_escape_string($con, $_GET["term"]);
-
-        $stmt = $con->prepare("SELECT Id, Caracteristica FROM caracteristica WHERE (Caracteristica LIKE '%$pesquisa%') ORDER BY Caracteristica DESC LIMIT 20");
-        $stmt-> execute();
-
-        $result = $stmt->get_result();
-        $count = $result->num_rows;
-
-        if ($count < 1) {
-            echo '<p class="noResult">Sem resultado </p>';
-        } else {
-            while ($user = $result->fetch_assoc()){
-                ?>
-                <div class="row" onclick="$('#searchContainer').hide(); chat('<?php echo $user['Id'];?>');">
-                    <p id="carac"> <?php echo $user['Caracteristica']; ?> <button onclick="adicionar()">+</button></p>
-                </div>
-                <?php
-            }
-        }
-    }
-
-?>
-
     <script>
 
     function search() {
@@ -99,21 +73,18 @@
                 }
             }
 
-        // https://pt.stackoverflow.com/questions/437869/inser%C3%A7%C3%A3o-de-elementos-em-uma-lista-html
-
-        var nomes = ["Diego", "Gabriel", "Lucas"];
-        
-    function adicionar() {
-             var coleta = document.getElementById("carac").value;
-             var nomeDig = document.createElement('li');
-
-             nomes.push(coleta);
-             nomeDig.innerHTML = coleta;
-             lista.appendChild(nomeDig);
-   }
-
-
+    function criar() {
+        var container = document.getElementById("teste");
+        var paragrafo = document.createElement("input");
+        paragrafo.type="text";
+        paragrafo.value= "teste"; //deve ser mudado para pegar do panco a caracteristica;
+        paragrafo.readOnly="True";
+        paragrafo.className="gostos";
+        container.append(paragrafo);
+    }
     </script>
+
+    
 
 </body>
 </html>

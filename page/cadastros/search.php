@@ -13,10 +13,10 @@
         if ($count < 1) {
             echo '<p class="noResult">Sem resultado </p>';
         } else {
-            while ($user = $result->fetch_assoc()){
+            while ($carac = $result->fetch_assoc()){
                 ?>
-                <div class="row" onclick="$('#searchContainer').hide(); chat('<?php echo $user['Id'];?>');">
-                    <p id="carac"> <?php echo $user['Caracteristica']; ?> <button onclick="adicionar">+</button></p>
+                <div class="row" onclick="$('#searchContainer').hide(); chat('<?php echo $carac['Id'];?>');">
+                    <p id="carac"> <?php echo $carac['Caracteristica']; ?> <a onclick="criar()">+</a></p>
                 </div>
                 <?php
             }
