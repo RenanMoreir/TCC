@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MatchPet - Cadastro</title>
+        <link rel="icon" type="imagem/png" href="../../img/logo.ico">
+        <link type="text/css" rel="stylesheet" href="../../style/auth.css">
+        <link rel="stylesheet" href="../../style/sweetalert2.css">
+        <script src="../../js/jquery.js"></script>
+        <script src="../../js/sweetalert2.js"></script>
+    </head>
+<body>
+
+<form method="post" id="register">
+        <div>
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="noem">
+        </div>
+        <div>
+            <label for="desc">Descriçaõ</label>
+            <textarea name="desc" id="desc  " cols="30" rows="10"></textarea>
+        </div>
+        <div>
+            <label for="telefone">Telefone</label>
+            <input type="tel" name="telefone" id="telefone">
+        </div>
+        <div>
+            <label for="cnpj">CNPJ</label>
+            <input type="text" name="cnpj" id="cnpj">
+        </div>
+        <div>
+            <label for="estado">Estado</label>
+            <input type="text" name="estado" id="estado">
+        </div>
+        <div>
+            <label for="rua">Rua</label>
+            <input type="text" name="rua" id="rua">
+        </div>
+        <div>
+            <label for="cidade">Ciade</label>
+            <input type="text" name="cidade" id="cidade">
+        </div>
+        <div>
+            <label for="bairro">Bairro</label>
+            <input type="text" name="bairro" id="bairro">
+        </div>
+        <div>
+            <label for="numero">Numero</label>
+            <input type="text" name="numero" id="numero">
+        </div>
+        <div>
+            <label for="cep">CEP</label>
+            <input type="text" name="cep" id="cep">
+        </div>
+        <div>
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="email">
+        </div>
+        <div>
+            <label for="senha">Senha</label>
+            <input type="password" name="senha" id="senha">
+        </div>
+        <div>
+            <label for="repita">Repita a senha</label>
+            <input type="password" name="repita" id="repita">
+        </div>
+
+        <button>Cadastrar</button>
+    </form> 
+
+    <script>
+
+        $('#register').on('submit', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'post',
+                url: 'cad_empresa.php',
+                data: $('#register').serialize(),
+                beforeSend: function () {
+                    $('#loading').show();
+                },
+                complete: function () {
+                    $('#loading').hide();
+                },
+                success: function (data) {
+                    location.href = "././";
+                },
+                error: function (error) {
+                    console.log(error);
+                    Swal.fire({
+                        title: 'algo não esta correto!',
+                        text: error.statusText, 
+                        icon: 'error',
+                        confirmButtonText: 'Tentar novamente'
+                    })
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

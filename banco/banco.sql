@@ -94,4 +94,24 @@ ALTER TABLE usuario_mensagem ADD FOREIGN KEY(fk_id_usuario) REFERENCES usuario (
 ALTER TABLE usuario_mensagem ADD FOREIGN KEY(fk_id_mensagem) REFERENCES mensagem (id_mensagem);
 ALTER TABLE animal_mensagem ADD FOREIGN KEY(fk_id_animal) REFERENCES animal (id_animal);
 ALTER TABLE animal_mensagem ADD FOREIGN KEY(fk_id_mensagem) REFERENCES mensagem (id_mensagem);
-
+/*
+CREATE TABLE Usuario_abrigo  
+( 
+ Id INT PRIMARY KEY AUTO_INCREMENT,  
+ Nome VARCHAR(50) NOT Null,
+ Descricao VARCHAR(500),
+ Telefone int not Null,
+Cnpj VARCHAR(12),
+Estado VARCHAR(20),
+Rua VARCHAR(50),
+Cidade VARCHAR(50),
+Bairro VARCHAR(50),
+Numero VARCHAR(10),
+Cep VARCHAR(20),
+Email VARCHAR(100),
+Senha VARCHAR(30),
+Token varchar(100),
+Secure bigint(11),
+Picture varchar(1000)
+Creation datetime		
+); */
