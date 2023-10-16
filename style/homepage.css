@@ -22,7 +22,7 @@
     box-shadow: 21px 10px 30px -37px rgba(0, 0, 0, 0.75);
 }
 .column{
-    height: 100vh;
+    height: 95vh;
 }
 .column p.title{
     font-size: 24pt;
@@ -44,11 +44,22 @@ div.empty p {
     margin-top: 20px;
     font-size: 14pt;
 }
-div.minimizar {
+/* Adicione este estilo para a área de perfil minimizada */
+#profile.minimized {
+    display: none;
+}
+
+/* Alinhe os botões à esquerda e à direita */
+.topOp {
     display: flex;
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 1000; /* Isso garante que o botão esteja acima de outros elementos */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
     padding: 10px;
+    height: 5vh;
+}
+
+.minimizarProf,
+.minimizar {
+    display: flex;
 }
