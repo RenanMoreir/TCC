@@ -1,8 +1,13 @@
 <?php
-    echo "<p>teste<\p>";
-    include("connection/connect.php");
+    include("../../process/connection/connect.php");
+    echo $_POST['nome'];
+    echo $_POST['email'];
+    echo $_POST['senha'];
+    echo $_POST['repita'];
+    
 
-    if(isset($_POST["nome"]) && isset($_POST["email"]) && isset($_POST["senha"]) && isset($_POST["repita"])) {
+
+    if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['repita'])) {
 
         // Normalization
         $username = $_POST["nome"];
@@ -19,6 +24,7 @@
         $senha = $_POST["senha"];
         $repsenha = $_POST["repita"];
 
+
         // Check if values are okay
         if ($username == "" || $email == "" || $senha == "" || $repsenha == "" || $descricao == "" || $telefone == "" || $cnpj == "" || $estado == "" ||
         $rua == "" || $cidade == "" || $bairro == "" || $numero == "" || $cep == "") {
@@ -26,7 +32,7 @@
         }
 
         // Check if username already exists
-        $checkUsername = $con->prepare("SELECT Id FROM usuario_abrigo WHERE Nome = ?");
+        $checkUsername = $con->prepare("SELECT Id_abrigo FROM usuario_abrigo WHERE Nome = ?");
         $checkUsername->bind_param("s", $username);
         $checkUsername->execute();
         $count = $checkUsername->get_result()->num_rows;

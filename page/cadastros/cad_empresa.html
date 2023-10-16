@@ -12,11 +12,11 @@
         <script src="../../js/sweetalert2.js"></script>
     </head>
 <body>
-
-<form method="post" id="register">
+<div id="auth register">
+<form method="post" id="register" action="cad_empresa.php">
         <div>
             <label for="nome">Nome</label>
-            <input type="text" name="nome" id="noem">
+            <input type="text" name="nome" id="nome">
         </div>
         <div>
             <label for="desc">Descriçaõ</label>
@@ -69,7 +69,7 @@
 
         <button>Cadastrar</button>
     </form> 
-
+</div>
     <script>
 
         $('#register').on('submit', function (e) {
@@ -78,14 +78,8 @@
                 type: 'post',
                 url: 'cad_empresa.php',
                 data: $('#register').serialize(),
-                beforeSend: function () {
-                    $('#loading').show();
-                },
-                complete: function () {
-                    $('#loading').hide();
-                },
                 success: function (data) {
-                    location.href = "././";
+                    location.href = "cad_empresa.php"; //     ../index.html
                 },
                 error: function (error) {
                     console.log(error);

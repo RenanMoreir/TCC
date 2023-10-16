@@ -1,7 +1,7 @@
 create database banco;
 use banco;
 
-CREATE TABLE usuario 
+/*CREATE TABLE usuario      ////acho que vou tirar essa tabela(pretendo fazer um cadastro para cada tipo)
 ( 
  id_usuario INT PRIMARY KEY AUTO_INCREMENT,  
  senha VARCHAR(60),  
@@ -12,7 +12,7 @@ CREATE TABLE usuario
  estado VARCHAR(60),  
  numero INT,  
  cep INT  
-); 
+); */
 
 CREATE TABLE mensagem 
 ( 
@@ -30,14 +30,28 @@ CREATE TABLE pessoa
  FK_id_usuario INT
 ); 
 
-CREATE TABLE abrigo 
+CREATE TABLE Usuario_abrigo 
 ( 
- id_abrigo INT PRIMARY KEY AUTO_INCREMENT,  
- cnpj INT,  
- descricao VARCHAR(500),  
- nome VARCHAR(100),  
- FK_id_usuario INT 
-); 
+ Id_abrigo INT PRIMARY KEY AUTO_INCREMENT,  
+ Nome varchar(100) NOT NULL,
+ Descricao varchar(1000) NOT NULL,
+ Telefone varchar(15) NOT NULL,
+ Cnpj varchar(18) NOT NULL,
+ Estado varchar(50) NOT NULL,
+ Rua varchar(100) NOT NULL,
+ Cidade varchar(100) NOT NULL,
+ Bairro varchar(100) NOT NULL,
+ Numero varchar (5) NOT NULL,
+ Cep varchar(12) NOT NULL,
+ Email varchar(100) NOT NULL,
+ Senha varchar(100) NOT NULL,
+ Picture varchar(1000) default "user.jpg" NOT NULL,
+ 'Online' datetime NOT NULL,
+ Token varchar(100) NOT NULL,
+ Secure bigint(20) NOT NULL,
+ Creation datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 CREATE TABLE animal 
 ( 
