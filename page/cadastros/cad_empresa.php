@@ -1,11 +1,5 @@
 <?php
     include("../../process/connection/connect.php");
-    echo $_POST['nome'];
-    echo $_POST['email'];
-    echo $_POST['senha'];
-    echo $_POST['repita'];
-    
-
 
     if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['repita'])) {
 
@@ -41,7 +35,7 @@
         }
 
         // Check if email already exists
-        $checkEmail = $con->prepare("SELECT Id FROM usuario_abrigo WHERE Email = ?");
+        $checkEmail = $con->prepare("SELECT Id_abrigo FROM usuario_abrigo WHERE Email = ?");
         $checkEmail->bind_param("s", $email);
         $checkEmail->execute();
         $count = $checkEmail->get_result()->num_rows;
@@ -64,16 +58,16 @@
         // Queries for creation and collection
         $stmt = $con->prepare("INSERT INTO usuario_abrigo (`Nome`, `Descricao`, `Telefone`, `Cnpj`, `Estado`, `Rua`, `Cidade`, `Bairro`, `Numero`, `Cep`, `Email`, `Senha`, `Token`, `Secure`, `Creation`) 
                                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now())");
-        $stmt->bind_param("ssisssssssssssi", $username, $descricao, $telefone, $cnpj, $estado, $rua, $cidade, $bairro, $numero, $cep, $email, $senha, $token, $secure);
+        $stmt->bind_param("sssssssssssssi", $username, $descricao, $telefone, $cnpj, $estado, $rua, $cidade, $bairro, $numero, $cep, $email, $senha, $token, $secure);
         $stmt->execute();
 
-        $getUser = $con->prepare("SELECT Id, Token, Secure FROM usuario_abrigo WHERE Email = ?");
+        $getUser = $con->prepare("SELECT Id_abrigo, Token, Secure FROM usuario_abrigo WHERE Email = ?");
         $getUser->bind_param("s", $email);
         $getUser->execute();
         $user = $getUser->get_result()->fetch_assoc();
 
         if ($stmt && $user) {
-            setcookie("ID", $user['Id'], time() + (10 * 365 * 24 * 60 * 60));
+            setcookie("ID", $user['Id_abrigo'], time() + (10 * 365 * 24 * 60 * 60));
             setcookie("TOKEN", $user['Token'], time() + (10 * 365 * 24 * 60 * 60));
             setcookie("SECURE", $user['Secure'], time() + (10 * 365 * 24 * 60 * 60));
             return true;

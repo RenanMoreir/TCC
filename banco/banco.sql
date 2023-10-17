@@ -46,7 +46,7 @@ CREATE TABLE Usuario_abrigo
  Email varchar(100) NOT NULL,
  Senha varchar(100) NOT NULL,
  Picture varchar(1000) default "user.jpg" NOT NULL,
- 'Online' datetime NOT NULL,
+ Online datetime NOT NULL,
  Token varchar(100) NOT NULL,
  Secure bigint(20) NOT NULL,
  Creation datetime NOT NULL
