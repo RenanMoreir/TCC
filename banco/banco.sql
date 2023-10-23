@@ -1,3 +1,4 @@
+drop database if exists banco;
 create database banco;
 use banco;
 
