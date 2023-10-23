@@ -122,3 +122,26 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+CREATE TABLE Usuario_abrigo 
+( 
+ Id_abrigo INT PRIMARY KEY AUTO_INCREMENT,  
+ Nome varchar(100) NOT NULL,
+ Descricao varchar(1000) NOT NULL,
+ Telefone varchar(15) NOT NULL,
+ Cnpj varchar(18) NOT NULL,
+ Estado varchar(50) NOT NULL,
+ Rua varchar(100) NOT NULL,
+ Cidade varchar(100) NOT NULL,
+ Bairro varchar(100) NOT NULL,
+ Numero varchar (5) NOT NULL,
+ Cep varchar(12) NOT NULL,
+ Email varchar(100) NOT NULL,
+ Senha varchar(100) NOT NULL,
+ Picture varchar(1000) default "user.jpg" NOT NULL,
+ Online datetime NOT NULL,
+ Token varchar(100) NOT NULL,
+ Secure bigint(20) NOT NULL,
+ Creation datetime NOT NULL,
+ Tipo varchar(1) default 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

@@ -49,7 +49,8 @@ CREATE TABLE Usuario_abrigo
  Online datetime NOT NULL,
  Token varchar(100) NOT NULL,
  Secure bigint(20) NOT NULL,
- Creation datetime NOT NULL
+ Creation datetime NOT NULL,
+ Tipo varchar(1) default 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
