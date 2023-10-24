@@ -41,27 +41,7 @@
 
         // Check if exists
         if (!$me) {
-            //check de empresa
-            $stmt = $con->prepare("SELECT Id_abrigo, Nome, Picture,Tipo, Online, Creation FROM usuario_abrigo WHERE (Id_abrigo = ? AND Token LIKE ? AND Secure = ?) LIMIT 1");
-            $stmt->bind_param("isi", $id, $token, $secure);
-            $stmt->execute();
-            $me = $stmt->get_result()->fetch_assoc();
-            if(!$me){
-                die("<script>location.href = 'auth.html';</script>");
-            } else {
-                    // Normalize information
-                    $uid = $me["Id"];
-                    $username = $me["Username"];
-                    $user_picture = $me["Picture"];
-                    $user_online = strtotime($me["Online"]);
-                    $user_creation = $me["Creation"];
-                    $tipousuario = $me["Tipo"];
-
-                    // Online status pin-point
-                    $stmt = $con->prepare("UPDATE User SET `Online` = now() WHERE Id = ?");
-                    $stmt->bind_param("i", $uid);
-                    $stmt->execute();
-                }
+            die("<script>location.href = 'auth.html';</script>");
         } else {
             // Normalize information
             $uid = $me["Id"];

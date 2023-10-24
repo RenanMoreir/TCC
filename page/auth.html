@@ -17,7 +17,7 @@
 
     <div class="auth login">
         <p class="title">MatchPet</p>
-        <form method="post" id="login" action="../process/login.php">
+        <form method="post" id="login">
             <input type="text" name="email" class="field" placeholder="E-mail ou Nome de usuario" required>
             <input type="password" name="password" class="field" placeholder="Senha" required>
             <button>Entrar</button>
@@ -39,7 +39,7 @@
     </div>
 
     <script>
-   /*     $('#login').on('submit', function (e) {
+        $('#login').on('submit', function (e) {
             e.preventDefault();
             $.ajax({
                 type: 'post',
@@ -64,7 +64,7 @@
                     })
                 }
             });
-        });*/
+        });
 
         $('#register').on('submit', function (e) {
             e.preventDefault();
