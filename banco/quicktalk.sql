@@ -143,5 +143,5 @@ CREATE TABLE Usuario_abrigo
  Token varchar(100) NOT NULL,
  Secure bigint(20) NOT NULL,
  Creation datetime NOT NULL,
- Tipo varchar(1) default 1
+ Tipo varchar(1) default 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
