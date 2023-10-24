@@ -1,21 +1,19 @@
 <?php
-    include("connection/connect.php");
+    include("conneection/conect.php");
 
-    if(isset($_POST["email"]) && isset($_POST["password"])) {
-        // Normalization
+    if(isset($_POST["email"]) && isset($_POST["password"])){
         $email = $_POST["email"];
         $password = $_POST["password"];
 
-        // Check if values are okay
-        if ($email == "" || $password == "") {
-            die(header("HTTP/1.0 401 Preenche todos os campos do formulário"));
+        if($email == "" || $password == "" ){
+            die(header("HTTP/1.0 401 Preencha todos os campos do formulario"));
         }
 
-        // Query
-        $stmt = $con->prepare("SELECT Id, Password, Token, Secure FROM User WHERE (Email LIKE ? OR Username LIKE ?) LIMIT 1");
+        $stmt = $con->prepare("SELECT Id, Password, Token, Secure FROM User Where (Email LIKE ? OR Username Like ?) LIMIT 1 ");
+
         $stmt->bind_param("ss", $email, $email);
-        $stmt->execute();
-        $user = $stmt->get_result()->fetch_assoc();
+        $stmt-> execut();
+        $user = $stmt-> get_result()->fetch_assoc();
 
         // Check password
         if ($user && password_verify($password, $user['Password'])) {
@@ -30,4 +28,4 @@
     } else {
         die(header("HTTP/1.0 401 Formulário de autenticação inválido"));
     }
-?>
+?> 

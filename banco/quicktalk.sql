@@ -71,7 +71,14 @@ CREATE TABLE `user` (
   `Online` datetime NOT NULL,
   `Token` varchar(100) NOT NULL,
   `Secure` bigint(20) NOT NULL,
-  `Creation` datetime NOT NULL
+  `Creation` datetime NOT NULL,
+  raca VARCHAR(50) default 'Não tenho preferência',  
+  porte VARCHAR(50) default 'Não tenho preferência',  
+  especie VARCHAR(50) default 'Não tenho preferência',
+  sexo VARCHAR(50) default 'Não tenho preferência',
+  pelagem VARCHAR(50) default 'Não tenho preferência',  
+  idademin INT default 0,
+  idademax INT default 20,  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -143,5 +150,21 @@ CREATE TABLE Usuario_abrigo
  Token varchar(100) NOT NULL,
  Secure bigint(20) NOT NULL,
  Creation datetime NOT NULL,
- Tipo varchar(1) default 0
+ Tipo varchar(1) default 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE animal 
+( 
+ raca VARCHAR(50) NOT NULL,  
+ carterinha VARCHAR(50) Default 'Não vacinado',  
+ porte VARCHAR(50) NOT NULL,  
+ cor VARCHAR(50) NOT NULL,  
+ especie VARCHAR(50) NOT NULL,
+ sexo VARCHAR(50) NOT NULL,
+ pelagem VARCHAR(50) NOT NULL,
+ idade INT NOT NULL,
+ nome VARCHAR(50)NOT NULL,  
+ id_animal INT PRIMARY KEY AUTO_INCREMENT,  
+ descricao VARCHAR(500),  
+ FK_id_abrigo INT  
+); 
