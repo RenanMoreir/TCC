@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Animal</title>
+</head>
+<body>
+    <header>
+        <h1>Cadastro de Animal</h1>
+    </header>
+
+    <div class="container">
+        <div class="cadastro-form">
+            <h2>Cadastre um Novo Animal</h2>
+            <form action="salvar_animal.php" method="post">
+                <label for="animal_nome">Nome do Animal:</label>
+                <input type="text" name="animal_nome" required><br>
+
+                <label for="raca">Raça:</label>
+                <select name="raca">
+                    <option value="definida">Raça Definida</option>
+                    <option value="srd">Sem Raça Definida</option>
+                </select><br>
+
+                <label for="cor">Cor:</label>
+                <input type="text" name="cor" required><br>
+
+                <label for="pelagem">Pelagem:</label>
+                <select name="pelagem">
+                    <option value="curto">Curto</option>
+                    <option value="médio">Médio</option>
+                    <option value="longo">Longo</option>
+                </select><br>
+
+                <label for="sexo">Sexo:</label>
+                <select name="sexo">
+                    <option value="macho">Macho</option>
+                    <option value="fêmea">Fêmea</option>
+                </select><br>
+
+                <label for="porte">Porte:</label>
+                <select name="porte">
+                    <option value="pequeno">Pequeno</option>
+                    <option value="médio">Médio</option>
+                    <option value="grande">Grande</option>
+                </select><br>
+
+                <label for="especie">Espécie:</label>
+                <select name="especie">
+                    <option value="cachorro">Cachorro</option>
+                    <option value="gato">Gato</option>
+                </select><br>
+
+                <label for="descricao">Descrição do Animal:</label>
+                <textarea name="descricao" rows="4" required></textarea><br>
+
+                <button type="submit">Cadastrar</button>
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
