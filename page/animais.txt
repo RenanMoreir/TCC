@@ -1,0 +1,10 @@
+Nome do Animal: rex
+Pelagem: curto
+Raça: srd
+Cor: preto
+Sexo: macho
+Porte: pequeno
+
+Espécie: cachorro
+Descrição: muito feliz
+

@@ -42,49 +42,38 @@
             <input type="password" name="repita" id="repita">
         </div>
 
-        <br><br> <!-- temporario, eu sei qeu esta feio -- resolve ai leonardo-->
-
-        <input type="text" maxlength="15" name="username" class="searchField" onkeyup="search()"
-                placeholder="Pesquisar Utilizador">
-        <div id="searchContainer"></div>
-
         <div id="teste">
         </div>
-        <input type="submit" value="salvar">
+       <input type="submit" value="Continuar">
 
 
 
-    </form> 
-    
-    <script>
+    </form>
 
-    function search() {
-                var term = $('input.searchField').val();
-                if (term.length >= 3) {
-                    $.ajax({
-                        url: 'search.php?term=' + term,
-                        success: function (data) {
-                            $('#searchContainer').html(data);
-                            $('#searchContainer').show();
-                        }
-                    })
-                } else {
-                    $('#searchContainer').hide();
-                }
-            }
+        <script>
+    $('#register').on('submit', function (e) {
+    e.preventDefault();
+    $.ajax({
+        type: 'post',
+        url: 'repositorio_pessoa.php',
+        data: $('#register').serialize(),
+        success: function (data) {
+            location.href = "cad_pessoa_pref.html"
+        },
+        error: function (error) {
+            console.log(error);
+            Swal.fire({
+                title: 'algo não esta correto!',
+                text: error.statusText, 
+                icon: 'error',
+                confirmButtonText: 'Tentar novamente'
+            })
+        }
+    });
+});
 
-    function criar() {
-        var container = document.getElementById("teste");
-        var paragrafo = document.createElement("input");
-        paragrafo.type="text";
-        paragrafo.value= "teste"; //deve ser mudado para pegar do panco a caracteristica;
-        paragrafo.readOnly="True";
-        paragrafo.className="gostos";
-        container.append(paragrafo);
-    }
-    </script>
-
-    
+</script>
+  
 
 </body>
 </html>

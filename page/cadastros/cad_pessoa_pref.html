@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preferências</title>
+
+    <link rel="stylesheet" href="../../style/sweetalert2.css">
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/sweetalert2.js"></script>
+</head>
+<body>
+    <h1>Preferências</h1>
+    <form action="#" method="post">
+        <div>
+            <label for="especie">Especie</label>
+            <select name="especie">
+                <option value="Não tenho preferência">Não tenho preferência</option>
+                <option value="Cachorro">Cachorro</option>
+                <option value="Gato">Gato</option>
+            </select>
+        </div>
+        <div>
+            <label for="raca">Raça</label>
+            <select name="raca">
+                <option value="Não tenho preferência">Não tenho preferência</option>
+                <option value="Raça Definida">Raça Definida</option>
+                <option value="Sem Raça Definida">Sem Raça Definida</option>
+            </select>
+        </div>
+        <div>
+            <label for="pelagem">Pelagem</label>
+            <select name="pelagem">
+                <option value="Não tenho preferência">Não tenho preferência</option>
+                <option value="Curto">Curto</option>
+                <option value="Médio">Médio</option>
+                <option value="Longo">Longo</option>
+            </select>
+        </div>
+        <div>
+            <label for="porte">Porte</label>
+            <select name="porte">
+                <option value="Não tenho preferência">Não tenho preferência</option>
+                <option value="Pequeno">Pequeno</option>
+                <option value="Médio">Médio</option>
+                <option value="Grande">Grande</option>
+            </select>
+        </div>
+        <div>
+            <label for="sexo">Sexo</label>
+            <select name="sexo">
+                <option value="Não tenho preferência">Não tenho preferência</option>
+                <option value="Macho">Macho</option>
+                <option value="Fêmea">Fêmea</option>
+            </select>
+        </div>
+        <div>
+            <label for="idademin">Idade Minima</label>
+            <input type="number" name="idademin" id="idademin" min="0" max="20">
+        </div>
+        <div>
+            <label for="idademax">Idade Maxima
+            </label>
+            <input type="number" name="idademax" id="idademax" min="0" max="20">
+        </div>
+
+        <div id="teste">
+        </div>
+        <input type="submit" value="Salvar">
+
+
+
+    </form>
