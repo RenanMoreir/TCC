@@ -17,7 +17,7 @@
 
     <div class="auth login">
         <p class="title">MatchPet</p>
-        <form method="post" id="login" action="../process/login.php">
+        <form method="post" id="login">
             <input type="text" name="email" class="field" placeholder="E-mail ou Nome de usuario" required>
             <input type="password" name="password" class="field" placeholder="Senha" required>
             <button>Entrar</button>
@@ -37,34 +37,69 @@
             </form>
         <p class="toogle" onclick="$('.register').fadeOut()">já tenho uma conta</p>    
     </div>
-
+    
     <script>
-   /*     $('#login').on('submit', function (e) {
-            e.preventDefault();
-            $.ajax({
-                type: 'post',
-                url: '../process/login.php',
-                data: $('#login').serialize(),
-                beforeSend: function () {
-                    $('#loading').show();
-                },
-                complete: function () {
-                    $('#loading').hide();
-                },
-                success: function (data) {
-                    location.href = "./";
-                },
-                error: function (error) {
-                    console.log(error);
-                    Swal.fire({
-                        title: 'Oops!',
-                        text: error.statusText, 
-                        icon: 'error',
-                        confirmButtonText: 'Tentar novamente'
-                    })
-                }
+        var urlAtual = window.location.href;
+        var urlClass = new URL(urlAtual);
+        var escolha = urlClass.searchParams.get("escolha");
+
+        if (escolha == 1){
+            console.log(escolha); 
+            $('#login').on('submit', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'post',
+                    url: '../process/login.php?escolha=1',
+                    data: $('#login').serialize(),
+                    beforeSend: function () {
+                        $('#loading').show();
+                    },
+                    complete: function () {
+                        $('#loading').hide();
+                    },
+                    success: function (data) {
+                        location.href = "./?escolha=1";
+                    },
+                    error: function (error) {
+                        console.log(error);
+                        Swal.fire({
+                            title: 'Oops!',
+                            text: error.statusText, 
+                            icon: 'error',
+                            confirmButtonText: 'Tentar novamente'
+                        })
+                    }
+                });
             });
-        });*/
+        } else { if (escolha == 0) {
+            console.log(escolha); 
+            $('#login').on('submit', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: 'post',
+                    url: '../process/login_empresa.php?escolha=0',
+                    data: $('#login').serialize(),
+                    beforeSend: function () {
+                        $('#loading').show();
+                    },
+                    complete: function () {
+                        $('#loading').hide();
+                    },
+                    success: function (data) {
+                        //location.href = "./?escolha=0";
+                    },
+                    error: function (error) {
+                        console.log(error);
+                        Swal.fire({
+                            title: 'Oops!',
+                            text: error.statusText, 
+                            icon: 'error',
+                            confirmButtonText: 'Tentar novamente'
+                        })
+                    }
+                });
+            });
+        } }
 
         $('#register').on('submit', function (e) {
             e.preventDefault();
