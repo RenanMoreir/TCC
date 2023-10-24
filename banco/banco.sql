@@ -63,7 +63,8 @@ CREATE TABLE animal
  cor VARCHAR(50),  
  especie VARCHAR(50),  
  idade INT,  
- nome VARCHAR(50),  
+ nome VARCHAR(50),
+ foto varchar(1000) default "user.jpg" NOT NULL,  
  id_animal INT PRIMARY KEY AUTO_INCREMENT,  
  descricao VARCHAR(500),  
  FK_id_abrigo INT  

@@ -122,7 +122,7 @@ if ($result->num_rows > 0) {
     $perfis = [];
 
     while ($row = $result->fetch_assoc()) {
-        $perfis[] = ["porte" => $row["porte"], "cor" => $row["cor"], "raca" => $row['raca'], "nome" => $row['nome'], "idade" => $row['idade']];
+        $perfis[] = ["porte" => $row["porte"], "cor" => $row["cor"], "raca" => $row['raca'], "nome" => $row['nome'], "idade" => $row['idade'], "foto" => $row['foto']];
     }
 
     // Inicialize um array vazio para armazenar os índices dos perfis exibidos
@@ -144,7 +144,7 @@ if ($result->num_rows > 0) {
 
                 // Div para cada perfil
                 echo '<div class="profile-card">';
-                // '<img src="' . $perfilAleatorio['foto'] . '" alt="Foto do perfil">';
+                echo '<img src="' . $perfilAleatorio['foto'] . '" alt="Foto do perfil">';
                 echo '<p class="profile-porte">Nome: ' . $perfilAleatorio['nome'] . '</p>';
                 echo '<p class="profile-cor">Idade: ' . $perfilAleatorio['idade'] . '</p>';
                 echo '<p class="profile-porte">Porte: ' . $perfilAleatorio['porte'] . '</p>';
