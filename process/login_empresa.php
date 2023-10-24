@@ -12,15 +12,15 @@
         }
 
         // Query
-        $stmt = $con->prepare("SELECT Id, Password, Token, Secure FROM usuario_abrigo WHERE (Email LIKE ? OR Username LIKE ?) LIMIT 1");
+        $stmt = $con->prepare("SELECT Id_abrigo, Senha, Token, Secure FROM usuario_abrigo WHERE (Email LIKE ? OR Nome LIKE ?) LIMIT 1");
         $stmt->bind_param("ss", $email, $email);
         $stmt->execute();
         $user = $stmt->get_result()->fetch_assoc();
 
         // Check password
-        if ($user && password_verify($password, $user['Password'])) {
+        if ($user && password_verify($password, $user['Senha'])) {
             echo "ola";
-            setcookie("ID", $user['Id'], time() + (10 * 365 * 24 * 60 * 60));
+            setcookie("ID", $user['Id_abrigo'], time() + (10 * 365 * 24 * 60 * 60));
             setcookie("TOKEN", $user['Token'], time() + (10 * 365 * 24 * 60 * 60));
             setcookie("SECURE", $user['Secure'], time() + (10 * 365 * 24 * 60 * 60));
             setcookie("ESCOLHA", $_GET['escolha'], time() + (10 * 365 * 24 * 60 * 60));

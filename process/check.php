@@ -100,7 +100,7 @@ if ($_COOKIE['ESCOLHA'] == 1){
 
         // Check if exists
         if (!$me) {
-            //die("<script>location.href = 'auth.html';</script>");
+            die("<script>location.href = 'auth.html';</script>");
         } else {
             // Normalize information
             $uid = $me["Id"];
@@ -115,7 +115,7 @@ if ($_COOKIE['ESCOLHA'] == 1){
             $stmt->execute();
         }
     } else {
-        //die("<script>location.href = 'auth.html?escolha=0';</script>");
+        die("<script>location.href = 'auth.html?escolha=0';</script>");
     }
 }
 ?>
