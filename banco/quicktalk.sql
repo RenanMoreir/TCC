@@ -78,7 +78,7 @@ CREATE TABLE `user` (
   sexo VARCHAR(50) default 'Não tenho preferência',
   pelagem VARCHAR(50) default 'Não tenho preferência',  
   idademin INT default 0,
-  idademax INT default 20,  
+  idademax INT default 20 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
