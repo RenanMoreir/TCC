@@ -1,0 +1,15 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    background-image: linear-gradient(to right,aqua, limegreen);
+}
+
+input[type=text]{
+    width: 75%;
+    padding: 8px;
+    margin: 8px 0;
+    border: solid rgb(0, 255, 179);
+    border-radius: 50px;
+    box-sizing: border-box;
+}

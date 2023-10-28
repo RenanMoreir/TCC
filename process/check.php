@@ -1,6 +1,6 @@
 <?php
     include("connection/connect.php");
-    print_r($_COOKIE);
+
 if ($_COOKIE['ESCOLHA'] == 1){
     function timing ($time)
     {
@@ -93,7 +93,7 @@ if ($_COOKIE['ESCOLHA'] == 1){
         $secure = $_COOKIE["SECURE"];
 
         // Query
-        $stmt = $con->prepare("SELECT Id, Username, Picture, Online, Creation FROM usuario_abrigo WHERE (Id = ? AND Token LIKE ? AND Secure = ?) LIMIT 1");
+        $stmt = $con->prepare("SELECT Id_abrigo, Nome, Picture, Online, Creation FROM usuario_abrigo WHERE (Id_abrigo = ? AND Token LIKE ? AND Secure = ?) LIMIT 1");
         $stmt->bind_param("isi", $id, $token, $secure);
         $stmt->execute();
         $me = $stmt->get_result()->fetch_assoc();
@@ -103,14 +103,14 @@ if ($_COOKIE['ESCOLHA'] == 1){
             die("<script>location.href = 'auth.html';</script>");
         } else {
             // Normalize information
-            $uid = $me["Id"];
-            $username = $me["Username"];
+            $uid = $me["Id_abrigo"];
+            $username = $me["Nome"];
             $user_picture = $me["Picture"];
             $user_online = strtotime($me["Online"]);
             $user_creation = $me["Creation"];
 
             // Online status pin-point
-            $stmt = $con->prepare("UPDATE usuario_abrigo SET `Online` = now() WHERE Id = ?");
+            $stmt = $con->prepare("UPDATE usuario_abrigo SET `Online` = now() WHERE Id_abrigo = ?");
             $stmt->bind_param("i", $uid);
             $stmt->execute();
         }
