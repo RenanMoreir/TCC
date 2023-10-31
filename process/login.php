@@ -1,5 +1,5 @@
 <?php
-    include("conneection/conect.php");
+    include("connection/connect.php");
 
     if(isset($_POST["email"]) && isset($_POST["password"])){
         $email = $_POST["email"];
@@ -12,7 +12,7 @@
         $stmt = $con->prepare("SELECT Id, Password, Token, Secure FROM User Where (Email LIKE ? OR Username Like ?) LIMIT 1 ");
 
         $stmt->bind_param("ss", $email, $email);
-        $stmt-> execut();
+        $stmt-> execute();
         $user = $stmt-> get_result()->fetch_assoc();
 
         // Check password

@@ -12,7 +12,10 @@
 </head>
 <body>
 
-    <form action="#" method="post">
+<div id="auth register">
+    <form method="post" id="register" action="cad_pessoa.php">
+       
+        <h1>Informações pessoais</h1>
         <div>
             <label for="nome">Nome</label>
             <input type="text" name="nome" id="noem">
@@ -22,16 +25,22 @@
             <input type="text" name="sobrenome" id="sobrenome">
         </div>
         <div>
-            <label for="email">E-mail</label>
-            <input type="email" name="email" id="email">
-        </div>
-        <div>
             <label for="telefone">Telefone</label>
             <input type="tel" name="telefone" id="telefone">
         </div>
         <div>
             <label for="cpf">CPF</label>
             <input type="text" name="cpf" id="cpf">
+        </div>
+        
+        <h1>Informações de conta</h1>
+        <div>
+            <label for="username">Nome de usuario</label>
+            <input type="text" name="username" id="username">
+        </div>
+        <div>
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="email">
         </div>
         <div>
             <label for="senha">Senha</label>
@@ -42,37 +51,89 @@
             <input type="password" name="repita" id="repita">
         </div>
 
-        <div id="teste">
-        </div>
-       <input type="submit" value="Continuar">
+        <h1>Preferências</h1>
 
-
+            <div>
+                <label for="especie">Especie</label>
+                <select name="especie">
+                    <option value="Não tenho preferência">Não tenho preferência</option>
+                    <option value="Cachorro">Cachorro</option>
+                    <option value="Gato">Gato</option>
+                </select>
+            </div>
+            <div>
+                <label for="raca">Raça</label>
+                <select name="raca">
+                    <option value="Não tenho preferência">Não tenho preferência</option>
+                    <option value="Raça Definida">Raça Definida</option>
+                    <option value="Sem Raça Definida">Sem Raça Definida</option>
+                </select>
+            </div>
+            <div>
+                <label for="pelagem">Pelagem</label>
+                <select name="pelagem">
+                    <option value="Não tenho preferência">Não tenho preferência</option>
+                    <option value="Curto">Curto</option>
+                    <option value="Médio">Médio</option>
+                    <option value="Longo">Longo</option>
+                </select>
+            </div>
+            <div>
+                <label for="porte">Porte</label>
+                <select name="porte">
+                    <option value="Não tenho preferência">Não tenho preferência</option>
+                    <option value="Pequeno">Pequeno</option>
+                    <option value="Médio">Médio</option>
+                    <option value="Grande">Grande</option>
+                </select>
+            </div>
+            <div>
+                <label for="sexo">Sexo</label>
+                <select name="sexo">
+                    <option value="Não tenho preferência">Não tenho preferência</option>
+                    <option value="Macho">Macho</option>
+                    <option value="Fêmea">Fêmea</option>
+                </select>
+            </div>
+            <div>
+                <label for="idademin">Idade Minima</label>
+                <input type="number" name="idademin" id="idademin" min="0" max="20">
+            </div>
+            <div>
+                <label for="idademax">Idade Maxima
+                </label>
+                <input type="number" name="idademax" id="idademax" min="0" max="20">
+            </div>
+    
+            <button>Cadastrar</button>
 
     </form>
+</div>
 
-        <script>
-    $('#register').on('submit', function (e) {
-    e.preventDefault();
-    $.ajax({
-        type: 'post',
-        url: 'repositorio_pessoa.php',
-        data: $('#register').serialize(),
-        success: function (data) {
-            location.href = "cad_pessoa_pref.html"
-        },
-        error: function (error) {
-            console.log(error);
-            Swal.fire({
-                title: 'algo não esta correto!',
-                text: error.statusText, 
-                icon: 'error',
-                confirmButtonText: 'Tentar novamente'
-            })
-        }
-    });
-});
+    <script>
 
-</script>
+        $('#register').on('submit', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'post',
+                url: 'cad_pessoa.php',
+                data: $('#register').serialize(),
+                success: function (data) {
+                    location.href = "../index.html?escolha=1"
+                },
+                error: function (error) {
+                    console.log(error);
+                    Swal.fire({
+                        title: 'algo não esta correto!',
+                        text: error.statusText, 
+                        icon: 'error',
+                        confirmButtonText: 'Tentar novamente'
+                    })
+                }
+            });
+        });
+
+    </script>
   
 
 </body>

@@ -4,29 +4,32 @@
     if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['repita'])) {
 
         // Normalization
-        $username = $_POST["nome"];
-        $descricao = $_POST["desc"];
-        $telefone = $_POST["telefone"];
-        $cnpj = $_POST["cnpj"];
-        $estado = $_POST["estado"];
-        $rua = $_POST["rua"];
-        $cidade = $_POST["cidade"];
-        $bairro = $_POST["bairro"];
-        $numero = $_POST["numero"];
-        $cep = $_POST["cep"];
+        $username = $_POST["username"];
         $email = $_POST["email"];
         $senha = $_POST["senha"];
         $repsenha = $_POST["repita"];
 
+        $nome = $_POST["nome"];
+        $sobrenome = $_POST["sobrenome"]; 
+        $telefone = $_POST["telefone"]; 
+        $cpf = $_POST["cpf"]; 
+
+        $especie = $_POST["especie"];
+        $raca = $_POST["raca"];
+        $pelagem = $_POST["pelagem"];
+        $porte = $_POST["porte"];
+        $sexo = $_POST["sexo"];
+        $idademin = $_POST["idademin"];
+        $idademax = $_POST["idademax"];
 
         // Check if values are okay
-        if ($username == "" || $email == "" || $senha == "" || $repsenha == "" || $descricao == "" || $telefone == "" || $cnpj == "" || $estado == "" ||
-        $rua == "" || $cidade == "" || $bairro == "" || $numero == "" || $cep == "") {
+        if ($username == "" || $email == "" || $senha == "" || $repsenha == "" || $nome == "" || $sobrenome == "" || $telefone == "" || $cpf == ""
+        || $especie == "" || $raca == "" || $pelagem == "" || $porte == "" || $sexo == "" || $idademin == "" || $idademax == "") {
             die(header("HTTP/1.0 401 Preenche todos os campos do formulário"));
         }
 
         // Check if username already exists
-        $checkUsername = $con->prepare("SELECT Id_abrigo FROM usuario_abrigo WHERE Nome = ?");
+        $checkUsername = $con->prepare("SELECT Id FROM user WHERE Username = ?");
         $checkUsername->bind_param("s", $username);
         $checkUsername->execute();
         $count = $checkUsername->get_result()->num_rows;
@@ -35,7 +38,7 @@
         }
 
         // Check if email already exists
-        $checkEmail = $con->prepare("SELECT Id_abrigo FROM usuario_abrigo WHERE Email = ?");
+        $checkEmail = $con->prepare("SELECT Id FROM user WHERE Email = ?");
         $checkEmail->bind_param("s", $email);
         $checkEmail->execute();
         $count = $checkEmail->get_result()->num_rows;
@@ -56,19 +59,21 @@
         $secure = rand(1000000000, 9999999999);
         
         // Queries for creation and collection
-        $stmt = $con->prepare("INSERT INTO usuario_abrigo (`Nome`, `Descricao`, `Telefone`, `Cnpj`, `Estado`, `Rua`, `Cidade`, `Bairro`, `Numero`, `Cep`, `Email`, `Senha`, `Token`, `Secure`, `Creation`) 
-                                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now())");
-        $stmt->bind_param("sssssssssssssi", $username, $descricao, $telefone, $cnpj, $estado, $rua, $cidade, $bairro, $numero, $cep, $email, $senha, $token, $secure);
+        $stmt = $con->prepare("INSERT INTO user (`Username`, `Email`, `Password`, `Nome`, `Sobrenome`, `Telefone`, `Cpf`,
+                                                 `Especie`, `Raca`, `Pelagem`, `Porte`, `Sexo`, `Idademin`, `Idademax`, `Token`, `Secure`, `Creation`) 
+                                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now())");
+        $stmt->bind_param("ssssssssssssiiss", $username, $email, $senha, $nome, $sobrenome, $telefone, $cpf, $especie, $raca, $pelagem, 
+                                            $porte, $sexo, $idademin, $idademax, $token, $secure);
         $stmt->execute();
 
-        $getUser = $con->prepare("SELECT Id_abrigo, Token, Secure FROM usuario_abrigo WHERE Email = ?");
+        $getUser = $con->prepare("SELECT Id, Token, Secure FROM user WHERE Email = ?");
         $getUser->bind_param("s", $email);
         $getUser->execute();
         $user = $getUser->get_result()->fetch_assoc();
 
         if ($stmt && $user) {
             $escolha = 0;
-            setcookie("ID", $user['Id_abrigo'], time() + (10 * 365 * 24 * 60 * 60));
+            setcookie("ID", $user['Id'], time() + (10 * 365 * 24 * 60 * 60));
             setcookie("TOKEN", $user['Token'], time() + (10 * 365 * 24 * 60 * 60));
             setcookie("SECURE", $user['Secure'], time() + (10 * 365 * 24 * 60 * 60));
             setcookie("ESCOLHA", $escolha, time() + (10 * 365 * 24 * 60 * 60));
