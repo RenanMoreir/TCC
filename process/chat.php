@@ -94,7 +94,11 @@
         ?>
         <div class="empty">
             <?php
+            if ($_COOKIE['ESCOLHA'] == 1){
         include("feed.php");
+            }
+            else if ($_COOKIE['ESCOLHA'] == 0) {
+                include("../page/cadastro_animal.html");}
         ?>
         </div>
         <?php
