@@ -72,7 +72,7 @@
         $user = $getUser->get_result()->fetch_assoc();
 
         if ($stmt && $user) {
-            $escolha = 0;
+            $escolha = 1;
             setcookie("ID", $user['Id'], time() + (10 * 365 * 24 * 60 * 60));
             setcookie("TOKEN", $user['Token'], time() + (10 * 365 * 24 * 60 * 60));
             setcookie("SECURE", $user['Secure'], time() + (10 * 365 * 24 * 60 * 60));
