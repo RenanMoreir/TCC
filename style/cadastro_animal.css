@@ -1,4 +1,4 @@
-body{
+/*body{
     margin: 0px;
     padding: 0px;
     border: 0px;
@@ -12,16 +12,16 @@ input[type=text]{
     border: solid rgb(0, 255, 179);
     border-radius: 50px;
     box-sizing: border-box;
-}
+}*/
 
-.container{
+.container-animal{
     width: 50%;
-    height: 50%;
+    height: 100%;
     display: flex;
     justify-self: center;
     justify-content: center;
     align-self: center;
     margin: 0 auto;
-    margin-top: 10%;
+    /*margin-top: 20%;*/
     border: solid black;
 }
