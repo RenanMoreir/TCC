@@ -160,16 +160,16 @@ CREATE TABLE Usuario_abrigo
 
 CREATE TABLE animal 
 ( 
- raca VARCHAR(50) NOT NULL,  
- carterinha VARCHAR(50) Default 'Não vacinado',  
- porte VARCHAR(50) NOT NULL,  
- cor VARCHAR(50) NOT NULL,  
- especie VARCHAR(50) NOT NULL,
- sexo VARCHAR(50) NOT NULL,
- pelagem VARCHAR(50) NOT NULL,
- idade INT NOT NULL,
- nome VARCHAR(50)NOT NULL,  
- id_animal INT PRIMARY KEY AUTO_INCREMENT,  
- descricao VARCHAR(500),  
+ Raca VARCHAR(50) NOT NULL,  
+ Carterinha VARCHAR(50) Default 'Não vacinado',  
+ Porte VARCHAR(50) NOT NULL,  
+ Cor VARCHAR(50) NOT NULL,  
+ Especie VARCHAR(50) NOT NULL,
+ Sexo VARCHAR(50) NOT NULL,
+ Pelagem VARCHAR(50) NOT NULL,
+ Idade INT NOT NULL,
+ Nome VARCHAR(50)NOT NULL,  
+ Id_animal INT PRIMARY KEY AUTO_INCREMENT,  
+ Descricao VARCHAR(500),  
  FK_id_abrigo INT  
 ); 

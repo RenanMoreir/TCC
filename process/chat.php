@@ -98,7 +98,8 @@
         include("feed.php");
             }
             else if ($_COOKIE['ESCOLHA'] == 0) {
-                include("../page/cadastro_animal.html");}
+                //include("../page/cadastro_animal.html");
+            }
         ?>
         </div>
         <?php

@@ -48,6 +48,7 @@
                     <p class="title">Perfil</p>
                     <div class="container"></div>
                     <div class="menu">
+                        <div id="animal"></div>
                         <button onclick="logout()">Sair</button>
                     </div>
                 </div>
@@ -201,6 +202,8 @@ $('div.empty').css('transition', 'width 0s ease');
             });
         }
 
+        
+
         function search() {
             var term = $('input.searchField').val();
             if (term.length >= 3) {
@@ -227,6 +230,7 @@ $('div.empty').css('transition', 'width 0s ease');
                 }
             });
         }
+        
 
         $(document).ready(function () {
             setInterval(() => {

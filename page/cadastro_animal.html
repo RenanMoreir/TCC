@@ -12,7 +12,8 @@
     <div class="container-animal">
         <div class="cadastro-form">
             <h2>Cadastre um novo animal</h2>
-            <form action="salvar_animal.php" method="post">
+            <img src="../img/close.png" onclick="chat()" />
+            <form method="post" id="register">
                 <label for="animal_nome">Nome do Animal:</label>
                 <input type="text" name="animal_nome" required><br>
 
@@ -54,9 +55,40 @@
                 <label for="descricao">Descrição do Animal:</label>
                 <textarea name="descricao" rows="4" required></textarea><br>
 
-                <button type="submit">Cadastrar</button>
+                <button>Cadastrar</button>
             </form>
         </div>
     </div>
+
+    <script>
+
+        $('#register').on('submit', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'post',
+                url: './process/salvar_animal.php',
+                data: $('#register').serialize(),
+                success: function (data) {
+                    Swal.fire({
+                        title: 'Cadastro confirmado',
+                        text: 'O animal foi cadastrado com sucesso', 
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    })
+                },
+                error: function (error) {
+                    console.log(error);
+                    Swal.fire({
+                        title: 'algo não esta correto!',
+                        text: error.statusText, 
+                        icon: 'error',
+                        confirmButtonText: 'Tentar novamente'
+                    })
+                }
+            });
+        });
+
+    </script>
+
 </body>
 </html>

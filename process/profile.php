@@ -49,6 +49,15 @@
 <p class="row">Online <?php echo timing($user_online); ?></p>
 <p class="row">Membro desde <?php echo $user_creation; ?></p>
 
+<?php
+if ($_COOKIE['ESCOLHA'] == 0){
+    ?>
+    <button onclick="$('#chat').load('../page/cadastro_animal.html')">Cadastrar Animal</button>
+    <?php 
+}
+
+?>
+
 <script>
     function previewUpload(input) {
         if(input.files && input.files[0]) {
