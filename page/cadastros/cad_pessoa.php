@@ -8,23 +8,27 @@
         $email = $_POST["email"];
         $senha = $_POST["senha"];
         $repsenha = $_POST["repita"];
+        $dtnasc = $_POST["dtnasc"];
 
         $nome = $_POST["nome"];
-        $sobrenome = $_POST["sobrenome"]; 
         $telefone = $_POST["telefone"]; 
         $cpf = $_POST["cpf"]; 
+        $cep = $_POST["cep"];
+        $rua = $_POST["rua"];
+        $numero = $_POST["numero"];
+        $bairro = $_POST["bairro"];
+        $cidade = $_POST["cidade"];
+        $estado = $_POST["estado"];
 
         $especie = $_POST["especie"];
-        $raca = $_POST["raca"];
         $pelagem = $_POST["pelagem"];
         $porte = $_POST["porte"];
         $sexo = $_POST["sexo"];
-        $idademin = $_POST["idademin"];
-        $idademax = $_POST["idademax"];
+ 
 
         // Check if values are okay
-        if ($username == "" || $email == "" || $senha == "" || $repsenha == "" || $nome == "" || $sobrenome == "" || $telefone == "" || $cpf == ""
-        || $especie == "" || $raca == "" || $pelagem == "" || $porte == "" || $sexo == "" || $idademin == "" || $idademax == "") {
+        if ($username == "" || $email == "" || $senha == "" || $repsenha == "" || $nome == "" || $telefone == "" || $cpf == ""
+        || $especie == "" || $pelagem == "" || $porte == "" || $sexo == "") {
             die(header("HTTP/1.0 401 Preenche todos os campos do formulário"));
         }
 
@@ -59,11 +63,11 @@
         $secure = rand(1000000000, 9999999999);
         
         // Queries for creation and collection
-        $stmt = $con->prepare("INSERT INTO user (`Username`, `Email`, `Password`, `Nome`, `Sobrenome`, `Telefone`, `Cpf`,
-                                                 `Especie`, `Raca`, `Pelagem`, `Porte`, `Sexo`, `Idademin`, `Idademax`, `Token`, `Secure`, `Creation`) 
-                                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now())");
-        $stmt->bind_param("ssssssssssssiiss", $username, $email, $senha, $nome, $sobrenome, $telefone, $cpf, $especie, $raca, $pelagem, 
-                                            $porte, $sexo, $idademin, $idademax, $token, $secure);
+        $stmt = $con->prepare("INSERT INTO user (`Username`, `Email`, `Password`, `Dtnasc` `Nome`,`Telefone`, `Cpf`, `Cep`, `Rua`, `Numero`, `Bairro`, `Cidade`, `Estado`
+                                                 `Especie`, `Pelagem`, `Porte`, `Sexo`,`Token`, `Secure`, `Creation`) 
+                                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now())");
+        $stmt->bind_param("sssssssssssssssssss", $username, $email, $senha, $dtnasc, $nome, $telefone, $cpf, $cep, $rua, $numero, $bairro, $cidade, $especie, $raca, $pelagem, 
+                                            $porte, $sexo, $token, $secure);
         $stmt->execute();
 
         $getUser = $con->prepare("SELECT Id, Token, Secure FROM user WHERE Email = ?");

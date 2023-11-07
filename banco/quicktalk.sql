@@ -68,21 +68,24 @@ CREATE TABLE `user` (
   `Email` varchar(200) NOT NULL,
   `Password` varchar(70) NOT NULL,
   `Nome` varchar(100) NOT NULL,
-  `Sobrenome` varchar(200) NOT NULL,
+  `Dtnasc` varchar(30) not Null,
   `Telefone` varchar(30) NOT NULL,
   `Cpf` varchar(20) NOT NULL,
+  `Cep` varchar(38) NOT NULL,
+  `Rua` varchar(60) NOT NULL,
+  `Numero` varchar(10) NOt NULL,
+  `Bairro` varchar(50) NOT NULL,
+  `Cidade` varchar(100) NOT NULL,
+
   `Picture` varchar(1000) default "user.jpg" NOT NULL,
   `Online` datetime NOT NULL,
   `Token` varchar(100) NOT NULL,
   `Secure` bigint(20) NOT NULL,
   `Creation` datetime NOT NULL,
-  `Raca` VARCHAR(50) default 'Não tenho preferência',  
   `Porte` VARCHAR(50) default 'Não tenho preferência',  
   `Especie` VARCHAR(50) default 'Não tenho preferência',
   `Sexo` VARCHAR(50) default 'Não tenho preferência',
   `Pelagem` VARCHAR(50) default 'Não tenho preferência',  
-  `Idademin` INT default 0,
-  `Idademax` INT default 20,
   `Tipo` int default 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
