@@ -117,10 +117,11 @@ h3 {
 /* FOOTER */
 .grid{
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat( 1fr);
+  grid-template-rows: repeat(5,1fr);
   gap: 20px;
   justify-content: center;
-  margin-left:6%;
+  /* margin-left:6%; */
 }
 
 .grid .element{
