@@ -23,9 +23,11 @@
             <button>Entrar</button>
             </form>
 
+        <p class="toogle" onclick="cadastro()">não tenho conta</p>    
+
    
-         <p class="toogle" hrf >Não tenho conta</p>     
-          <p class="toogle"><a href="escolha.html">Não tenho conta</a></p>   
+       <!--   <p onclick="">Não tenho conta</p>
+          <p class="toogle"><a href="escolha.html">Não tenho conta</a></p>   --> 
     </div>
     
 
@@ -38,13 +40,27 @@
             <input type="password" name="repPassword" class="field" minlength="8" placeholder="Repita a senha" required>
             <button>Entrar</button>
             </form>
-        <p class="toogle" onclick="$('.register').fadeOut()">já tenho uma conta</p>    
+       <!--  <p class="toogle" onclick="$('.register').fadeOut()">já tenho uma conta</p>  -->
+        <!-- <p class="toogle" onclick="cadastro()">não tenho conta</p>    
+ -->
     </div>
     
     <script>
         var urlAtual = window.location.href;
         var urlClass = new URL(urlAtual);
         var escolha = urlClass.searchParams.get("escolha");
+        console.log(escolha);
+        function cadastro() {
+            if (escolha == 0){
+                window.location.href = "cadastros/cad_empresa.html"
+                console.log('passei aqui');
+            } else if (escolha == 1) {
+                window.location.href  = 'cadastros/cad_pessoa.html';
+                console.log('passei aqui');
+            }
+            
+        }
+
 
         if (escolha == 1){
             console.log(escolha); 

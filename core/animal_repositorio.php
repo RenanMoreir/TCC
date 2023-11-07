@@ -34,7 +34,7 @@ switch($acao) {
             'especie' => $especie,
             'sexo' => $sexo,
             'pelagem' => $pelagem,
-            //'idade' => $idade,
+            'idade' => $idade,
             'nome' => $nome,
             'descricao' => $descricao
             ///'fk_id_abrigo' => $_COOKIE['Id_abrigo'] 
