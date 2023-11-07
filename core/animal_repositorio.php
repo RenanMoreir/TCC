@@ -36,8 +36,9 @@ switch($acao) {
             'pelagem' => $pelagem,
             //'idade' => $idade,
             'nome' => $nome,
-            'descricao' => $descricao
-            ///'fk_id_abrigo' => $_COOKIE['Id_abrigo'] 
+            'descricao' => $descricao,
+            'porte' => $porte,
+            //'fk_id_abrigo' => $_COOKIE['Id_abrigo'] 
         ];
 
         insere(
