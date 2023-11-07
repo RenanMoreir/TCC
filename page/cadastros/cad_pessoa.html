@@ -1,117 +1,292 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="../../js/script_cad.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
 <!DOCTYPE html>
-<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cadastro pessoa</title>
-    
-    <link rel="stylesheet" href="../../style/sweetalert2.css">
-    <script src="../../js/jquery.js"></script>
-    <script src="../../js/sweetalert2.js"></script>
+
 </head>
+
 <body>
+    <div id="auth regiter">
+        <form class="form-horizontal" method="post" id="register" action="cad_pessoa.php">
+            <fieldset>
+                <div class="panel panel-primary">
+                    <div class="panel-heading"><a href="../" class="btn btn-primary" role="button"
+                            aria-pressed="true">Voltar</a></div>
 
-<div id="auth register">
-    <form method="post" id="register" action="cad_pessoa.php">
-      
-        <h1>Informações pessoais</h1>
-        <div>
-            <label for="nome">Nome</label>
-            <input type="text" name="nome" id="noem">
-        </div>
-        <div>
-            <label for="sobrenome">Sobrenome</label>
-            <input type="text" name="sobrenome" id="sobrenome">
-        </div>
-        <div>
-            <label for="telefone">Telefone</label>
-            <input type="tel" name="telefone" id="telefone">
-        </div>
-        <div>
-            <label for="cpf">CPF</label>
-            <input type="text" name="cpf" id="cpf">
-        </div>
-        
-        <h1>Informações de conta</h1>
-        <div>
-            <label for="username">Nome de usuario</label>
-            <input type="text" name="username" id="username">
-        </div>
-        <div>
-            <label for="email">E-mail</label>
-            <input type="email" name="email" id="email">
-        </div>
-        <div>
-            <label for="senha">Senha</label>
-            <input type="password" name="senha" id="senha">
-        </div>
-        <div>
-            <label for="repita">Repita a senha</label>
-            <input type="password" name="repita" id="repita">
-        </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-11 control-label">
+                                <p class="help-block">
+                                    <h11>*</h11> Campo Obrigatório
+                                </p>
+                            </div>
+                        </div>
 
-        <h1>Preferências</h1>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <div class="col-md-2 control-label">
+                                <h3>Dados pessoais</h3>
+                            </div>
+                        </div>
+                        <div class="form-group">
 
-            <div>
-                <label for="especie">Especie</label>
-                <select name="especie">
-                    <option value="Não tenho preferência">Não tenho preferência</option>
-                    <option value="Cachorro">Cachorro</option>
-                    <option value="Gato">Gato</option>
-                </select>
-            </div>
-            <div>
-                <label for="raca">Raça</label>
-                <select name="raca">
-                    <option value="Não tenho preferência">Não tenho preferência</option>
-                    <option value="Raça Definida">Raça Definida</option>
-                    <option value="Sem Raça Definida">Sem Raça Definida</option>
-                </select>
-            </div>
-            <div>
-                <label for="pelagem">Pelagem</label>
-                <select name="pelagem">
-                    <option value="Não tenho preferência">Não tenho preferência</option>
-                    <option value="Curto">Curto</option>
-                    <option value="Médio">Médio</option>
-                    <option value="Longo">Longo</option>
-                </select>
-            </div>
-            <div>
-                <label for="porte">Porte</label>
-                <select name="porte">
-                    <option value="Não tenho preferência">Não tenho preferência</option>
-                    <option value="Pequeno">Pequeno</option>
-                    <option value="Médio">Médio</option>
-                    <option value="Grande">Grande</option>
-                </select>
-            </div>
-            <div>
-                <label for="sexo">Sexo</label>
-                <select name="sexo">
-                    <option value="Não tenho preferência">Não tenho preferência</option>
-                    <option value="Macho">Macho</option>
-                    <option value="Fêmea">Fêmea</option>
-                </select>
-            </div>
-            <div>
-                <label for="idademin">Idade Minima</label>
-                <input type="number" name="idademin" id="idademin" min="0" max="20">
-            </div>
-            <div>
-                <label for="idademax">Idade Maxima
-                </label>
-                <input type="number" name="idademax" id="idademax" min="0" max="20">
-            </div>
-    
-            <button>Cadastrar</button>
+                            <label class="col-md-2 control-label" for="Nome">Nome <h11>*</h11></label>
+                            <div class="col-md-8">
+                                <input id="Nome" name="Nome" placeholder="" class="form-control input-md" required=""
+                                    type="text">
+                            </div>
+                        </div>
 
-    </form>
-</div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="Nome">CPF <h11>*</h11></label>
+                            <div class="col-md-2">
+                                <input id="cpf" name="cpf" placeholder="Apenas números" class="form-control input-md"
+                                    required="" type="text" maxlength="11" pattern="[0-9]+$">
+                            </div>
 
+                            <label class="col-md-1 control-label" for="Nome">Nascimento<h11>*</h11></label>
+                            <div class="col-md-2">
+                                <input id="dtnasc" name="dtnasc" placeholder="DD/MM/AAAA" class="form-control input-md"
+                                    required="" type="text" maxlength="10" OnKeyPress="formatar('##/##/####', this)"
+                                    onBlur="showhide()">
+                            </div>
+
+                            <!-- Multiple Radios (inline) -->
+
+                            <label class="col-md-1 control-label" for="radios">Sexo <h11>*</h11></label>
+                            <div class="col-md-4">
+                                <label required="" class="radio-inline" for="radios-0">
+                                    <input name="sexo" id="sexo" value="feminino" type="radio" required>
+                                    Feminino
+                                </label>
+                                <label class="radio-inline" for="radios-1">
+                                    <input name="sexo" id="sexo" value="masculino" type="radio">
+                                    Masculino
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Prepended text-->
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="prependedtext">Telefone para contato <h11>*</h11>
+                            </label>
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                                    <input id="prependedtext" name="prependedtext" class="form-control"
+                                        placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13"
+                                        pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
+                                        OnKeyPress="formatar('## #####-####', this)">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Prepended text-->
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="prependedtext">Email para contato <h11>*</h11>
+                            </label>
+                            <div class="col-md-5">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                    <input id="prependedtext" name="prependedtext" class="form-control"
+                                        placeholder="email@email.com" required="" type="text"
+                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Search input-->
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="CEP">CEP <h11>*</h11></label>
+                            <div class="col-md-2">
+                                <input id="cep" name="cep" placeholder="Apenas números" class="form-control input-md"
+                                    required="" value="" type="search" maxlength="8" pattern="[0-9]+$">
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-primary"
+                                    onclick="pesquisacep(cep.value)">Pesquisar</button>
+                            </div>
+                        </div>
+
+                        <!-- Prepended text-->
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="prependedtext">Endereço</label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Rua</span>
+                                    <input id="rua" name="rua" class="form-control" placeholder="" required=""
+                                        readonly="readonly" type="text">
+                                </div>
+
+                            </div>
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Nº <h11>*</h11></span>
+                                    <input id="numero" name="numero" class="form-control" placeholder="" required=""
+                                        type="text">
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Bairro</span>
+                                    <input id="bairro" name="bairro" class="form-control" placeholder="" required=""
+                                        readonly="readonly" type="text">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="prependedtext"></label>
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Cidade</span>
+                                    <input id="cidade" name="cidade" class="form-control" placeholder="" required=""
+                                        readonly="readonly" type="text">
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                    <span class="input-group-addon">Estado</span>
+                                    <input id="estado" name="estado" class="form-control" placeholder="" required=""
+                                        readonly="readonly" type="text">
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Select Basic -->
+                        <div id="newpost">
+                            <div class="form-group">
+                                <div class="col-md-2 control-label">
+                                    <h3>Preferências</h3>
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <label class="col-md-2 control-label" for="selectbasic">Especie <h11>*</h11></label>
+
+                                <div class="col-md-3">
+                                    <select required id="especie" name="especie" class="form-control">
+                                        <option value="s_preferencia">Não tenho preferências</option>
+                                        <option value="">Gato</option>
+                                        <option value="">Cachorro</option>
+                                    </select>
+                                </div>
+                                <label class="col-md-2 control-label" for="selectbasic">Pelagem <h11>*</h11></label>
+
+                                <div class="col-md-3">
+                                    <select required id="pelagem" name="pelagem" class="form-control">
+                                        <option value="s_preferencia">Não tenho preferências</option>
+                                        <option value="p_curta">Curta</option>
+                                        <option value="p_media">Média</option>
+                                        <option value="p_longa">Longa</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+
+                                <label class="col-md-2 control-label" for="selectbasic">Sexo <h11>*</h11></label>
+
+                                <div class="col-md-3">
+                                    <select required id="sexo" name="sexo" class="form-control">
+                                        <option value="s_preferencia">Não tenho preferências</option>
+                                        <option value="s_macho">Macho</option>
+                                        <option value="s_femea">Fêmea</option>
+                                    </select>
+                                </div>
+                                <label class="col-md-2 control-label" for="selectbasic">Porte <h11>*</h11></label>
+
+                                <div class="col-md-3">
+                                    <select required id="porte" name="porte" class="form-control">
+                                        <option value="s_preferencia">Não tenho preferências</option>
+                                        <option value="por_pequeno">Pequeno</option>
+                                        <option value="por_medio">Médio</option>
+                                        <option value="por_grande">Grande</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                        <div id="newpost">
+                            <div class="form-group">
+                                <div class="col-md-2 control-label">
+                                    <h3>Informações de conta</h3>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="username">Nome de usuário<h11>*</h11></label>
+                                <div class="col-md-8">
+                                    <input id="username" name="username" placeholder="" class="form-control input-md"
+                                        required="" type="text">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="email">Email <h11>*</h11></label>
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i
+                                                class="glyphicon glyphicon-envelope"></i></span>
+                                        <input id="email" name="email" class="form-control"
+                                            placeholder="email@email.com" required="" type="email"
+                                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="senha">Digite a senha<h11>*</h11></label>
+                                <div class="col-md-8">
+                                    <input id="senha" name="senha" placeholder="" class="form-control input-md"
+                                        required="" type="password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label" for="repita">Digite a senha novamente<h11>*</h11>
+                                </label>
+                                <div class="col-md-8">
+                                    <input id="repita" name="repita" placeholder="" class="form-control input-md"
+                                        required="" type="password">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Button (Double) -->
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="Cadastrar"></label>
+                            <div class="col-md-8">
+                                <button id="Cadastrar" name="Cadastrar" class="btn btn-success"
+                                    type="Submit">Cadastrar</button>
+                                <button id="Cancelar" name="Cancelar" class="btn btn-danger"
+                                    type="Reset">Cancelar</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </fieldset>
+        </form>
+    </div>
     <script>
-
         $('#register').on('submit', function (e) {
             e.preventDefault();
             $.ajax({
@@ -125,16 +300,15 @@
                     console.log(error);
                     Swal.fire({
                         title: 'algo não esta correto!',
-                        text: error.statusText, 
+                        text: error.statusText,
                         icon: 'error',
                         confirmButtonText: 'Tentar novamente'
                     })
                 }
             });
         });
-
     </script>
-  
 
 </body>
-</html>
+
+</html>s

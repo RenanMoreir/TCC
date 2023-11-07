@@ -34,7 +34,7 @@ switch($acao) {
             'especie' => $especie,
             'sexo' => $sexo,
             'pelagem' => $pelagem,
-            //'idade' => $idade,
+            'idade' => $idade,
             'nome' => $nome,
             'descricao' => $descricao,
             'porte' => $porte,
