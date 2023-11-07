@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,60 +11,68 @@
     <link rel="stylesheet" href="../style/sweetalert2.css">
     <script src="../js/jquery.js"></script>
     <script src="../js/sweetalert2.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
 </head>
+
 <body>
-    <div id="loading">Loading&#8330;</div>   
+    <div id="loading">Loading&#8330;</div>
     <div class="bg"></div>
 
     <div class="auth login">
+        <div class="panel-heading"><a href="../" class="btn btn-primary" role="button" aria-pressed="true">Voltar ao início</a>
+        </div>
         <p class="title">MatchPet</p>
+
         <form method="post" id="login">
             <input type="text" name="email" class="field" placeholder="E-mail ou Nome de usuario" required>
             <input type="password" name="password" class="field" placeholder="Senha" required>
             <button>Entrar</button>
-            </form>
+        </form>
 
-        <p class="toogle" onclick="cadastro()">não tenho conta</p>    
+        <p class="toogle" onclick="cadastro()">não tenho conta</p>
 
-   
-       <!--   <p onclick="">Não tenho conta</p>
-          <p class="toogle"><a href="escolha.html">Não tenho conta</a></p>   --> 
+
+        <!--   <p onclick="">Não tenho conta</p>
+          <p class="toogle"><a href="escolha.html">Não tenho conta</a></p>   -->
     </div>
-    
+
 
     <div class="auth register">
         <p class="title"> Criar uma conta</p>
         <form method="post" id="register">
-            <input type="text" name="username" minlength="5" maxlength="15" class="field" placeholder="username" required>
+            <input type="text" name="username" minlength="5" maxlength="15" class="field" placeholder="username"
+                required>
             <input type="email" name="email" class="field" placeholder="E-mail" required>
             <input type="password" name="password" class="field" minlength="8" placeholder="Senha" required>
             <input type="password" name="repPassword" class="field" minlength="8" placeholder="Repita a senha" required>
             <button>Entrar</button>
-            </form>
-       <!--  <p class="toogle" onclick="$('.register').fadeOut()">já tenho uma conta</p>  -->
+        </form>
+        <!--  <p class="toogle" onclick="$('.register').fadeOut()">já tenho uma conta</p>  -->
         <!-- <p class="toogle" onclick="cadastro()">não tenho conta</p>    
  -->
     </div>
-    
+
     <script>
         var urlAtual = window.location.href;
         var urlClass = new URL(urlAtual);
         var escolha = urlClass.searchParams.get("escolha");
         console.log(escolha);
+
         function cadastro() {
-            if (escolha == 0){
+            if (escolha == 0) {
                 window.location.href = "cadastros/cad_empresa.html"
                 console.log('passei aqui');
             } else if (escolha == 1) {
-                window.location.href  = 'cadastros/cad_pessoa.html';
+                window.location.href = 'cadastros/cad_pessoa.html';
                 console.log('passei aqui');
             }
-            
+
         }
 
 
-        if (escolha == 1){
-            console.log(escolha); 
+        if (escolha == 1) {
+            console.log(escolha);
             $('#login').on('submit', function (e) {
                 e.preventDefault();
                 $.ajax({
@@ -83,42 +92,44 @@
                         console.log(error);
                         Swal.fire({
                             title: 'Oops!',
-                            text: error.statusText, 
+                            text: error.statusText,
                             icon: 'error',
                             confirmButtonText: 'Tentar novamente'
                         })
                     }
                 });
             });
-        } else { if (escolha == 0) {
-            console.log(escolha); 
-            $('#login').on('submit', function (e) {
-                e.preventDefault();
-                $.ajax({
-                    type: 'post',
-                    url: '../process/login_empresa.php?escolha=0',
-                    data: $('#login').serialize(),
-                    beforeSend: function () {
-                        $('#loading').show();
-                    },
-                    complete: function () {
-                        $('#loading').hide();
-                    },
-                    success: function (data) {
-                        location.href = "./?escolha=0";
-                    },
-                    error: function (error) {
-                        console.log(error);
-                        Swal.fire({
-                            title: 'Oops!',
-                            text: error.statusText, 
-                            icon: 'error',
-                            confirmButtonText: 'Tentar novamente'
-                        })
-                    }
+        } else {
+            if (escolha == 0) {
+                console.log(escolha);
+                $('#login').on('submit', function (e) {
+                    e.preventDefault();
+                    $.ajax({
+                        type: 'post',
+                        url: '../process/login_empresa.php?escolha=0',
+                        data: $('#login').serialize(),
+                        beforeSend: function () {
+                            $('#loading').show();
+                        },
+                        complete: function () {
+                            $('#loading').hide();
+                        },
+                        success: function (data) {
+                            location.href = "./?escolha=0";
+                        },
+                        error: function (error) {
+                            console.log(error);
+                            Swal.fire({
+                                title: 'Oops!',
+                                text: error.statusText,
+                                icon: 'error',
+                                confirmButtonText: 'Tentar novamente'
+                            })
+                        }
+                    });
                 });
-            });
-        } }
+            }
+        }
 
         $('#register').on('submit', function (e) {
             e.preventDefault();
@@ -139,7 +150,7 @@
                     console.log(error);
                     Swal.fire({
                         title: 'algo não esta correto!',
-                        text: error.statusText, 
+                        text: error.statusText,
                         icon: 'error',
                         confirmButtonText: 'Tentar novamente'
                     })
@@ -148,4 +159,5 @@
         });
     </script>
 </body>
+
 </html>
