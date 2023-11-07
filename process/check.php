@@ -1,20 +1,21 @@
 <?php
+    session_start();
     include("connection/connect.php");
 
-if ($_COOKIE['ESCOLHA'] == 1){
-    function timing ($time)
-    {
+    if ($_COOKIE['ESCOLHA'] == 1){
+        function timing ($time)
+        {
 
-        $time = time() - $time; // to get the time since that moment
-        $time = ($time<1) ? 1 : $time;
-        $tokens = array (
-            31536000 => 'ano',
-            2592000 => 'mês',
-            604800 => 'semana',
-            86400 => 'dia',
-            3600 => 'hora',
-            60 => 'minuto',
-            1 => 'segundo'
+            $time = time() - $time; // to get the time since that moment
+            $time = ($time<1) ? 1 : $time;
+            $tokens = array (
+                31536000 => 'ano',
+                2592000 => 'mês',
+                604800 => 'semana',
+                86400 => 'dia',
+                3600 => 'hora',
+                60 => 'minuto',
+                1 => 'segundo'
         );
 
         foreach ($tokens as $unit => $text) {

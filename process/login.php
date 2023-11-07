@@ -17,10 +17,10 @@
 
         // Check password
         if ($user && password_verify($password, $user['Password'])) {
-            setcookie("ID", $user['Id'], time() + (10 * 365 * 24 * 60 * 60));
-            setcookie("TOKEN", $user['Token'], time() + (10 * 365 * 24 * 60 * 60));
-            setcookie("SECURE", $user['Secure'], time() + (10 * 365 * 24 * 60 * 60));
-            setcookie("ESCOLHA", $_GET['escolha'], time() + (10 * 365 * 24 * 60 * 60));
+            setcookie("ID", $user['Id'], time() + (10 * 365 * 24 * 60 * 60), '/');
+            setcookie("TOKEN", $user['Token'], time() + (10 * 365 * 24 * 60 * 60),'/');
+            setcookie("SECURE", $user['Secure'], time() + (10 * 365 * 24 * 60 * 60), '/');
+            setcookie("ESCOLHA", $_GET['escolha'], time() + (10 * 365 * 24 * 60 * 60), '/');
             return true;
         } else {
             die(header("HTTP/1.0 401 Password incorreta"));
