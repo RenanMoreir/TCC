@@ -20,10 +20,10 @@
         // Check password
         if ($user && password_verify($password, $user['Senha'])) {
             echo "ola";
-            setcookie("ID", $user['Id_abrigo'], time() + (10 * 365 * 24 * 60 * 60));
-            setcookie("TOKEN", $user['Token'], time() + (10 * 365 * 24 * 60 * 60));
-            setcookie("SECURE", $user['Secure'], time() + (10 * 365 * 24 * 60 * 60));
-            setcookie("ESCOLHA", $_GET['escolha'], time() + (10 * 365 * 24 * 60 * 60));
+            setcookie("ID", $user['Id_abrigo'], time() + (10 * 365 * 24 * 60 * 60), '/');
+            setcookie("TOKEN", $user['Token'], time() + (10 * 365 * 24 * 60 * 60), '/');
+            setcookie("SECURE", $user['Secure'], time() + (10 * 365 * 24 * 60 * 60), '/');
+            setcookie("ESCOLHA", $_GET['escolha'], time() + (10 * 365 * 24 * 60 * 60), '/');
             return true;
             
         } else {

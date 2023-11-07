@@ -160,6 +160,7 @@ CREATE TABLE Usuario_abrigo
 
 CREATE TABLE animal 
 ( 
+Nome VARCHAR(50)NOT NULL,  
  Raca VARCHAR(50) NOT NULL,  
  Carterinha VARCHAR(50) Default 'Não vacinado',  
  Porte VARCHAR(50) NOT NULL,  
@@ -167,8 +168,7 @@ CREATE TABLE animal
  Especie VARCHAR(50) NOT NULL,
  Sexo VARCHAR(50) NOT NULL,
  Pelagem VARCHAR(50) NOT NULL,
- Idade INT NOT NULL,
- Nome VARCHAR(50)NOT NULL,  
+ Idade INT NOT NULL, 
  Id_animal INT PRIMARY KEY AUTO_INCREMENT,  
  Descricao VARCHAR(500),  
  FK_id_abrigo INT  

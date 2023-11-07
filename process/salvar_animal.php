@@ -15,7 +15,7 @@
 
 
         // Check if values are okay
-        if ( $animal_nome == "" || $pelagem == "" || $raca == "" || $cor == "" || $sexo== "" ||
+        if ( $nome == "" || $pelagem == "" || $raca == "" || $cor == "" || $sexo== "" ||
         $porte == "" ||  $especie == "" || $descricao == "") {
             die(header("HTTP/1.0 401 Preenche todos os campos do formulário"));
         }
