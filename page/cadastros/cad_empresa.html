@@ -9,11 +9,17 @@
 <head>
     <meta charset="UTF-8">
 
+    
+    <link rel="stylesheet" href="../../style/sweetalert2.css">
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/sweetalert2.js"></script>
+
 </head>
 
 <body>
     <div id="auth regiter">
         <form class="form-horizontal" method="post" id="register" action="cad_empresa.php">
+            <input type="hidden" name="acao" value="insert">   
             <fieldset>
                 <div class="panel panel-primary">
                     <div class="panel-heading"><a href="../" class="btn btn-primary" role="button"
@@ -45,7 +51,7 @@
                         <div class="form-group col-md-12">
 
                             <label for="validationTextarea">Descrição</label>
-                            <textarea class="form-control" rows="12" id="validationTextarea"
+                            <textarea name="descricao" class="form-control" rows="12" id="validationTextarea"
                                 placeholder="Insira uma breve descrição da empresa" required></textarea>
 
                         </div>
@@ -63,15 +69,15 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label" for="Nome">CNPJ <h11>*</h11></label>
                             <div class="col-md-3">
-                                <input id="produto-1-cnpj" class="form-control rounded-form" type="text"
+                                <input id="produto-1-cnpj" name="cnpj" class="form-control rounded-form" type="text"
                                     placeholder="Insira o CNPJ da sua loja" maxlength="18" />
                             </div>
-                            <label class="col-md-2 control-label" for="prependedtext">Telefone para contato <h11>*</h11>
+                            <label class="col-md-2 control-label" for="telefone">Telefone para contato <h11>*</h11>
                             </label>
                             <div class="col-md-3">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                    <input id="prependedtext" name="prependedtext" class="form-control"
+                                    <input id="telefone" name="telefone" class="form-control"
                                         placeholder="XX XXXXX-XXXX" required="" type="text" maxlength="13"
                                         pattern="\[0-9]{2}\ [0-9]{4,6}-[0-9]{3,4}$"
                                         OnKeyPress="formatar('## #####-####', this)">
@@ -215,10 +221,10 @@
             e.preventDefault();
             $.ajax({
                 type: 'post',
-                url: 'cad_empresa.php',
+                url: '../../core/abrigo_repositorio.php',
                 data: $('#register').serialize(),
                 success: function (data) {
-                    location.href = "../auth.html?escolha=0"
+                    //location.href = "../auth.html?escolha=0"
                 },
                 error: function (error) {
                     console.log(error);

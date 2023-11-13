@@ -184,8 +184,8 @@
                                 <div class="col-md-3">
                                     <select required id="especie" name="especie" class="form-control">
                                         <option value="s_preferencia">Não tenho preferências</option>
-                                        <option value="">Gato</option>
-                                        <option value="">Cachorro</option>
+                                        <option value="s_gato">Gato</option>
+                                        <option value="s_cachorro">Cachorro</option>
                                     </select>
                                 </div>
                                 <label class="col-md-2 control-label" for="selectbasic">Pelagem <h11>*</h11></label>
@@ -206,9 +206,9 @@
 
                                 <div class="col-md-3">
                                     <select required id="sexo" name="sexo" class="form-control">
-                                        <option value="s_preferencia">Não tenho preferências</option>
+                                        <option value="s_preferencia">Nao tenho preferências</option>
                                         <option value="s_macho">Macho</option>
-                                        <option value="s_femea">Fêmea</option>
+                                        <option value="s_femea">Femea</option>
                                     </select>
                                 </div>
                                 <label class="col-md-2 control-label" for="selectbasic">Porte <h11>*</h11></label>
@@ -295,10 +295,10 @@
             e.preventDefault();
             $.ajax({
                 type: 'post',
-                url: '../../core/post_usuario.php',
+                url: '../../core/usuario_repositorio.php',
                 data: $('#register').serialize(),
                 success: function (data) {
-                    //location.href = "../auth.html?escolha=1"
+                    location.href = "../auth.html?escolha=1"
                 },
                 error: function (error) {
                     console.log(error);

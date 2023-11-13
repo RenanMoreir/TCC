@@ -1,11 +1,10 @@
 <?php
-session_start();
-//require_once '../includes/funcoes.php';
+include("../process/connection/connect.php");
+//require_once '../includes/valida_login.php';
 require_once '../includes/funcoes.php';
 require_once 'conexao_mysql.php';
 require_once 'sql.php';
 require_once 'mysql.php';
-include('../process/check.php');
 
 foreach($_POST as $indice => $dado) {
     $$indice = limparDados($dado);
@@ -15,72 +14,95 @@ foreach($_GET as $indice => $dado) {
     $$indice = limparDados($dado);
 }
 
-switch($acao){
+
+
+switch($acao) 
+{
+    
     case 'insert':
-        $dados = [
-            'nome'  => $Nome,
-            'cpf'  => $cpf,
-            'cpf'  => $cpf,
-        ];
+        if ($username == "" || $email == "" || $senha == "" || $repita == ""
+             || $nome == "" || $telefone == "" || $cpf == ""
+         || $especie == "" || $pelagem == "" || $porte == "" || $sexo == "") 
+        {
+            die(header("HTTP/1.0 401 Preenche todos os campos do formulário"));
+        }; 
         
+        // Check if username already exists
+        $checkUsername = $con->prepare("SELECT Id FROM user WHERE Username = ?");
+        $checkUsername->bind_param("s", $username);
+        $checkUsername->execute();
+        $count = $checkUsername->get_result()->num_rows;
+        if ($count > 0) {
+            die(header("HTTP/1.0 401 Username existente"));
+        }
+        // Check if email already exists
+        $checkEmail = $con->prepare("SELECT Id FROM user WHERE Email = ?");
+        $checkEmail->bind_param("s", $email);
+        $checkEmail->execute();
+        $count = $checkEmail->get_result()->num_rows;
+        if ($count > 0) {
+            die(header("HTTP/1.0 401 Conta registada com este e-mail existente"));
+        }
+        // Verify password repeat
+        if ($senha != $repita) {
+             die(header("HTTP/1.0 401 Passwords diferentes"));
+        }
+        
+        // Ecrypt password
+        $senha = password_hash($senha, PASSWORD_DEFAULT);
+                
+        // Create secure code and token
+         $token = bin2hex(openssl_random_pseudo_bytes(20));
+         $secure = rand(1000000000, 9999999999);
+        
+        $dados = [
+            'Username' => $username,
+            'Email' => $email,
+            'Password' => $senha,
+            'Nome' => $nome,
+            'Dtnasc' => $dtnasc,
+            'Telefone' => $telefone,
+            'Cpf' => $cpf,
+            'Cep' => $cep,
+            'Rua' => $rua,
+            'Numero' => $numero,
+            'Bairro' => $bairro,
+            'Cidade' => $cidade,
+            'Token' => $token,
+            'Secure' => $secure,
+            'Creation' => 'now()',
+            'Porte' => $porte,
+            'Especie' => $especie,
+            'Sexo' => $sexo,
+            'Pelagem' => $pelagem,
+        ];
+
         insere(
-            'usuario',
+            'user',
             $dados
         );
-
         break;
-    case 'update':
-        $id = (int)$id;
+    case 'update': 
         $dados = [
-            'nome' => $nome,
-            'email' => $email
-        ];
-
-        $criterio = [
-            ['id','=', $id]
-        ];
-        
-        atualizar(
-            'usuario',
-            $dados,
-            $criterio
-        );
-        break;
-
-    case 'login':
-        $criterio = [
-            ['email', '=', $email],
-            ['AND', 'ativo', '=', 1]
-        ];
-
-        $retorno = buscar(
-            'usuario',
-            ['id', 'nome', 'email', 'senha', 'adm'],
-            $criterio
-        );
-
-        if (count($retorno) > 0){
-            if(crypt($senha,$salt) == $retorno[0]['senha']){
-                $_SESSION['login']['usuario'] = $retorno[0];
-                if(!empty($_SESSION['url_retorno'])){
-                    header('Location: ' . $_SESSION['url_retorno']);
-                    $_SESSION['url_retorno'] = '';
-                    exit;
-                }
-            }
-        }
-
-        break;
-    case 'logout':
-        session_destroy();
-        break;
-
-    case 'status':
-        $id = (int)$id;
-        $valor= (int)$valor;
-
-        $dados = [
-            'ativo' => $valor
+            'Username' => $username,
+            'Email' => $email,
+            'Password' => $senha,
+            'Nome' => $nome,
+            'Dtnasc' => $dtnasc,
+            'Telefone' => $telefone,
+            'Cpf' => $email,
+            'Cep' => $email,
+            'Rua' => $email,
+            'Numero' => $email,
+            'Bairro' => $email,
+            'Cidade' => $email,
+            'Token' => $email,
+            'Secure' => $email,
+            'Creation' => 'now()',
+            'Porte' => $email,
+            'Especie' => $email,
+            'Sexo' => $email,
+            'Pelagem' => $email,
         ];
 
         $criterio = [
@@ -88,37 +110,25 @@ switch($acao){
         ];
 
         atualizar(
-            'usuario',
+            'user',
             $dados,
             $criterio
         );
 
-        header('Location: ../usuarios.php');
-        exit;
         break;
-    
-    case 'adm':
-        $id = (int)$id;
-        $valor = (int)$valor;
-
-        $dados = [
-            'adm' => $valor
-        ];
-
+    case 'delete':
         $criterio = [
             ['id', '=', $id]
         ];
 
-        atualizar(
-            'usuario',
-            $dados,
+        delete(
+            'user',
             $criterio
         );
 
-        header('Location: ../usuarios.php');
-        exit;
         break;
-
 }
-header('Location: ../index.php'); 
+
+//header('Location: ../index.php');
+
 ?>
