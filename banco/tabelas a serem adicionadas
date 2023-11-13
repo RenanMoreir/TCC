@@ -1,0 +1,9 @@
+Tabela FAVORITOS
+
+create table favoritos (
+id int auto_increment primary key,
+usuario_id int not null,
+animal_id int not null,
+foreign key (usuario_id) references user('Id'),
+foreign key (animal_id) refereces animal(Id_animal)
+);
