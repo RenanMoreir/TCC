@@ -9,15 +9,15 @@
 <head>
     <meta charset="UTF-8">
 
+    <link rel="stylesheet" href="../../style/sweetalert2.css">
+    <script src="../../js/jquery.js"></script>
+    <script src="../../js/sweetalert2.js"></script>
 </head>
 
 <body>
     <div id="auth regiter">
-<<<<<<< HEAD
         <form class="form-horizontal" id="register">
-=======
-        <form class="form-horizontal" method="post" id="register" action="cad_pessoa.php">
->>>>>>> b90836e5a4d608f58cd208aeb593b120d34a8b02
+            <input type="hidden" name="acao" value="insert">   
             <fieldset>
                 <div class="panel panel-primary">
                     <div class="panel-heading"><a href="../" class="btn btn-primary" role="button"
@@ -295,7 +295,7 @@
             e.preventDefault();
             $.ajax({
                 type: 'post',
-                url: 'cad_pessoa.php',
+                url: '../../core/post_usuario.php',
                 data: $('#register').serialize(),
                 success: function (data) {
                     //location.href = "../auth.html?escolha=1"
