@@ -32,7 +32,7 @@ $p = "preto";
 
 // Query para selecionar os valores de porte e cor da tabela animal
 $sql = "SELECT porte, cor, raca, nome, idade, FK_id_abrigo FROM animal";
-$sql2 = "SELECT Nome, Email, Telefone, Id_abrigo FROM abrigo";
+$sql2 = "SELECT Nome, Email, Telefone, Id_abrigo FROM Usuario_abrigo";
 
 
 $result = $conn->query($sql);
@@ -46,7 +46,7 @@ if ($result2->num_rows > 0) {
     $abrigo[] = ["Nome" => $row["Nome"], "Email" => $row["Email"], "Telefone" => $row['Telefone'], "Id_abrigo" => $row['Id_abrigo']];
     }
 }{
-    echo "Problemas ao identificar o abrigo.";
+    echo "Problemas ao identificar o abrigo.<br>";
 }
 if ($result->num_rows > 0) {
     // Array de perfis fictícios
