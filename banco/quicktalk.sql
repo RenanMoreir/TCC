@@ -141,6 +141,7 @@ COMMIT;
 CREATE TABLE Usuario_abrigo 
 ( 
  Id_abrigo INT PRIMARY KEY AUTO_INCREMENT,  
+ Username varchar(15) NOT NULL,
  Nome varchar(100) NOT NULL,
  Descricao varchar(1000) NOT NULL,
  Telefone varchar(15) NOT NULL,
