@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 //require_once '../includes/valida_login.php';
 require_once '../includes/funcoes.php';
 require_once 'conexao_mysql.php';
@@ -9,7 +7,6 @@ require_once 'mysql.php';
 include('../process/check.php');
 
 print_r($_POST);
-
 print_r($_COOKIE);
 
 foreach($_POST as $indice => $dado) {
@@ -38,7 +35,7 @@ switch($acao) {
             'nome' => $nome,
             'descricao' => $descricao,
             'porte' => $porte,
-            //'fk_id_abrigo' => $_COOKIE['Id_abrigo'] 
+            'fk_id_abrigo' => $_COOKIE['ID'] 
         ];
 
         insere(

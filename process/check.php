@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    
     include("connection/connect.php");
 
     if ($_COOKIE['ESCOLHA'] == 1){

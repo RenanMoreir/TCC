@@ -1,5 +1,6 @@
 <?php
-include("../../process/connection/connect.php");
+
+include("../process/connection/connect.php");
 
 // Coleta as preferencias
 $raca = $_POST["raca"];
