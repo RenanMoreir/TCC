@@ -1,15 +1,16 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="script_cad.js"></script>
+<script src="../../js/script_cad.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <!DOCTYPE html>
 
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="imagem/png" href="../../img/logo.ico">
 
-    
+
     <link rel="stylesheet" href="../../style/sweetalert2.css">
     <script src="../../js/jquery.js"></script>
     <script src="../../js/sweetalert2.js"></script>
@@ -19,7 +20,7 @@
 <body>
     <div id="auth regiter">
         <form class="form-horizontal" method="post" id="register" action="cad_empresa.php">
-            <input type="hidden" name="acao" value="insert">   
+            <input type="hidden" name="acao" value="insert">
             <fieldset>
                 <div class="panel panel-primary">
                     <div class="panel-heading"><a href="../" class="btn btn-primary" role="button"
@@ -48,12 +49,13 @@
                                     type="text">
                             </div>
                         </div>
-                        <div class="form-group col-md-12">
 
-                            <label for="validationTextarea">Descrição</label>
-                            <textarea name="descricao" class="form-control" rows="12" id="validationTextarea"
-                                placeholder="Insira uma breve descrição da empresa" required></textarea>
-
+                        <div class="form-group text-are col-md-12">
+                            <div class="form-group col-md-8 ">
+                                <label for="validationTextarea">Descrição</label>
+                                <textarea name="descricao" class="form-control" rows="12" id="validationTextarea"
+                                    placeholder="Insira uma breve descrição da empresa" required></textarea>
+                            </div>
                         </div>
 
 
@@ -66,7 +68,7 @@
                             });
                         </script>
                         <!-- Text input-->
-                        <div class="form-group">
+                        <div class="form-group col-md-12">
                             <label class="col-md-2 control-label" for="Nome">CNPJ <h11>*</h11></label>
                             <div class="col-md-3">
                                 <input id="produto-1-cnpj" name="cnpj" class="form-control rounded-form" type="text"
@@ -89,7 +91,7 @@
 
                         <!-- Search input-->
                         <div class="form-group">
-                            <label class="col-md-2 control-label" for="CEP">CEP <h11>*</h11></label>
+                            <label class="col-md-2 control-label" for="cep">CEP <h11>*</h11></label>
                             <div class="col-md-2">
                                 <input id="cep" name="cep" placeholder="Apenas números" class="form-control input-md"
                                     required="" value="" type="search" maxlength="8" pattern="[0-9]+$">
