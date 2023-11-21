@@ -31,6 +31,9 @@
 #profile .pictureContainer label:hover {
     opacity: 0.7;
 }
+i.bi{
+    font-size: 1.5em;
+}
 
 #profile p.name {
     display: block;

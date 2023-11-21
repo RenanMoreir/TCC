@@ -2,7 +2,7 @@
 
 include("../process/connection/connect.php");
 
-// Coleta as preferencias
+// Coleta as preferências
 $raca = $_POST["raca"];
 $porte = $_POST["porte"];
 $especie = $_POST["especie"];
@@ -10,9 +10,16 @@ $sexo = $_POST["sexo"];
 $pelagem = $_POST["pelagem"];
 
 // Busca no banco
-$sql = "SELECT * FROM user WHERE raca LIKE '%$raca%' AND porte LIKE '%$porte%' AND especie LIKE '%$especie%' AND sexo LIKE '%$sexo%' AND pelagem LIKE '%$pelagem%'";
+$sql = "SELECT * FROM user WHERE raca LIKE ? AND porte LIKE ? AND especie LIKE ? AND sexo LIKE ? AND pelagem LIKE ?";
 
-$result = $conn->query($sql);
+$stmt = $conn->prepare($sql);
+
+// Adiciona os parâmetros e seus tipos
+$stmt->bind_param("sssss", $raca, $porte, $especie, $sexo, $pelagem);
+
+$stmt->execute();
+
+$result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
     // Exibe resultados
@@ -29,5 +36,8 @@ if ($result->num_rows > 0) {
 } else {
     echo "Nenhum resultado encontrado de acordo com suas preferencias.";
 }
+
+$stmt->close();
+$conn->close();
 
 ?>
