@@ -1,5 +1,6 @@
 <?php
     include("check.php");
+    include('aparecer_animal.php');
     if (isset($_GET["id"]) && $_GET["id"] > 0){
         $user_id = $_GET["id"];
 
@@ -98,7 +99,7 @@
             }
             else if ($_COOKIE['ESCOLHA'] == 0) {
                 //include("../page/cadastro_animal.html");
-                include("../includes/busca.php");
+                //include("../includes/busca.php");
             }
         ?>
         </div>
