@@ -11,8 +11,11 @@
 <body>
 
     <div class="container mt-5 col-md-12">
-        <div class="card col-md-12" style="width: 100%;">
+        <div class="card col-md-12" style="width: 100%; height: 88vh; overflow-y: scroll;" >
+
             <div class="cadastro-form">
+                <button type="button" class="btn btn-danger btn-close" onclick="fecharAba()"></button>
+                
                 <h3 style="text-align: center;" class="card-title">Cadastro de animal</h3>
                 <div class="card-body">
 
@@ -181,7 +184,12 @@
                                 }
                             });
                         });
+                        function fecharAba() {
+                            $(".card").hide();
+                        }
+                         
                     </script>
+
                 </div>
             </div>
 

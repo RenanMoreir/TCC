@@ -52,12 +52,12 @@
 <?php
 if ($_COOKIE['ESCOLHA'] == 0){
     ?>
-        <button onclick="$('#chat').load('../page/cadastro_animal.html')">Cadastrar Animal</button>
+        <p class="row"><button class="btn btn-primary"onclick="$('#chat').load('../page/cadastro_animal.html')">Cadastrar Animal</button></p>
     <?php 
 }
 if($_COOKIE['ESCOLHA'] == 1){
     ?>
-        <button onclick="$('#chat').load('../page/preferencias.html')">Minhas Preferencias</button>
+        <p class="row"><button onclick="$('#chat').load('../page/preferencias.html')">Minhas Preferencias</button></p>
     <?php 
 }
 

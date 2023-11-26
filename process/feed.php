@@ -16,7 +16,7 @@
          $username = "root";
          $password = "";
          $database = "quicktalk";
-         $port = 3307;
+         $port = 3306;
          $conn = mysqli_connect($hostname, $username,$password, $database, $port);
          mysqli_query($conn, "SET time_zone='+00:00'");
      
@@ -31,8 +31,8 @@
 $p = "preto";
 
 // Query para selecionar os valores de porte e cor da tabela animal
-$sql = "SELECT porte, cor, raca, nome, idade, FK_id_abrigo FROM animal";
-$sql2 = "SELECT Nome, Email, Telefone, Id_abrigo FROM Usuario_abrigo";
+$sql = "SELECT Porte, Cor, Raca, Nome, Idade, FK_id_abrigo FROM animal";
+$sql2 = "SELECT Nome, Email, Telefone, Id_abrigo FROM usuario_abrigo";
 
 
 $result = $conn->query($sql);
