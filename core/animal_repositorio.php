@@ -4,7 +4,7 @@ require_once '../includes/funcoes.php';
 require_once 'conexao_mysql.php';
 require_once 'sql.php';
 require_once 'mysql.php';
-include('../process/check.php');
+//include('../process/check.php');
 
 print_r($_POST);
 print_r($_COOKIE);
@@ -25,24 +25,33 @@ switch($acao) {
         $porte == "" ||  $especie == "" || $descricao == "") {
             die(header("HTTP/1.0 401 Preenche todos os campos do formulário"));
         }
+
+        $imagename = $username."_".rand(999, 999999).$imagem;
+        $imagetemp = $_FILES['imgInp']['tmp_name'];
+        $imagePath = "../animalPics/";
+
         $dados = [
-            'raca' => $raca,            
-            'cor' => $cor,
-            'especie' => $especie,
-            'sexo' => $sexo,
-            'pelagem' => $pelagem,
-            'idade' => $idade,
-            'nome' => $nome,
-            'descricao' => $descricao,
-            'porte' => $porte,
-            'fk_id_abrigo' => $_COOKIE['ID'] 
+            'Raca' => $raca,            
+            'Cor' => $cor,
+            'Especie' => $especie,
+            'Sexo' => $sexo,
+            'Pelagem' => $pelagem,
+            'Idade' => $idade,
+            'Nome' => $nome,
+            'Descricao' => $descricao,
+            'Porte' => $porte,
+            'Fk_id_abrigo' => $_COOKIE['ID'],
+            'Imagem' => $imagename
         ];
 
         insere(
             'animal',
             $dados
         );
+    
+
         break;
+
     case 'update':
         if ( $nome == "" || $pelagem == "" || $raca == "" || $cor == "" || $sexo== "" ||
         $porte == "" ||  $especie == "" || $descricao == "") {
