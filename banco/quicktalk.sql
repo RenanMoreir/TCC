@@ -166,7 +166,7 @@ CREATE TABLE animal
 ( 
 Nome VARCHAR(50)NOT NULL,  
  Raca VARCHAR(50) NOT NULL,  
- Carterinha VARCHAR(50) Default 'Não vacinado',  
+-- Carterinha VARCHAR(50) Default 'Não vacinado',  
  Porte VARCHAR(50) NOT NULL,  
  Cor VARCHAR(50) NOT NULL,  
  Especie VARCHAR(50) NOT NULL,
