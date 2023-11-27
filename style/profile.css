@@ -57,6 +57,7 @@ i.bi{
     position: relative;
     bottom: 0;
     width: 90%;
+    margin: auto;
 }
 
 #profile div.menu button{

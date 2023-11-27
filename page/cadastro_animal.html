@@ -60,7 +60,7 @@
                         <div class="form-group">
                             <label for="idade" class="col-md-4 control-label">Idade:</label>
                             <div class="col-md-12">
-                                <input type="number" name="idade" id="P1103_QTDE" value="1" size="30" maxlength="4000">
+                                <input class="form-control" type="number" name="idade" id="P1103_QTDE" value="1" size="30" maxlength="4000" min="1" max="100">
                             </div>
                         </div>
                         <div class="form-group">
@@ -152,17 +152,17 @@
                     </script>
 
                     <script>
-                        $("input[id='P1103_QTDE']").TouchSpin({
-                            min: 0,
-                            max: 10000000000,
-                            boostat: 5,
-                            forcestepdivisibility: "none",
-                            step: 1,
-                            maxboostedstep: 10,
-                            buttondown_class: "btn btn-ciano btn-xs btn-mob",
-                            buttonup_class: "btn btn-ciano btn-xs btn-mob",
-                            mousewheel: "true"
-                        });
+                        // $("input[id='P1103_QTDE']").TouchSpin({
+                        //     min: 0,
+                        //     max: 10000000000,
+                        //     boostat: 5,
+                        //     forcestepdivisibility: "none",
+                        //     step: 1,
+                        //     maxboostedstep: 10,
+                        //     buttondown_class: "btn btn-ciano btn-xs btn-mob",
+                        //     buttonup_class: "btn btn-ciano btn-xs btn-mob",
+                        //     mousewheel: "true"
+                        // });
 
 
                         $('#register').on('submit', function (e) {
