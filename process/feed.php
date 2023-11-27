@@ -86,7 +86,7 @@ if ($result->num_rows > 0) {
                 $perfisExibidos[] = $indiceAleatorio;
                 // Div para cada perfil
                 echo '<div class="profile-card">';
-                echo '<img src="' . $perfilAleatorio['foto'] . '" alt="Foto do perfil">';
+                //echo '<img src="' . $perfilAleatorio['foto'] . '" alt="Foto do perfil">';
                 echo '<p class="profile-porte">Nome: ' . $perfilAleatorio['nome'] . '</p>';
                 echo '<p class="profile-cor">Idade: ' . $perfilAleatorio['idade'] . '</p>';
                 echo '<p class="profile-porte">Porte: ' . $perfilAleatorio['porte'] . '</p>';
