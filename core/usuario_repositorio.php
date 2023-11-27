@@ -83,26 +83,27 @@ switch($acao)
         );
         break;
     case 'update': 
+        
         $dados = [
-            'Username' => $username,
-            'Email' => $email,
-            'Password' => $senha,
-            'Nome' => $nome,
-            'Dtnasc' => $dtnasc,
-            'Telefone' => $telefone,
-            'Cpf' => $email,
-            'Cep' => $email,
-            'Rua' => $email,
-            'Numero' => $email,
-            'Bairro' => $email,
-            'Cidade' => $email,
-            'Token' => $email,
-            'Secure' => $email,
-            'Creation' => 'now()',
-            'Porte' => $email,
-            'Especie' => $email,
-            'Sexo' => $email,
-            'Pelagem' => $email,
+            // 'Username' => $username,
+            // 'Email' => $email,
+            // 'Password' => $senha,
+            // 'Nome' => $nome,
+            // 'Dtnasc' => $dtnasc,
+            // 'Telefone' => $telefone,
+            // 'Cpf' => $cpf,
+            // 'Cep' => $cep,
+            // 'Rua' => $rua,
+            // 'Numero' => $numero,
+            // 'Bairro' => $bairro,
+            // 'Cidade' => $cidade,
+            // 'Token' => $token,
+            // 'Secure' => $secure,
+            // 'Creation' => 'now()',
+            'Porte' => $porte,
+            'Especie' => $especie,
+            'Sexo' => $sexo,
+            'Pelagem' => $pelagem,
         ];
 
         $criterio = [

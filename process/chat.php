@@ -94,7 +94,7 @@
         <?php
     } else {
         ?>
-        <div class="empty">
+        <div class="empty" style="width:100%;">
             <?php
             if ($_COOKIE['ESCOLHA'] == 1){
         include("feed.php");

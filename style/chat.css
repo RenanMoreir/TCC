@@ -2,7 +2,8 @@
 
 #chat div.empty{
     width: 100%;
-    position: absolute;
+    margin: auto;
+    position: relative;
     top: 50%;
     transform: translateY(-50%);
 }
@@ -90,4 +91,7 @@
 
 .rom .innerContainer{
     overflow-x: hidden;
+}
+.container{
+    text-align: center;
 }

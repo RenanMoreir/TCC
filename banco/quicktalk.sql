@@ -178,3 +178,23 @@ Nome VARCHAR(50)NOT NULL,
  Imagen VARCHAR(100),
  FK_id_abrigo INT  
 ); 
+
+
+INSERT INTO `usuario_abrigo` (`Id_abrigo`, `Username`, `Nome`, `Descricao`, 
+`Telefone`, `Cnpj`, `Estado`, `Rua`, `Cidade`, `Bairro`, `Numero`, `Cep`, `Email`, 
+`Senha`, `Picture`, `Online`, `Token`, `Secure`, `Creation`, `Tipo`) 
+VALUES ('1', 'admin', 'Admin', 'superuser', '12 34567-8123', '1234567812345678', 'SP', 
+'Rua Luiz Catharin', 'Birig&uuml;i', 'Residencial S&atilde;o Jos&eacute', '595', '16201235', 
+'admin@gmail.com', '$2y$10$MYZDSMZqmBKHpGuD.SMMgu6l/qH2WKOwBNYrYaafcoVqaLdmglPra', 'user.jpg', 
+'2023-11-27 17:42:48.000000', '39c3de6e93b44af3de11dc505174334c34701c3e', '3508011679', 
+'2023-11-27 17:42:48.000000', '1');
+
+INSERT INTO `user` (`Id`, `Username`, `Email`, `Password`, `Nome`, `Dtnasc`, 
+`Telefone`, `Cpf`, `Cep`, `Rua`, `Numero`, `Bairro`, `Cidade`, `Picture`, `Online`, 
+`Token`, `Secure`, `Creation`, `Porte`, `Especie`, `Sexo`, `Pelagem`, `Tipo`) 
+VALUES ('1', 'admin', 'admin_user@gmail.com', '$2y$10$MYZDSMZqmBKHpGuD.SMMgu6l/qH2WKOwBNYrYaafcoVqaLdmglPra', 
+'admin', '', '12 34567-8123', '12345678912', '16201235', 'Rua Luiz Catharin', '595', 'Residencial S&atilde;o Jos&eacute;', 
+'Birig&uuml;i', 'user.jpg', '2023-11-27 17:49:16.000000', 
+'e71704763742cb5560ed5c598584a3b73bc8ccaa', '2547483576', '2023-11-27 17:49:16.000000', 
+'Não tenho preferência', 'Não tenho preferência', 'Não tenho preferência', 
+'Não tenho preferência', '1');

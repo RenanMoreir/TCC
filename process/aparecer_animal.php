@@ -35,39 +35,53 @@
         ],
         $criterio    
     );
-    print_r($animais);
+    //print_r($animais);
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFs">
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Feed</title>
 </head>
 <body>
-
-    <label for="nome">Nome</label>
-    <input type="text" value="<?php echo $animais['1'] ?>" name="nome">
-    <label for="raca">Raça</label>
-    <input type="text" value="<?php echo $animais['Raca'] ?>" name="raca">
-    <label for="porte">Porte</label>
-    <input type="text" value="<?php echo $animais['Porte'] ?>" name="porte">
-    <label for="cor">Cor</label>
-    <input type="text" value="<?php echo $animais['Cor'] ?>" name="cor">
-    <label for="especie">Especie</label>
-    <input type="text" value="<?php echo $animais['Especie'] ?>" name="especie">
-    <label for="sexo">Sexo</label>
-    <input type="text" value="<?php echo $animais['Sexo'] ?>" name="sexo">
-    <label for="pelgem">Pelagem</label>
-    <input type="text" value="<?php echo $animais['Pelagem'] ?>" name="pelagem">
-    <label for="idade">Idade</label>
-    <input type="text" value="<?php echo $animais['Idade'] ?>" name="idade">
-    <label for="descricao">Descrição</label>
-    <input type="text" value="<?php echo $animais['Descricao'] ?>" name="descricao">
-    
-
-    
+    <div class="container justify-content-center" >
+    <?php
+    $i=0;
+        foreach ($animais as $animal)
+        {
+            ?>
+            <div class="card col-md-8" style="height: 50%; display:flex; position:relative; margin:auto;">
+            <div class="card-title"><h3><?php echo $animais[$i]['Nome'] ?></h3></div>
+            <div class="card-body">            
+            <label for="raca">Raça</label>
+            <p><?php echo $animais[$i]['Raca'] ?></p>
+            <label for="porte">Porte</label>
+            <input type="text" value="<?php echo $animais[$i]['Porte'] ?>" name="porte">
+            <label for="cor">Cor</label>
+            <input type="text" value="<?php echo $animais[$i]['Cor'] ?>" name="cor">
+            <label for="especie">Especie</label>
+            <input type="text" value="<?php echo $animais[$i]['Especie'] ?>" name="especie">
+            <label for="sexo">Sexo</label>
+            <input type="text" value="<?php echo $animais[$i]['Sexo'] ?>" name="sexo">
+            <label for="pelgem">Pelagem</label>
+            <input type="text" value="<?php echo $animais[$i]['Pelagem'] ?>" name="pelagem">
+            <label for="idade">Idade</label>
+            <input type="text" value="<?php echo $animais[$i]['Idade'] ?>" name="idade">
+            <label for="descricao">Descrição</label>
+            <input type="text" value="<?php echo $animais[$i]['Descricao'] ?>" name="descricao">
+            </div>
+            </div>
+            <br>
+    <?php
+            $i++;
+        }
+    ?>     
+    </div>                 
 </body>
 </html>
