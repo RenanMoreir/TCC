@@ -17,7 +17,7 @@ foreach($_GET as $indice => $dado) {
     $$indice = limparDados($dado);
 }
 
-$id = (int)$id;
+//$id = (int)$id;
 
 switch($acao) {
     case 'insert':
@@ -26,9 +26,9 @@ switch($acao) {
             die(header("HTTP/1.0 401 Preenche todos os campos do formulário"));
         }
 
-        $imagename = $username."_".rand(999, 999999).$imagem;
+      /*   $imagename = $username."_".rand(999, 999999).$imagem;
         $imagetemp = $_FILES['imgInp']['tmp_name'];
-        $imagePath = "../animalPics/";
+        $imagePath = "../animalPics/"; */
 
         $dados = [
             'Raca' => $raca,            
@@ -41,7 +41,7 @@ switch($acao) {
             'Descricao' => $descricao,
             'Porte' => $porte,
             'Fk_id_abrigo' => $_COOKIE['ID'],
-            'Imagem' => $imagename
+            //'Imagem' => $imagename
         ];
 
         insere(
