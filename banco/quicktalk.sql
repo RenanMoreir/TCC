@@ -175,7 +175,7 @@ Nome VARCHAR(50)NOT NULL,
  Idade INT NOT NULL, 
  Id_animal INT PRIMARY KEY AUTO_INCREMENT,  
  Descricao VARCHAR(500),  
- Imagen VARCHAR(100),
+ Imagem VARCHAR(100),
  FK_id_abrigo INT  
 ); 
 

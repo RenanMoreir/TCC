@@ -22,11 +22,17 @@
         <?php
     } else {
         // Query
+        if ($_COOKIE['ESCOLHA'] == 0){
         $stmt = $con->prepare("SELECT Username, Picture, Online, Creation FROM User WHERE (Id = ?) LIMIT 1");
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $user = $stmt->get_result()->fetch_assoc();
-        
+        } else if ($_COOKIE['ESCOLHA'] == 1){
+            $stmt = $con->prepare("SELECT Username, Picture, Online, Creation FROM usuario_abrigo WHERE (Id_abrigo = ?) LIMIT 1");
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $user = $stmt->get_result()->fetch_assoc();
+        }
         // Does user exists
         if(!$user) {
             die(header("HTTP/1.0 401 Erro ao carregar dados do perfil do utilizador"));

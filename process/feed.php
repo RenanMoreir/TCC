@@ -12,23 +12,9 @@
 <body>
 <div class="container">
 <?php
-         $hostname = "localhost";
-         $username = "root";
-         $password = "";
-         $database = "quicktalk";
-         $port = 3307;
-         $conn = mysqli_connect($hostname, $username,$password, $database, $port);
-         mysqli_query($conn, "SET time_zone='+00:00'");
-     
-         date_default_timezone_set("UTC");
-     
-         if(mysqli_connect_errno())
-         {
-             echo "Falha ao ligar a base de dados: ".mysqli_connect_error();
-             exit();
-         }
+include('connection/connect.php');
          
-$p = "preto";
+$p = "Amarela";
 
 
 // Query para selecionar os valores de porte e cor da tabela animal
@@ -38,8 +24,8 @@ $sql = "SELECT porte, cor, raca, nome, idade, FK_id_abrigo FROM animal";
 
 
 
-$result = $conn->query($sql);
-//$result2 = $conn->query($sql2);
+$result = $con->query($sql);
+//$result2 = $con->query($sql2);
 
 
 /*if ($result2->num_rows > 0) {
@@ -76,10 +62,9 @@ if ($result->num_rows > 0) {
             $indiceAleatorio = array_rand($perfis);
             $perfilAleatorio = $perfis[$indiceAleatorio];
 
-
-            $sql_abrigo = "SELECT Nome, Email, Telefone, Id_abrigo FROM Usuario_abrigo where id_abrigo = ".$perfilAleatorio['FK_id_abrigo'];
-            $result_abrigo = $conn->query($sql_abrigo);
-            $row_abrigo = $result_abrigo->fetch_assoc();
+             $sql_abrigo = "SELECT Nome, Email, Telefone, Id_abrigo FROM usuario_abrigo where Id_abrigo = ".$perfilAleatorio['FK_id_abrigo'];
+            $result_abrigo = $con->query($sql_abrigo);
+            $row_abrigo = $result_abrigo->fetch_assoc(); 
             // Verifique se o perfil já foi exibido e se a idade corresponde
             if (!in_array($indiceAleatorio, $perfisExibidos) && $p == $perfilAleatorio['cor']) {
                 // Adicione o índice do perfil aos perfis exibidos
@@ -97,7 +82,7 @@ if ($result->num_rows > 0) {
                 echo '<p class="profile-porte">Telefone: ' . $row_abrigo['Telefone'] . '</p>';
                 echo '<p class="profile-porte">Email: ' . $row_abrigo['Email'] . '</p>';
                 //}
-                echo '<button class="profile-like-button" onclick="location.reload();">Gostei';
+                echo '<button class="profile-like-button" onclick="chat('.$perfilAleatorio["FK_id_abrigo"].',12)">Gostei';
                 $gostei = 1;
                 echo '</button>';
                 echo '<button class="profile-like-button" onclick="location.reload();">Passo</button>';
@@ -112,8 +97,11 @@ if ($result->num_rows > 0) {
 
 
 // Feche a conexão com o banco de dados
-$conn->close();
+
 ?>
+
+
+
 </div>
 </body>
 </html>

@@ -11,7 +11,7 @@
         $result = $stmt->get_result();
         $count = $result->num_rows;
 
-        $getUser = $con->prepare("SELECT Id, Username, Picture FROM User WHERE (Id LIKE ?) LIMIT 1");
+        $getUser = $con->prepare("SELECT Id_abrigo, Username, Picture FROM usuario_abrigo WHERE (Id_abrigo LIKE ?) LIMIT 1");
         $getUser->bind_param("i", $user_id);
         $getUser->execute();
         $user = $getUser->get_result()->fetch_assoc();

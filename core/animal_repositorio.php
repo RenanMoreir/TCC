@@ -17,7 +17,8 @@ foreach($_GET as $indice => $dado) {
     $$indice = limparDados($dado);
 }
 
-//$id = (int)$id;
+$id = (int)$id;
+echo $id;
 
 switch($acao) {
     case 'insert':
@@ -25,10 +26,10 @@ switch($acao) {
         $porte == "" ||  $especie == "" || $descricao == "") {
             die(header("HTTP/1.0 401 Preenche todos os campos do formulário"));
         }
-
-      /*   $imagename = $username."_".rand(999, 999999).$imagem;
-        $imagetemp = $_FILES['imgInp']['tmp_name'];
-        $imagePath = "../animalPics/"; */
+        $imagename = $nome."_".rand(999, 999999).$_FILES['imagem']['tmp_name'];
+        $imagetemp = $_FILES['imagem']['tmp_name'];
+        $imagePath = "../animalPics/"; 
+        move_uploaded_file($imagetemp, $imagePath . $imagename);
 
         $dados = [
             'Raca' => $raca,            
@@ -41,7 +42,7 @@ switch($acao) {
             'Descricao' => $descricao,
             'Porte' => $porte,
             'Fk_id_abrigo' => $_COOKIE['ID'],
-            //'Imagem' => $imagename
+            'Imagem' => $imagename
         ];
 
         insere(
@@ -82,10 +83,10 @@ switch($acao) {
         break;
     case 'delete':
         $criterio = [
-            ['id', '=', $id]
+            ['Id_animal', '=', $id]
         ];
 
-        delete(
+        deleta(
             'animal',
             $criterio
         );

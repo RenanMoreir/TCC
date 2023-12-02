@@ -184,9 +184,9 @@ $('div.empty').css('transition', 'width 0s ease');
             });
         }
 
-        function chat(id = 0) {
+        function chat(id = 0, teste = 0) {
             $.ajax({
-                url: '../process/chat.php?id=' + id,
+                url: '../process/chat.php?id=' + id + '&teste=' + teste,
                 success: function (data) {
                     $('#chat').html(data);
                     loadProfile(id);
