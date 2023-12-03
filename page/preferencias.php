@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../style/cadastro_animal.css">
@@ -14,6 +13,36 @@
 </head>
 
 <body>
+
+<?php
+    include("../process/connection/connect.php");
+    require_once '../core/conexao_mysql.php';
+    require_once '../core/sql.php';
+    require_once '../core/mysql.php';
+    require_once '../includes/funcoes.php';
+
+
+
+$id = $_COOKIE["ID"]; 
+$criterio = [
+    ['Id', '=', $id]
+];
+
+$preferencias = buscar(
+    'user',
+    [
+        'Porte',
+        'Especie',
+        'Sexo',
+        'Pelagem',
+
+    ],
+    $criterio    
+);
+
+ $i = 0;
+ foreach($preferencias as $preferencias){
+?>
     <div class="container-preferencias mt-5 col-md-12">
         <div class="card col-md-12" style="width: 100%; height: 88vh;">
 
@@ -26,18 +55,10 @@
 
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="raca" class="col-md-4 control-label">Raça:</label>
-                            <div class="col-md-12">
-                                <select name="raca" class="form-control input-md">
-                                    <option value="definida">Raça Definida</option>
-                                    <option value="srd">Sem Raça Definida</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label for="pelagem" class="col-md-4 control-label">Pelagem:</label>
                             <div class="col-md-12">
                                 <select name="pelagem" class="form-control input-md">
+                                    <option value="s_preferencia" <?php if($preferencias[$i]['Peagem'] == 's_preferencia' ){echo 'selected';} ?>>Sem preferencia</option>
                                     <option value="curto">Curto</option>
                                     <option value="médio">Médio</option>
                                     <option value="longo">Longo</option>
@@ -48,6 +69,7 @@
                             <label for="sexo" class="col-md-4 control-label">Sexo:</label>
                             <div class="col-md-12">
                                 <select name="sexo" class="form-control input-md">
+                                    <option value="s_preferencia">Sem preferencia</option>
                                     <option value="macho">Macho</option>
                                     <option value="fêmea">Fêmea</option>
                                 </select>
@@ -57,6 +79,7 @@
                             <label for="porte" class="col-md-4 control-label">Porte:</label>
                             <div class="col-md-12">
                                 <select name="porte" class="form-control input-md">
+                                    <option value="s_preferencia">Sem preferencia</option>                                  
                                     <option value="pequeno">Pequeno</option>
                                     <option value="médio">Médio</option>
                                     <option value="grande">Grande</option>
@@ -67,6 +90,7 @@
                             <label for="especie" class="col-md-4 control-label">Espécie:</label>
                             <div class="col-md-12">
                                 <select name="especie" class="form-control input-md">
+                                    <option value="s_preferencia">Sem preferencia</option>
                                     <option value="cachorro">Cachorro</option>
                                     <option value="gato">Gato</option>
                                 </select>
@@ -84,6 +108,10 @@
             </div>
         </div>
     </div>
+<?php
+$i ++; 
+ }
+ ?>
     <script>
         $('#alterar').on('submit', function (e) {
             e.preventDefault();

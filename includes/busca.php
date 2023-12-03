@@ -1,5 +1,5 @@
 <?php
-include("../process/connection/connect.php");
+/* include("../process/connection/connect.php");
 // a fazer: user a ser buscado deve ser o user logado
 // teste executado com foreach
 // em casa vou tentar implementar, mas pra isso vou fazer mudanças radicais no codigo do feed, se der certo eu aviso
@@ -20,4 +20,4 @@ function buscaAnimais($conexao, $user) {
 
     return $animais;
 }
-?>
+?> */

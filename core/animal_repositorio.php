@@ -6,7 +6,7 @@ require_once 'sql.php';
 require_once 'mysql.php';
 //include('../process/check.php');
 
-print_r($_POST);
+print_r($_FILES);
 print_r($_COOKIE);
 
 foreach($_POST as $indice => $dado) {
