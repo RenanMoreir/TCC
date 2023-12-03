@@ -73,17 +73,17 @@ section.module.parallax:after {
 
 
 section.module.parallax-1 {
-  background-image: url("../../img/homePage/hq720.jpg");
+  background-image: url("../../img/homePage/backgroud1.jpg");
 }
 
 section.module.parallax-2 {
-  background-image: url("../../img/homePage/hq720.jpg");
+  background-image: url("../../img/homePage/backgroud1.jpg");
 }
 
 section.module.parallax-3 {
-  background-image: url("../../img/homePage/hq720.jpg");
+  background-image: url("../../img/homePage/backgroud1.jpg");
 }
-
+ 
 section.module.parallax h1 {
   color: #FFF;
   text-align: center;

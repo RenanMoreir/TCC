@@ -14,7 +14,7 @@ foreach($_GET as $indice => $dado) {
     $$indice = limparDados($dado);
 }
 
-
+$id = $_COOKIE['ID'];
 
 switch($acao) 
 {
@@ -70,7 +70,7 @@ switch($acao)
             'Cidade' => $cidade,
             'Token' => $token,
             'Secure' => $secure,
-            'Creation' => 'now()',
+            //'Creation' => 'now()',
             'Porte' => $porte,
             'Especie' => $especie,
             'Sexo' => $sexo,

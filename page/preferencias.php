@@ -52,15 +52,17 @@ $preferencias = buscar(
                 <form method="post" id="alterar" class="form-vertical" enctype="multipart/form-data">
                     <h3 style="text-align: center;" class="card-title">Minhas Preferencias:</h3>
                     <input type="hidden" name="acao" value="update">
+                    <input type="hidden" name="acao" value="<?php echo $id ?>">
+
 
                     <div class="card-body">
                         <div class="form-group">
                             <label for="pelagem" class="col-md-4 control-label">Pelagem:</label>
                             <div class="col-md-12">
                                 <select name="pelagem" class="form-control input-md">
-                                    <option value="s_preferencia" <?php if($preferencias[$i]['Peagem'] == 's_preferencia' ){echo 'selected';} ?>>Sem preferencia</option>
+                                    <option value="s_preferencia" <?php /*  if($preferencias[$i]['Pelagem'] == 's_preferencia' ){echo 'selected';}   */?>>Sem preferencia</option>
                                     <option value="curto">Curto</option>
-                                    <option value="médio">Médio</option>
+                                    <option value="medio">Médio</option>
                                     <option value="longo">Longo</option>
                                 </select>
                             </div>
@@ -71,7 +73,7 @@ $preferencias = buscar(
                                 <select name="sexo" class="form-control input-md">
                                     <option value="s_preferencia">Sem preferencia</option>
                                     <option value="macho">Macho</option>
-                                    <option value="fêmea">Fêmea</option>
+                                    <option value="femea">Fêmea</option>
                                 </select>
                             </div>
                         </div>
@@ -81,7 +83,7 @@ $preferencias = buscar(
                                 <select name="porte" class="form-control input-md">
                                     <option value="s_preferencia">Sem preferencia</option>                                  
                                     <option value="pequeno">Pequeno</option>
-                                    <option value="médio">Médio</option>
+                                    <option value="medio">Médio</option>
                                     <option value="grande">Grande</option>
                                 </select>
                             </div>
