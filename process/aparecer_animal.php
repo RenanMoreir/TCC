@@ -32,7 +32,8 @@
             'Pelagem',
             'Idade',
             'Descricao',
-            'Curtidas'
+            'Curtidas',
+            'Imagem'
         ],
         $criterio    
     );
@@ -68,7 +69,7 @@
             </form>
             <div class="card-title"><h3><?php echo $animais[$i]['Nome'] ?></h3></div>
             <div class="card-body">            
-                <img src="../profilePics/user.jpg" class="img-fluid" alt="Imagem do Animal" style="width: 60%;">
+                <img src="../animalPics/<?php echo $animais[$i]['Imagem']?>" class="img-fluid" alt="Imagem do Animal" style="width: 60%;">
             <p><strong>Raça: </strong><?php echo $animais[$i]['Raca'] ?></p>
             <p><strong>Porte: </strong><?php echo $animais[$i]['Porte'] ?></p>
             <p><strong>Cor: </strong><?php echo $animais[$i]['Cor'] ?></p>

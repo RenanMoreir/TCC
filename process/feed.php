@@ -29,6 +29,7 @@ foreach ($animais as $animal) {
     $row_abrigo = $result_abrigo->fetch_assoc(); 
 
     echo '<div class="profile-card">';
+    echo '<img src="../animalPics/'.$perfilAleatorio["imagem"].'" class="img-fluid" alt="Imagem do Animal" style="width: 50%;">';
     echo '<p class="profile-porte">Nome: ' . $animal['nome'] . '</p>';
     echo '<p class="profile-cor">Idade: ' . $animal['idade'] . '</p>';
     echo '<p class="profile-porte">Porte: ' . $animal['porte'] . '</p>';

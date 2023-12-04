@@ -18,7 +18,6 @@ foreach($_GET as $indice => $dado) {
 }
 
 $id = (int)$id;
-echo $id;
 
 switch($acao) {
     case 'insert':
@@ -26,11 +25,10 @@ switch($acao) {
         $porte == "" ||  $especie == "" || $descricao == "") {
             die(header("HTTP/1.0 401 Preenche todos os campos do formulário"));
         }
-        $imagename = $nome."_".rand(999, 999999).$_FILES['imagem']['tmp_name'];
-        $imagetemp = $_FILES['imagem']['tmp_name'];
+        $imagename = $nome."_".rand(999, 999999).$_FILES['img']['name'];
+        $imagetemp = $_FILES['img']['tmp_name'];
         $imagePath = "../animalPics/"; 
         move_uploaded_file($imagetemp, $imagePath . $imagename);
-        //print_r($_FILES);
         $dados = [
             'Raca' => $raca,            
             'Cor' => $cor,
