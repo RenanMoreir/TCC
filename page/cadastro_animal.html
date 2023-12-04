@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="../style/sweetalert2.css">
     <script src="../js/jquery.js"></script>
     <script src="../js/sweetalert2.js"></script>
-<!--     <script src="../js/javaAnimal.js"></script> -->
- <!--    <link rel="stylesheet" href="../style/cadastro_animal.css"> -->
+     <script src="../js/javaAnimal.js"></script>
+     <link rel="stylesheet" href="../style/cadastro_animal.css"> 
     <meta charset="UTF-8">
     <title>Cadastro Animal</title>
 </head>
@@ -29,14 +29,14 @@
                     <div class="card-body">
 
                          
-                <!--     <div class="img">
+                     <div class="img">
                         <div class="file-upload">
                             <button class="file-upload-btn" type="button"
                                 onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
 
                             <div class="image-upload-wrap">
                                 <input class="file-upload-input" type='file' onchange="readURL(this);"
-                                    accept="image/*" name="imagem">
+                                    accept="image/*" name="img">
                                 <div class="drag-text">
                                     <h3>Foto do animal</h3>
                                 </div>
@@ -49,10 +49,10 @@
                                 </div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
 
-                    <input type="file" name="img" id="img">
-
+<!--                     <input type="file" name="img" id="img">
+ -->
 
                         <div class="form-group">
 
@@ -170,8 +170,8 @@
                             crossDomain: true,
                             data: data,
                             mimeType: "multipart/form-data",
-                            dataType : 'json',
-                            contentType: false,
+/*                             dataType : 'json',
+ */                            contentType: false,
                             cache: false,
                             processData:false,
                             success: function (data) {
@@ -183,9 +183,11 @@
                                 })
                             },
                             error: function (error) {
+                                console.log("ola");
                                 console.log(error);
                                 Swal.fire({
-                                    title: 'algo não esta correto!',
+
+                                    title: 'correto!',
                                     text: error.statusText,
                                     icon: 'error',
                                     confirmButtonText: 'Tentar novamente'

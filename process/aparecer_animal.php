@@ -78,8 +78,6 @@
             <p><strong>Pelagem: </strong><?php echo $animais[$i]['Pelagem'] ?></p>
             <p><strong>Idade: </strong><?php echo $animais[$i]['Idade'] ?></p>
             <p><strong>Descricao: </strong><?php echo $animais[$i]['Descricao'] ?></p>
-            <p><strong>Curtidas: </strong><?php echo $animais[$i]['Curtidas'] ?></p>
-
             </div>
 
             </div>

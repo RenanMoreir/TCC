@@ -6,9 +6,9 @@ require_once 'sql.php';
 require_once 'mysql.php';
 //include('../process/check.php');
 
-print_r($_FILES);
+/* print_r($_FILES);
 print_r($_POST);
-
+ */
 foreach($_POST as $indice => $dado) {
     $$indice = limparDados($dado);
 }
@@ -17,7 +17,7 @@ foreach($_GET as $indice => $dado) {
     $$indice = limparDados($dado);
 }
 
-$id = (int)$id;
+//$id = (int)$id;
 
 switch($acao) {
     case 'insert':
