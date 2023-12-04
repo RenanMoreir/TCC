@@ -40,7 +40,6 @@ $preferencias = buscar(
     $criterio    
 );
 
- $i = 0;
  foreach($preferencias as $preferencias){
 ?>
     <div class="container-preferencias mt-5 col-md-12">
@@ -52,7 +51,7 @@ $preferencias = buscar(
                 <form method="post" id="alterar" class="form-vertical" enctype="multipart/form-data">
                     <h3 style="text-align: center;" class="card-title">Minhas Preferencias:</h3>
                     <input type="hidden" name="acao" value="update">
-                    <input type="hidden" name="acao" value="<?php echo $id ?>">
+                 <!--    <input type="hidden" name="id" value="<?php echo $id ?>"> -->
 
 
                     <div class="card-body">
@@ -60,10 +59,10 @@ $preferencias = buscar(
                             <label for="pelagem" class="col-md-4 control-label">Pelagem:</label>
                             <div class="col-md-12">
                                 <select name="pelagem" class="form-control input-md">
-                                    <option value="s_preferencia" <?php /*  if($preferencias[$i]['Pelagem'] == 's_preferencia' ){echo 'selected';}   */?>>Sem preferencia</option>
-                                    <option value="curto">Curto</option>
-                                    <option value="medio">Médio</option>
-                                    <option value="longo">Longo</option>
+                                    <option value="s_preferencia" <?php if($preferencias['Pelagem'] == 's_preferencia' ){echo 'selected';}?>>Sem preferencia</option>
+                                    <option value="curto" <?php if($preferencias['Pelagem'] == 'curto' ){echo 'selected';}?>>Curto</option>
+                                    <option value="medio" <?php if($preferencias['Pelagem'] == 'medio' ){echo 'selected';}?>>Médio</option>
+                                    <option value="longo" <?php if($preferencias['Pelagem'] == 'longo' ){echo 'selected';}?>>Longo</option>
                                 </select>
                             </div>
                         </div>
@@ -71,9 +70,9 @@ $preferencias = buscar(
                             <label for="sexo" class="col-md-4 control-label">Sexo:</label>
                             <div class="col-md-12">
                                 <select name="sexo" class="form-control input-md">
-                                    <option value="s_preferencia">Sem preferencia</option>
-                                    <option value="macho">Macho</option>
-                                    <option value="femea">Fêmea</option>
+                                    <option value="s_preferencia" <?php if($preferencias['Sexo'] == 's_preferencia' ){echo 'selected';}?>>Sem preferencia</option>
+                                    <option value="macho" <?php if($preferencias['Sexo'] == 'macho' ){echo 'selected';}?>>Macho</option>
+                                    <option value="femea" <?php if($preferencias['Sexo'] == 'femea' ){echo 'selected';}?>>Fêmea</option>
                                 </select>
                             </div>
                         </div>
@@ -81,10 +80,10 @@ $preferencias = buscar(
                             <label for="porte" class="col-md-4 control-label">Porte:</label>
                             <div class="col-md-12">
                                 <select name="porte" class="form-control input-md">
-                                    <option value="s_preferencia">Sem preferencia</option>                                  
-                                    <option value="pequeno">Pequeno</option>
-                                    <option value="medio">Médio</option>
-                                    <option value="grande">Grande</option>
+                                    <option value="s_preferencia" <?php if($preferencias['Porte'] == 's_preferencia' ){echo 'selected';}?>>Sem preferencia</option>                                  
+                                    <option value="pequeno" <?php if($preferencias['Porte'] == 'pequeno' ){echo 'selected';}?>>Pequeno</option>
+                                    <option value="medio" <?php if($preferencias['Porte'] == 'medio' ){echo 'selected';}?>>Médio</option>
+                                    <option value="grande" <?php if($preferencias['Porte'] == 'grande' ){echo 'selected';}?>>Grande</option>
                                 </select>
                             </div>
                         </div>
@@ -92,15 +91,15 @@ $preferencias = buscar(
                             <label for="especie" class="col-md-4 control-label">Espécie:</label>
                             <div class="col-md-12">
                                 <select name="especie" class="form-control input-md">
-                                    <option value="s_preferencia">Sem preferencia</option>
-                                    <option value="cachorro">Cachorro</option>
-                                    <option value="gato">Gato</option>
+                                    <option value="s_preferencia" <?php if($preferencias['Especie'] == 's_preferencia' ){echo 'selected';}?>>Sem preferencia</option>
+                                    <option value="cachorro" <?php if($preferencias['Especie'] == 'cachorro' ){echo 'selected';}?>>Cachorro</option>
+                                    <option value="gato" <?php if($preferencias['Especie'] == 'gato' ){echo 'selected';}?>>Gato</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-8">
-                                <button id="Alterar" name="Alterar" class="btn btn-success">Alterar</button>
+                                <button id="Alterar" name="Alterar" class="btn btn-success" onclick="location.reload()">Alterar</button>
                                 <button id="Cancelar" name="Cancelar" class="btn btn-danger"
                                     type="Reset">Cancelar</button>
                             </div>
@@ -111,7 +110,6 @@ $preferencias = buscar(
         </div>
     </div>
 <?php
-$i ++; 
  }
  ?>
     <script>

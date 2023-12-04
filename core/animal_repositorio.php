@@ -7,7 +7,7 @@ require_once 'mysql.php';
 //include('../process/check.php');
 
 print_r($_FILES);
-print_r($_COOKIE);
+print_r($_POST);
 
 foreach($_POST as $indice => $dado) {
     $$indice = limparDados($dado);
@@ -30,7 +30,7 @@ switch($acao) {
         $imagetemp = $_FILES['imagem']['tmp_name'];
         $imagePath = "../animalPics/"; 
         move_uploaded_file($imagetemp, $imagePath . $imagename);
-
+        //print_r($_FILES);
         $dados = [
             'Raca' => $raca,            
             'Cor' => $cor,
