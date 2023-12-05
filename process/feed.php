@@ -86,6 +86,10 @@ if ($porte !== '' || $especie !== '' || $sexo !== '') {
 } else {
     echo "Por favor, forneça pelo menos um critério de pesquisa.";
 }
+
+
+// Feche a conexão com o banco de dados
+
 ?>
 
 </div>
