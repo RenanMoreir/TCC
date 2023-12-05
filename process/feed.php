@@ -12,38 +12,82 @@
 <body>
 <div class="container">
 <?php
-include_once('connection/connect.php');
+//include('connection/connect.php');
 include_once('../includes/busca.php');
+// repositorio;
+include("connection/connect.php");
+require_once '../core/conexao_mysql.php';
+require_once '../core/sql.php';
+require_once '../core/mysql.php';
 
-$porte = isset($_POST['porte']) ? $_POST['porte'] : '';
-$especie = isset($_POST['especie']) ? $_POST['especie'] : '';
-$sexo = isset($_POST['sexo']) ? $_POST['sexo'] : '';
+$id = $_COOKIE["ID"]; 
+$criterio = [
+    ['ID', '=', $id]
+];
 
-// Buscar os animais que correspondem aos critérios de pesquisa
-$animais = buscaAnimais($porte, $especie, $sexo);
+$preferencias = buscar(
+    'user',
+    [
+        'Porte',
+        'Especie',
+        'Sexo',
+        'Pelagem'
+    ],
+    $criterio    
+);
 
-// Exibir os animais encontrados
-foreach ($animais as $animal) {
-    $sql_abrigo = "SELECT Nome, Email, Telefone, Id_abrigo FROM usuario_abrigo where Id_abrigo = ".$animal['FK_id_abrigo'];
-    $result_abrigo = $con->query($sql_abrigo);
-    $row_abrigo = $result_abrigo->fetch_assoc(); 
+foreach($preferencias as $preferencia){
+     $porte = $preferencia['Porte'];
+     $especie = $preferencia['Especie'];
+     $sexo = $preferencia['Sexo'];
+}
 
-    echo '<div class="profile-card">';
-    echo '<img src="../animalPics/'.$perfilAleatorio["imagem"].'" class="img-fluid" alt="Imagem do Animal" style="width: 50%;">';
-    echo '<p class="profile-porte">Nome: ' . $animal['nome'] . '</p>';
-    echo '<p class="profile-cor">Idade: ' . $animal['idade'] . '</p>';
-    echo '<p class="profile-porte">Porte: ' . $animal['porte'] . '</p>';
-    echo '<p class="profile-cor">Cor: ' . $animal['cor'] . '</p>';
-    echo '<p class="profile-porte">Raça: ' . $animal['raca'] . '</p>';
-    echo '<p class="profile-porte">Nome do abrigo: ' . $row_abrigo['Nome'] . '</p>';
-    echo '<p class="profile-porte">Telefone: ' . $row_abrigo['Telefone'] . '</p>';
-    echo '<p class="profile-porte">Email: ' . $row_abrigo['Email'] . '</p>';
-    echo '<button class="profile-like-button" onclick="chat('.$animal["FK_id_abrigo"].',12)">Gostei';
-    echo '</button>';
-    echo '<button class="profile-like-button" onclick="location.reload();">Passo</button>';
-    echo '</div>';
+    /* 
+    $porte = isset($_POST['porte']) ? $_POST['porte'] : '';
+    $especie = isset($_POST['especie']) ? $_POST['especie'] : '';
+    $sexo = isset($_POST['sexo']) ? $_POST['sexo'] : ''; */
+
+// Verifique se pelo menos uma das variáveis de busca foi fornecida
+if ($porte !== '' || $especie !== '' || $sexo !== '') {
+    // Buscar os animais que correspondem aos critérios de pesquisa
+    $animais = buscaAnimais($porte, $especie, $sexo);
+
+    // Exibir os animais encontrados
+    if (!empty($animais)) {
+        foreach ($animais as $animal) {
+            $sql_abrigo = "SELECT Nome, Email, Telefone, Id_abrigo FROM usuario_abrigo where Id_abrigo = ".$animal['FK_id_abrigo'];
+            $result_abrigo = $con->query($sql_abrigo);
+            
+            if ($result_abrigo) {
+                $row_abrigo = $result_abrigo->fetch_assoc(); 
+
+                echo '<div class="profile-card">';
+                // Certifique-se de ajustar para a coluna correta na tabela animal
+                echo '<img src="../animalPics/'.$animal["Imagem"].'" class="img-fluid" alt="Imagem do Animal" style="width: 50%;">';
+                echo '<p class="profile-porte">Nome: ' . $animal['Nome'] . '</p>';
+                echo '<p class="profile-cor">Idade: ' . $animal['Idade'] . '</p>';
+                echo '<p class="profile-porte">Porte: ' . $animal['Porte'] . '</p>';
+                echo '<p class="profile-cor">Cor: ' . $animal['Cor'] . '</p>';
+                echo '<p class="profile-porte">Raça: ' . $animal['Raca'] . '</p>';
+                echo '<p class="profile-porte">Nome do abrigo: ' . $row_abrigo['Nome'] . '</p>';
+                echo '<p class="profile-porte">Telefone: ' . $row_abrigo['Telefone'] . '</p>';
+                echo '<p class="profile-porte">Email: ' . $row_abrigo['Email'] . '</p>';
+                echo '<button class="profile-like-button" onclick="chat('.$animal["FK_id_abrigo"].',12)">Gostei';
+                echo '</button>';
+                echo '<button class="profile-like-button" onclick="location.reload();">Passo</button>';
+                echo '</div>';
+            } else {
+                echo "Erro ao obter dados do abrigo: " . $con->error;
+            }
+        }
+    } else {
+        echo "Nenhum animal encontrado.";
+    }
+} else {
+    echo "Por favor, forneça pelo menos um critério de pesquisa.";
 }
 ?>
+
 </div>
 </body>
 </html>

@@ -203,11 +203,10 @@
         <div class="empty" style="width:100%;">
             <?php
             if ($_COOKIE['ESCOLHA'] == 1 and $_GET['id'] == 0){
-                  include("feed.php");
+                  include_once("feed.php");
             }
             else if ($_COOKIE['ESCOLHA'] == 0) {
-                //include("../page/cadastro_animal.html");
-                //include("../includes/busca.php");
+                
             }
         ?>
         </div>
