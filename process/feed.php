@@ -12,38 +12,97 @@
 <body>
 <div class="container">
 <?php
-include_once('connection/connect.php');
-include_once('../includes/busca.php');
+include('connection/connect.php');
+         
+$p = "Amarelo";
 
-$porte = isset($_POST['porte']) ? $_POST['porte'] : '';
-$especie = isset($_POST['especie']) ? $_POST['especie'] : '';
-$sexo = isset($_POST['sexo']) ? $_POST['sexo'] : '';
 
-// Buscar os animais que correspondem aos critérios de pesquisa
-$animais = buscaAnimais($porte, $especie, $sexo);
 
-// Exibir os animais encontrados
-foreach ($animais as $animal) {
-    $sql_abrigo = "SELECT Nome, Email, Telefone, Id_abrigo FROM usuario_abrigo where Id_abrigo = ".$animal['FK_id_abrigo'];
-    $result_abrigo = $con->query($sql_abrigo);
-    $row_abrigo = $result_abrigo->fetch_assoc(); 
 
-    echo '<div class="profile-card">';
-    echo '<img src="../animalPics/'.$perfilAleatorio["imagem"].'" class="img-fluid" alt="Imagem do Animal" style="width: 50%;">';
-    echo '<p class="profile-porte">Nome: ' . $animal['nome'] . '</p>';
-    echo '<p class="profile-cor">Idade: ' . $animal['idade'] . '</p>';
-    echo '<p class="profile-porte">Porte: ' . $animal['porte'] . '</p>';
-    echo '<p class="profile-cor">Cor: ' . $animal['cor'] . '</p>';
-    echo '<p class="profile-porte">Raça: ' . $animal['raca'] . '</p>';
-    echo '<p class="profile-porte">Nome do abrigo: ' . $row_abrigo['Nome'] . '</p>';
-    echo '<p class="profile-porte">Telefone: ' . $row_abrigo['Telefone'] . '</p>';
-    echo '<p class="profile-porte">Email: ' . $row_abrigo['Email'] . '</p>';
-    echo '<button class="profile-like-button" onclick="chat('.$animal["FK_id_abrigo"].',12)">Gostei';
-    echo '</button>';
-    echo '<button class="profile-like-button" onclick="location.reload();">Passo</button>';
-    echo '</div>';
+// Query para selecionar os valores de porte e cor da tabela animal
+$sql = "SELECT porte, cor, raca, nome, idade, FK_id_abrigo, imagem FROM animal";
+//$sql2 = "SELECT Nome, Email, Telefone, Id_abrigo FROM Usuario_abrigo";
+
+
+
+
+$result = $con->query($sql);
+//$result2 = $con->query($sql2);
+
+
+/*if ($result2->num_rows > 0) {
+    // Array de perfis fictícios
+    $abrigo = [];
+
+
+    while ($row = $result2->fetch_assoc()) {
+    $abrigo[] = ["Nome" => $row["Nome"], "Email" => $row["Email"], "Telefone" => $row['Telefone'], "Id_abrigo" => $row['Id_abrigo']];
+    }
+}{
+    echo "Problemas ao identificar o abrigo.<br>";
+}*/
+if ($result->num_rows > 0) {
+    // Array de perfis fictícios
+    $perfis = [];
+
+
+    while ($row = $result->fetch_assoc()) {
+    $perfis[] = ["porte" => $row["porte"], "cor" => $row["cor"], "raca" => $row['raca'], "nome" => $row['nome'], "idade" => $row['idade'], "FK_id_abrigo" => $row['FK_id_abrigo'],  "imagem" => $row["imagem"]];
+    }
+
+    // Inicialize um array vazio para armazenar os índices dos perfis exibidos
+    $perfisExibidos = [];
+
+
+    // Verifique se todos os perfis já foram exibidos
+    if (count($perfisExibidos) === count($perfis)) {
+        echo '<h1>Todos os perfis foram exibidos</h1>';
+    } else {
+        do {
+            // Escolha aleatoriamente um índice de perfil
+            $indiceAleatorio = array_rand($perfis);
+            $perfilAleatorio = $perfis[$indiceAleatorio];
+
+             $sql_abrigo = "SELECT Nome, Email, Telefone, Id_abrigo FROM usuario_abrigo where Id_abrigo = ".$perfilAleatorio['FK_id_abrigo'];
+            $result_abrigo = $con->query($sql_abrigo);
+            $row_abrigo = $result_abrigo->fetch_assoc(); 
+            // Verifique se o perfil já foi exibido e se a idade corresponde
+            if (!in_array($indiceAleatorio, $perfisExibidos) && $p == $perfilAleatorio['cor']) {
+                // Adicione o índice do perfil aos perfis exibidos
+                $perfisExibidos[] = $indiceAleatorio;
+                // Div para cada perfil
+                echo '<div class="profile-card">';
+                echo '<img src="../animalPics/'.$perfilAleatorio["imagem"].'" class="img-fluid" alt="Imagem do Animal" style="width: 50%;">';
+                echo '<p class="profile-porte">Nome: ' . $perfilAleatorio['nome'] . '</p>';
+                echo '<p class="profile-cor">Idade: ' . $perfilAleatorio['idade'] . '</p>';
+                echo '<p class="profile-porte">Porte: ' . $perfilAleatorio['porte'] . '</p>';
+                echo '<p class="profile-cor">Cor: ' . $perfilAleatorio['cor'] . '</p>';
+                echo '<p class="profile-porte">Raça: ' . $perfilAleatorio['raca'] . '</p>';
+                //if ($abrigo[0]['Id_abrigo'] == $perfilAleatorio['FK_id_abrigo']){
+                echo '<p class="profile-porte">Nome do abrigo: ' . $row_abrigo['Nome'] . '</p>';
+                echo '<p class="profile-porte">Telefone: ' . $row_abrigo['Telefone'] . '</p>';
+                echo '<p class="profile-porte">Email: ' . $row_abrigo['Email'] . '</p>';
+                //}
+                echo '<button class="profile-like-button" onclick="chat('.$perfilAleatorio["FK_id_abrigo"].',12)">Gostei';
+                $gostei = 1;
+                echo '</button>';
+                echo '<button class="profile-like-button" onclick="location.reload();">Passo</button>';
+                echo '</div>';
+                break; // Saia do loop
+            }
+        } while (true);
+    }
+} else {
+    echo "Nenhum perfil encontrado no banco de dados.";
 }
+
+
+// Feche a conexão com o banco de dados
+
 ?>
+
+
+
 </div>
 </body>
 </html>

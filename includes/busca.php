@@ -1,5 +1,5 @@
 <?php
-function buscaAnimais($porte, $especie, $sexo) {
+/* function buscaAnimais($porte, $especie, $sexo) {
 include('../process/connection/connect.php');
     echo "teste";
 
@@ -29,6 +29,8 @@ include('../process/connection/connect.php');
         // Se não houver resultados, retorne um array vazio
         return array();
     }
-}
+} */
+
+echo '<img src="../animalPics/'.$perfilAleatorio["imagem"].'" class="img-fluid" alt="Imagem do Animal" style="width: 50%;">';
 
 ?>
