@@ -14,6 +14,7 @@ foreach($_GET as $indice => $dado) {
     $$indice = limparDados($dado);
 }
 
+$id = (int)$id;
 
 
 switch($acao) 
@@ -112,10 +113,10 @@ switch($acao)
         break;
     case 'delete':
         $criterio = [
-            ['id', '=', $id]
+            ['Id_abrigo', '=', $id]
         ];
 
-        delete(
+        deleta(
             'usuario_abrigo',
             $criterio
         );

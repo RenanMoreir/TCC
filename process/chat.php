@@ -1,10 +1,10 @@
 <?php
-
     include("check.php");
- if($_COOKIE['ESCOLHA'] == 0 and $_GET['id'] == 0){  
+if ($_COOKIE['ADM'] == 1){
+    include_once('adm.php');
+} else if($_COOKIE['ESCOLHA'] == 0 and $_GET['id'] == 0){  
     include('aparecer_animal.php');
- }
-    if (isset($_GET["id"]) && $_GET["id"] > 0 and $_COOKIE['ESCOLHA'] == 0){
+ } else if (isset($_GET["id"]) && $_GET["id"] > 0 and $_COOKIE['ESCOLHA'] == 0){
         $user_id = $_GET["id"];
 
         // Get user
@@ -204,7 +204,7 @@
         
             <?php
             
-            if ($_COOKIE['ESCOLHA'] == 1 and $_GET['id'] == 0){
+            if ($_COOKIE['ESCOLHA'] == 1 and $_GET['id'] == 0 and $_COOKIE['ADM'] == 0){
                   include_once("feed.php");
             }
             else if ($_COOKIE['ESCOLHA'] == 0) {

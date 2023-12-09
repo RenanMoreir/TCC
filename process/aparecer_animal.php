@@ -32,7 +32,6 @@
             'Pelagem',
             'Idade',
             'Descricao',
-            'Curtidas',
             'Imagem'
         ],
         $criterio    

@@ -4,4 +4,5 @@
     setcookie("TOKEN", NULL, 1);
     setcookie("SECURE", NULL, 1);
     setcookie("ESCOLHA", NULL, 1);
+    setcookie("ADM", NULL,1);
 ?>

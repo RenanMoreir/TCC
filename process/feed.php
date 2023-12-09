@@ -58,7 +58,7 @@ if ($porte !== '' || $especie !== '' || $sexo !== '') {
             $sql_abrigo = "SELECT Nome, Email, Telefone, Id_abrigo FROM usuario_abrigo where Id_abrigo = ".$animal['FK_id_abrigo'];
             $result_abrigo = $con->query($sql_abrigo);
             
-            if ($result_abrigo) {
+            if ($result_abrigo and mysqli_num_rows($result_abrigo) != 0) {
                 $row_abrigo = $result_abrigo->fetch_assoc(); 
 
                 echo '<div class="profile-card">';
@@ -69,6 +69,7 @@ if ($porte !== '' || $especie !== '' || $sexo !== '') {
                 echo '<p class="profile-porte">Porte: ' . $animal['Porte'] . '</p>';
                 echo '<p class="profile-cor">Cor: ' . $animal['Cor'] . '</p>';
                 echo '<p class="profile-porte">Raça: ' . $animal['Raca'] . '</p>';
+                echo '<p class="profile-porte">Descrição: ' . $animal['Descricao'] . '</p>';
                 echo '<p class="profile-porte">Nome do abrigo: ' . $row_abrigo['Nome'] . '</p>';
                 echo '<p class="profile-porte">Telefone: ' . $row_abrigo['Telefone'] . '</p>';
                 echo '<p class="profile-porte">Email: ' . $row_abrigo['Email'] . '</p>';
@@ -77,7 +78,7 @@ if ($porte !== '' || $especie !== '' || $sexo !== '') {
                 echo '<button class="profile-like-button" onclick="location.reload();">Passo</button>';
                 echo '</div>';
             } else {
-                echo "Erro ao obter dados do abrigo: " . $con->error;
+                echo "Nenhum animal encontrado." . $con->error;
             }
         }
     } else {

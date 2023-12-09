@@ -14,7 +14,7 @@ foreach($_GET as $indice => $dado) {
     $$indice = limparDados($dado);
 }
 
-$id = $_COOKIE['ID'];
+$id = (int)$id;
 
 switch($acao) 
 {
@@ -85,21 +85,6 @@ switch($acao)
     case 'update': 
         
         $dados = [
-            // 'Username' => $username,
-            // 'Email' => $email,
-            // 'Password' => $senha,
-            // 'Nome' => $nome,
-            // 'Dtnasc' => $dtnasc,
-            // 'Telefone' => $telefone,
-            // 'Cpf' => $cpf,
-            // 'Cep' => $cep,
-            // 'Rua' => $rua,
-            // 'Numero' => $numero,
-            // 'Bairro' => $bairro,
-            // 'Cidade' => $cidade,
-            // 'Token' => $token,
-            // 'Secure' => $secure,
-            // 'Creation' => 'now()',
             'Porte' => $porte,
             'Especie' => $especie,
             'Sexo' => $sexo,
@@ -119,12 +104,21 @@ switch($acao)
         break;
     case 'delete':
         $criterio = [
-            ['id', '=', $id]
+            ['Id', '=', $id]
         ];
 
-        delete(
+        deleta(
             'user',
             $criterio
+        );
+
+        $criterio1 = [
+            ['FK_id_abrigo', '=', $id]
+        ];
+
+        deleta(
+            'animal',
+            $criterio1
         );
 
         break;

@@ -17,7 +17,7 @@ foreach($_GET as $indice => $dado) {
     $$indice = limparDados($dado);
 }
 
-//$id = (int)$id;
+$id = (int)$id;
 
 switch($acao) {
     case 'insert':
