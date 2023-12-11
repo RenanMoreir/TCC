@@ -1,24 +1,24 @@
 @import "global.css";
 
-#inbox input.searchField{
+#inbox input.searchField {
     display: block;
     margin: auto;
     width: 90%;
     max-width: 300px;
     padding: 5px 10px;
-    border:none;
+    border: none;
     border-radius: 5px;
     background-color: #eee;
 }
 
-#inbox #searchContainer{
+#inbox #searchContainer {
     display: block;
     margin: 10px auto;
     width: 90%;
     max-width: 300px;
     height: 200px;
     padding: 10px;
-    border:none;
+    border: none;
     border-radius: 5px;
     background-color: #eee;
     overflow-y: auto;
@@ -38,7 +38,7 @@
     cursor: pointer;
 }
 
-#inbox #searchContainer div.row img{
+#inbox #searchContainer div.row img {
     display: inline-block;
     vertical-align: top;
     width: 48px;
@@ -49,14 +49,14 @@
 
 }
 
-#inbox #searchContainer div.row p{
+#inbox #searchContainer div.row p {
     display: inline-block;
     vertical-align: top;
-   font-size: 12pt;
-   padding-left: 20px;
-   padding-top: 12px;
-    
-    
+    font-size: 12pt;
+    padding-left: 20px;
+    padding-top: 12px;
+
+
 }
 
 #inbox div.empty {
@@ -69,16 +69,17 @@
     display: block;
     margin: 10px 30px;
     padding: 10px 15px;
-    border-radius: 5px ;
+    border-radius: 5px;
     cursor: pointer;
 }
+
 #inbox div.chat:hover {
     background-color: #eee;
 }
 
 #inbox div.new {
     font-weight: bold;
-    
+
 }
 
 #inbox div.chat img {
@@ -95,8 +96,7 @@
 #inbox div.chat p {
     display: inline-block;
     vertical-align: top;
-   font-size: 12pt;
-   padding-left: 20px;
-   padding-top: 12px;
+    font-size: 12pt;
+    padding-left: 20px;
+    padding-top: 12px;
 }
-
