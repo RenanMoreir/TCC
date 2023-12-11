@@ -79,4 +79,3 @@
     } else {
         die(header("HTTP/1.0 401 Formulário de autenticação inválido"));
     }
-?>

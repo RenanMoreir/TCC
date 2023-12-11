@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container" style="width: 90%; height: 90vh; overflow-y: scroll;">
         <?php
         //include('connection/connect.php');
         include_once('../includes/busca.php');
@@ -62,6 +62,42 @@
                     if ($result_abrigo and mysqli_num_rows($result_abrigo) != 0) {
                         $row_abrigo = $result_abrigo->fetch_assoc();
 
+                        echo '<div class="profile-card" style="border: 5px solid blue; padding: 20px;">';
+                        // Certifique-se de ajustar para a coluna correta na tabela animal
+                        echo '<img src="../animalPics/' . $animal["Imagem"] . '" class="img-fluid" alt="Imagem do Animal" style="width: 50%;">';
+                        echo '<p class="profile-porte">Nome: ' . $animal['Nome'] . '</p>';
+                        echo '<p class="profile-cor">Idade: ' . $animal['Idade'] . '</p>';
+                        echo '<p class="profile-porte">Porte: ' . $animal['Porte'] . '</p>';
+                        echo '<p class="profile-cor">Cor: ' . $animal['Cor'] . '</p>';
+                        echo '<p class="profile-porte">Raça: ' . $animal['Raca'] . '</p>';
+                        echo '<p class="profile-porte">Descrição: ' . $animal['Descricao'] . '</p>';
+                        echo '<p class="profile-porte">Nome do abrigo: ' . $row_abrigo['Nome'] . '</p>';
+                        echo '<p class="profile-porte">Telefone: ' . $row_abrigo['Telefone'] . '</p>';
+                        echo '<p class="profile-porte">Email: ' . $row_abrigo['Email'] . '</p>';
+                        echo '<button class="profile-like-button btn btn-success" onclick="chat(' . $animal["FK_id_abrigo"] . ',12)">Dar Match';
+                        echo '</button>';
+                        // echo '<button class="profile-like-button" onclick="location.reload();">Passo</button>';
+                        echo '</div><br>';
+
+                    } else {
+                        echo "Erro." . $con->error;
+                    }
+                }
+            } else {
+                echo "Nenhum animal encontrado.";
+            }
+        } else {
+            $animal = $sql = "SELECT * FROM animal";
+
+            // Exibir os animais encontrados
+            if (!empty($animais)) {
+                foreach ($animais as $animal) {
+                    $sql_abrigo = "SELECT Nome, Email, Telefone, Id_abrigo FROM usuario_abrigo where Id_abrigo = " . $animal['FK_id_abrigo'];
+                    $result_abrigo = $con->query($sql_abrigo);
+
+                    if ($result_abrigo and mysqli_num_rows($result_abrigo) != 0) {
+                        $row_abrigo = $result_abrigo->fetch_assoc();
+
                         echo '<div class="profile-card">';
                         // Certifique-se de ajustar para a coluna correta na tabela animal
                         echo '<img src="../animalPics/' . $animal["Imagem"] . '" class="img-fluid" alt="Imagem do Animal" style="width: 50%;">';
@@ -78,53 +114,18 @@
                         echo '</button>';
                         echo '<button class="profile-like-button" onclick="location.reload();">Passo</button>';
                         echo '</div>';
-                    } else {
-                        echo "Erro." . $con->error;
                     }
                 }
             } else {
                 echo "Nenhum animal encontrado.";
             }
-        } else {
-            $animais = $sql = "SELECT * FROM animal";
-        
-                    // Exibir os animais encontrados
-                    if (!empty($animais)) {
-                        foreach ($animais as $animal) {
-                            $sql_abrigo = "SELECT Nome, Email, Telefone, Id_abrigo FROM usuario_abrigo where Id_abrigo = " . $animal['FK_id_abrigo'];
-                            $result_abrigo = $con->query($sql_abrigo);
-        
-                            if ($result_abrigo and mysqli_num_rows($result_abrigo) != 0) {
-                                $row_abrigo = $result_abrigo->fetch_assoc();
-        
-                        echo '<div class="profile-card">';
-                        // Certifique-se de ajustar para a coluna correta na tabela animal
-                        echo '<img src="../animalPics/'.$animal["Imagem"].'" class="img-fluid" alt="Imagem do Animal" style="width: 50%;">';
-                        echo '<p class="profile-porte">Nome: ' . $animal['Nome'] . '</p>';
-                        echo '<p class="profile-cor">Idade: ' . $animal['Idade'] . '</p>';
-                        echo '<p class="profile-porte">Porte: ' . $animal['Porte'] . '</p>';
-                        echo '<p class="profile-cor">Cor: ' . $animal['Cor'] . '</p>';
-                        echo '<p class="profile-porte">Raça: ' . $animal['Raca'] . '</p>';
-                        echo '<p class="profile-porte">Descrição: ' . $animal['Descricao'] . '</p>';
-                        echo '<p class="profile-porte">Nome do abrigo: ' . $row_abrigo['Nome'] . '</p>';
-                        echo '<p class="profile-porte">Telefone: ' . $row_abrigo['Telefone'] . '</p>';
-                        echo '<p class="profile-porte">Email: ' . $row_abrigo['Email'] . '</p>';
-                        echo '<button class="profile-like-button" onclick="chat('.$animal["FK_id_abrigo"].',12)">Gostei';
-                        echo '</button>';
-                        echo '<button class="profile-like-button" onclick="location.reload();">Passo</button>';
-                        echo '</div>';
         }
-        }
-    } else {
-        echo "Nenhum animal encontrado.";
-    }
 
 
-// Feche a conexão com o banco de dados
-?>
         // Feche a conexão com o banco de dados
-
         ?>
+
+
 
     </div>
 </body>
