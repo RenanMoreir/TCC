@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -13,6 +13,7 @@
     <link type="text/css" rel="stylesheet" href="../style/profile.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link type="text/css" rel="stylesheet" href="../style/sweetalert2.css">
+
 
     <script src="../js/javaAnimal.js"></script>
     <script src="../js/jquery.js"></script>
@@ -41,7 +42,7 @@
                         </span>
                     </button>
                 </div>
-            </div>  
+            </div>
             <div class="row">
                 <div id="loading">Loading&#8230</div>
 
@@ -80,74 +81,73 @@
 
 
     <script>
-       var isChatMinimized = false;
-var isProfileMinimized = false;
+        var isChatMinimized = false;
+        var isProfileMinimized = false;
 
-function toggleProfile() {
-    isProfileMinimized = !isProfileMinimized;
+        function toggleProfile() {
+            isProfileMinimized = !isProfileMinimized;
 
-    if (isProfileMinimized) {
-        $('#profile').hide();
-        $('#chat').removeClass('col-lg-6').addClass('col-lg-' + (isChatMinimized ? '12' : '9'));
+            if (isProfileMinimized) {
+                $('#profile').hide();
+                $('#chat').removeClass('col-lg-6').addClass('col-lg-' + (isChatMinimized ? '12' : '9'));
 
-        // Ajuste outros elementos conforme necessário
-        adjustEmptyWidth();
-    } else {
-        $('#profile').show();
-        $('#chat').removeClass('col-lg-' + (isChatMinimized ? '12' : '9')).addClass('col-lg-6');
+                // Ajuste outros elementos conforme necessário
+                adjustEmptyWidth();
+            } else {
+                $('#profile').show();
+                $('#chat').removeClass('col-lg-' + (isChatMinimized ? '12' : '9')).addClass('col-lg-6');
 
-        // Ajuste outros elementos conforme necessário
-        adjustEmptyWidth();
-    }
-}
-function adjustEmptyWidth() {
-    if (isProfileMinimized || isChatMinimized) {
-        // Se pelo menos uma das abas estiver minimizada, ajuste o width de 'empty' para 100%
-        $('div.empty').css('width', 'calc(100% - 10px)');
-    } else {
-        // Caso contrário, ajuste conforme necessário (pode ser 49%, 69%, etc.)
-        $('div.empty').css('width', 'calc(49% - 10px)'); // Ajuste conforme necessário
-    }
-}
+                // Ajuste outros elementos conforme necessário
+                adjustEmptyWidth();
+            }
+        }
 
-function toggleInbox() {
-    isChatMinimized = !isChatMinimized;
+        function adjustEmptyWidth() {
+            if (isProfileMinimized || isChatMinimized) {
+                // Se pelo menos uma das abas estiver minimizada, ajuste o width de 'empty' para 100%
+                $('div.empty').css('width', 'calc(100% - 10px)');
+            } else {
+                // Caso contrário, ajuste conforme necessário (pode ser 49%, 69%, etc.)
+                $('div.empty').css('width', 'calc(49% - 10px)'); // Ajuste conforme necessário
+            }
+        }
 
-    if (isChatMinimized) {
-        $('#inbox').hide();
-        $('#chat').removeClass('col-lg-6').addClass('col-lg-' + (isProfileMinimized ? '12' : '9'));
+        function toggleInbox() {
+            isChatMinimized = !isChatMinimized;
 
-        // Ajuste outros elementos conforme necessário
-        adjustEmptyWidth();
-    } else {
-        $('#inbox').show();
-        $('#chat').removeClass('col-lg-' + (isProfileMinimized ? '12' : '9')).addClass('col-lg-6');
+            if (isChatMinimized) {
+                $('#inbox').hide();
+                $('#chat').removeClass('col-lg-6').addClass('col-lg-' + (isProfileMinimized ? '12' : '9'));
 
-        // Ajuste outros elementos conforme necessário
-        adjustEmptyWidth();
-    }
-}
+                // Ajuste outros elementos conforme necessário
+                adjustEmptyWidth();
+            } else {
+                $('#inbox').show();
+                $('#chat').removeClass('col-lg-' + (isProfileMinimized ? '12' : '9')).addClass('col-lg-6');
 
-function adjustEmptyWidth() {
-    if (isProfileMinimized && isChatMinimized) {
-        // Se ambos estiverem minimizados, ajuste o width de 'empty' para 100%
-        $('div.empty').css('width', '99%');
-    } else if (isProfileMinimized || isChatMinimized) {
-        // Se ambos estiverem minimizados, ajuste o width de 'empty' para 100%
-        $('div.empty').css('width', 'calc(74% - 10px)');
-    }
-    
-    else {
-        // Caso contrário, ajuste conforme necessário (pode ser 49%, 69%, etc.)
-        $('div.empty').css('width', 'calc(49% - 10px)'); // Ajuste conforme necessário
-    }
-}
+                // Ajuste outros elementos conforme necessário
+                adjustEmptyWidth();
+            }
+        }
 
-// Restante do seu código...
-$('#profile').css('transition', 'width 0s ease');
-$('#chat').css('transition', 'width 0s ease');
-$('#inbox').css('transition', 'width 0s ease');
-$('div.empty').css('transition', 'width 0s ease');
+        function adjustEmptyWidth() {
+            if (isProfileMinimized && isChatMinimized) {
+                // Se ambos estiverem minimizados, ajuste o width de 'empty' para 100%
+                $('div.empty').css('width', '99%');
+            } else if (isProfileMinimized || isChatMinimized) {
+                // Se ambos estiverem minimizados, ajuste o width de 'empty' para 100%
+                $('div.empty').css('width', 'calc(74% - 10px)');
+            } else {
+                // Caso contrário, ajuste conforme necessário (pode ser 49%, 69%, etc.)
+                $('div.empty').css('width', 'calc(49% - 10px)'); // Ajuste conforme necessário
+            }
+        }
+
+        // Restante do seu código...
+        $('#profile').css('transition', 'width 0s ease');
+        $('#chat').css('transition', 'width 0s ease');
+        $('#inbox').css('transition', 'width 0s ease');
+        $('div.empty').css('transition', 'width 0s ease');
 
         function loadInbox() {
             $.ajax({
@@ -204,7 +204,7 @@ $('div.empty').css('transition', 'width 0s ease');
             });
         }
 
-        
+
 
         function search() {
             var term = $('input.searchField').val();
@@ -232,7 +232,7 @@ $('div.empty').css('transition', 'width 0s ease');
                 }
             });
         }
-        
+
 
         $(document).ready(function () {
             setInterval(() => {

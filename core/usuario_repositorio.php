@@ -6,27 +6,27 @@ require_once 'conexao_mysql.php';
 require_once 'sql.php';
 require_once 'mysql.php';
 
-foreach($_POST as $indice => $dado) {
+foreach ($_POST as $indice => $dado) {
     $$indice = limparDados($dado);
 }
 
-foreach($_GET as $indice => $dado) {
+foreach ($_GET as $indice => $dado) {
     $$indice = limparDados($dado);
 }
 
 $id = $_COOKIE['ID'];
 
-switch($acao) 
-{
-    
+switch ($acao) {
+
     case 'insert':
-        if ($username == "" || $email == "" || $senha == "" || $repita == ""
-             || $nome == "" || $telefone == "" || $cpf == ""
-         || $especie == "" || $pelagem == "" || $porte == "" || $sexo == "") 
-        {
+        if (
+            $username == "" || $email == "" || $senha == "" || $repita == ""
+            || $nome == "" || $telefone == "" || $cpf == ""
+            || $especie == "" || $pelagem == "" || $porte == "" || $sexo == ""
+        ) {
             die(header("HTTP/1.0 401 Preenche todos os campos do formulário"));
-        }; 
-        
+        };
+
         // Check if username already exists
         $checkUsername = $con->prepare("SELECT Id FROM user WHERE Username = ?");
         $checkUsername->bind_param("s", $username);
@@ -45,16 +45,16 @@ switch($acao)
         }
         // Verify password repeat
         if ($senha != $repita) {
-             die(header("HTTP/1.0 401 Passwords diferentes"));
+            die(header("HTTP/1.0 401 Passwords diferentes"));
         }
-        
+
         // Ecrypt password
         $senha = password_hash($senha, PASSWORD_DEFAULT);
-                
+
         // Create secure code and token
-         $token = bin2hex(openssl_random_pseudo_bytes(20));
-         $secure = rand(1000000000, 9999999999);
-        
+        $token = bin2hex(openssl_random_pseudo_bytes(20));
+        $secure = rand(1000000000, 9999999999);
+
         $dados = [
             'Username' => $username,
             'Email' => $email,
@@ -82,8 +82,8 @@ switch($acao)
             $dados
         );
         break;
-    case 'update': 
-        
+    case 'update':
+
         $dados = [
             'Porte' => $porte,
             'Especie' => $especie,
@@ -111,7 +111,7 @@ switch($acao)
             'user',
             $criterio
         );
-/* 
+        /* 
         $criterio1 = [
             ['FK_id_abrigo', '=', $id]
         ];
@@ -125,5 +125,3 @@ switch($acao)
 }
 
 //header('Location: ../index.php');
-
-?>

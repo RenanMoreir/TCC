@@ -1,13 +1,13 @@
 <?php
-    include("check.php");
+include("check.php");
 
-    /* ?>
+/* ?>
     <div class="chat selected" onclick="chat('<?php echo $user['Id']; ?>')">
         <img src="img/globe.png" />
         <p>Toda a comunidade</p>
     </div>
     <?php */
-if ($_COOKIE['ESCOLHA'] == 0){   
+if ($_COOKIE['ESCOLHA'] == 0) {
     // Query
     $stmt = $con->prepare("SELECT * FROM conversations WHERE (OtherUser = ?) ORDER BY Modification DESC");
     $stmt->bind_param("i", $uid);
@@ -26,16 +26,18 @@ if ($_COOKIE['ESCOLHA'] == 0){
         $user = $stmt->get_result()->fetch_assoc();
 
         if ($user) {
-            ?>
-            <div class="chat <?php if($inbox["Unread"] == "y") { echo "new"; } ?>" onclick="chat('<?php echo $user['Id']; ?>') ">
+?>
+            <div class="chat <?php if ($inbox["Unread"] == "y") {
+                                    echo "new";
+                                } ?>" onclick="chat('<?php echo $user['Id']; ?>') ">
                 <img src="../profilePics/<?php echo $user["Picture"]; ?>" />
                 <p><?php echo $user["Username"]; ?></p>
             </div>
-            <?php
+        <?php
         }
     }
-} else if ($_COOKIE['ESCOLHA'] == 1){
-    
+} else if ($_COOKIE['ESCOLHA'] == 1) {
+
     $stmt = $con->prepare("SELECT * FROM conversations WHERE (MainUser = ?) ORDER BY Modification DESC");
     $stmt->bind_param("i", $uid);
     $stmt->execute();
@@ -53,12 +55,14 @@ if ($_COOKIE['ESCOLHA'] == 0){
         $user = $stmt->get_result()->fetch_assoc();
 
         if ($user) {
-            ?>
-            <div class="chat <?php if($inbox["Unread"] == "y") { echo "new"; } ?>" onclick="chat('<?php echo $user['Id_abrigo']; ?>') ">
+        ?>
+            <div class="chat <?php if ($inbox["Unread"] == "y") {
+                                    echo "new";
+                                } ?>" onclick="chat('<?php echo $user['Id_abrigo']; ?>') ">
                 <img src="../profilePics/<?php echo $user["Picture"]; ?>" />
                 <p><?php echo $user["Username"]; ?></p>
             </div>
-            <?php
+<?php
         }
     }
 }

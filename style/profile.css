@@ -31,7 +31,8 @@
 #profile .pictureContainer label:hover {
     opacity: 0.7;
 }
-i.bi{
+
+i.bi {
     font-size: 1.5em;
 }
 
@@ -60,7 +61,7 @@ i.bi{
     margin: auto;
 }
 
-#profile div.menu button{
+#profile div.menu button {
     display: block;
     margin: auto;
     width: 90%;
@@ -73,6 +74,6 @@ i.bi{
     text-align: right;
 }
 
-#profile div.menu button:hover{
+#profile div.menu button:hover {
     width: 60%;
 }

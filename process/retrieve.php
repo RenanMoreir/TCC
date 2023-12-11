@@ -1,5 +1,5 @@
 <?php
-    include("check.php");
+include("check.php");
 
     if (isset($_GET["id"]) and $_COOKIE['ESCOLHA'] == 1){
         $user_id = $_GET["id"];
@@ -56,17 +56,17 @@
     } else if (isset($_GET["id"]) and $_COOKIE['ESCOLHA'] == 0){
         $user_id = $_GET["id"];
 
-        // Query
-        $stmt = $con->prepare("SELECT `Sender`, `Message`, `Image` FROM Chat WHERE (Sender = ? AND Reciever = ?) OR (Reciever = ? AND Sender = ?) ORDER BY Id");
-        $stmt->bind_param("iiii", $user_id, $uid, $user_id, $uid);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $count = $result->num_rows;
+    // Query
+    $stmt = $con->prepare("SELECT `Sender`, `Message`, `Image` FROM Chat WHERE (Sender = ? AND Reciever = ?) OR (Reciever = ? AND Sender = ?) ORDER BY Id");
+    $stmt->bind_param("iiii", $user_id, $uid, $user_id, $uid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $count = $result->num_rows;
 
-        $getUser = $con->prepare("SELECT Id_abrigo, Username, Picture FROM usuario_abrigo WHERE (Id_abrigo LIKE ?) LIMIT 1");
-        $getUser->bind_param("i", $user_id);
-        $getUser->execute();
-        $user = $getUser->get_result()->fetch_assoc();
+    $getUser = $con->prepare("SELECT Id_abrigo, Username, Picture FROM usuario_abrigo WHERE (Id_abrigo LIKE ?) LIMIT 1");
+    $getUser->bind_param("i", $user_id);
+    $getUser->execute();
+    $user = $getUser->get_result()->fetch_assoc();
 
         if ($count < 1) {
             echo '<p class="info">Envie a sua primeira mensagem para '.$user["Username"].'</p>';

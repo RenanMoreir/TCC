@@ -119,4 +119,3 @@
         die("<script>location.href = 'auth.html?escolha=0';</script>");
     }
 }
-?>

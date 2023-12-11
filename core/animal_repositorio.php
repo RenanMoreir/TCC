@@ -22,7 +22,7 @@ $id = (int)$id;
 switch($acao) {
     case 'insert':
         if ( $nome == "" || $pelagem == "" || $raca == "" || $cor == "" || $sexo== "" ||
-        $porte == "" ||  $especie == "" || $descricao == "") {
+        $porte == "" || $especie == "" || $descricao == "") {
             die(header("HTTP/1.0 401 Preenche todos os campos do formulário"));
         }
         $imagename = $nome."_".rand(999, 999999).$_FILES['img']['name'];
@@ -53,7 +53,7 @@ switch($acao) {
 
     case 'update':
         if ( $nome == "" || $pelagem == "" || $raca == "" || $cor == "" || $sexo== "" ||
-        $porte == "" ||  $especie == "" || $descricao == "") {
+        $porte == "" || $especie == "" || $descricao == "") {
             die(header("HTTP/1.0 401 Preenche todos os campos do formulário"));
         } 
         $dados = [
@@ -93,5 +93,3 @@ switch($acao) {
 }
 
 //header('Location: ../index.php');
-
-?>

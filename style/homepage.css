@@ -1,6 +1,6 @@
 @import "global.css";
 
-#inbox{
+#inbox {
     display: inline-block;
     vertical-align: top;
     /* width: 25%; */
@@ -8,7 +8,7 @@
     overflow-y: auto;
 }
 
-#chat{
+#chat {
     display: inline-block;
     vertical-align: top;
     /* width: 49%; */
@@ -16,16 +16,18 @@
 }
 
 
-#profile{
+#profile {
     display: inline-block;
     vertical-align: top;
     /* width: 25%; */
     box-shadow: 21px 10px 30px -37px rgba(0, 0, 0, 0.75);
 }
-.column{
+
+.column {
     height: 95vh;
 }
-.column p.title{
+
+.column p.title {
     font-size: 24pt;
     font-weight: bold;
     padding: 20px 30px;
@@ -45,6 +47,7 @@ div.empty p {
     margin-top: 20px;
     font-size: 14pt;
 }
+
 /* Adicione este estilo para a área de perfil minimizada */
 #profile.minimized {
     display: none;
