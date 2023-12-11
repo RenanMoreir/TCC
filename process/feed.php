@@ -79,7 +79,7 @@
                         echo '<button class="profile-like-button" onclick="location.reload();">Passo</button>';
                         echo '</div>';
                     } else {
-                        echo "Errro." . $con->error;
+                        echo "Erro." . $con->error;
                     }
                 }
             } else {
