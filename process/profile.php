@@ -1,3 +1,5 @@
+
+
 <?php
 include("check.php");
 
@@ -63,7 +65,18 @@ if ($_COOKIE['ESCOLHA'] == 0) {
 }
 if ($_COOKIE['ESCOLHA'] == 1) {
 ?>
+
     <p class="row"><button class="btn btn-primary" onclick="$('#chat').load('../page/preferencias.php')">Minhas Preferencias</button></p>
+    <p class="row">
+        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapse">
+            Descrição
+        </button>
+    </p>
+    <div class="collapse" id="collapse">
+        <div class="card card-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
+    </div>
 <?php
 }
 
