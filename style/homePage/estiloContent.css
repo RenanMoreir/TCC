@@ -28,7 +28,8 @@ main {
 
 }
 .imagem{
- background-image: url("../../img/homePage/backgroud1.jpg");
+ background-image: url("../../img/homePage/pets.jpg");
+ background-size: cover;
 }
 
 section.module p {

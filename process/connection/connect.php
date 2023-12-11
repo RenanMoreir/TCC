@@ -14,7 +14,7 @@
     $username = "root";
     $password = "";
     $database = "quicktalk";
-    $port = 3306;
+    $port = 3307;
     $con = mysqli_connect($hostname, $username,$password, $database, $port);
     mysqli_query($con, "SET time_zone='+00:00'");
 
@@ -25,12 +25,4 @@
         echo "Falha ao ligar a base de dados: ".mysqli_connect_error();
         exit();
     }
-
-
-
 ?>
-
-
-
-
-
