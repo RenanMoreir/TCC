@@ -21,9 +21,14 @@ main {
 
 .container {
   width: 100%;
-  max-width: 760px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 0 20px;
+  overflow-x: hidden;
+
+}
+.imagem{
+ background-image: url("../../img/homePage/backgroud1.jpg");
 }
 
 section.module p {
@@ -77,11 +82,11 @@ section.module.parallax-1 {
 }
 
 section.module.parallax-2 {
-  background-image: url("../../img/homePage/backgroud1.jpg");
+  background-image: url("../../img/homePage/backgroud2.jpg");
 }
 
 section.module.parallax-3 {
-  background-image: url("../../img/homePage/backgroud1.jpg");
+  background-image: url("../../img/homePage/backgroud3.jpg");
 }
  
 section.module.parallax h1 {
@@ -117,9 +122,8 @@ h3 {
 /* FOOTER */
 .grid{
   display: grid;
-  grid-template-columns: repeat( 1fr);
-  grid-template-rows: repeat(5,1fr);
-  gap: 20px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
   justify-content: center;
   /* margin-left:6%; */
 }
@@ -128,21 +132,24 @@ h3 {
   display: flex;
   flex-direction: column;
   background-color: #ece7d5;
-  width: 200px;
-  height: 200px;
+  width: 30vw;
+  height: 70vh;
   border:2px solid black;
   border-radius: 20px;
   border-style:dotted;
 }
-
+p{
+  font-size: 1.5em;
+  text-align: center;
+}
 .grid .element img{
-  width: 30px;
-  height: 30px;
-  padding: 10px;
+  width: 70px;
+  height: 70px;
+  padding: 20px;
 }
 
 .grid .element a{
-  font-size: 12px;
+  font-size: 1.5em;
   color: #000;
 }
 
