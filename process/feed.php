@@ -78,7 +78,7 @@ if ($porte !== '' || $especie !== '' || $sexo !== '') {
                 echo '<button class="profile-like-button" onclick="location.reload();">Passo</button>';
                 echo '</div>';
             } else {
-                echo "Nenhum animal encontrado." . $con->error;
+                echo "Errro." . $con->error;
             }
         }
     } else {

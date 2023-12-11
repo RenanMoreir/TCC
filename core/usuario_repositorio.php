@@ -14,7 +14,7 @@ foreach($_GET as $indice => $dado) {
     $$indice = limparDados($dado);
 }
 
-$id = (int)$id;
+$id = $_COOKIE['ID'];
 
 switch($acao) 
 {
@@ -111,7 +111,7 @@ switch($acao)
             'user',
             $criterio
         );
-
+/* 
         $criterio1 = [
             ['FK_id_abrigo', '=', $id]
         ];
@@ -119,7 +119,7 @@ switch($acao)
         deleta(
             'animal',
             $criterio1
-        );
+        ); */
 
         break;
 }
