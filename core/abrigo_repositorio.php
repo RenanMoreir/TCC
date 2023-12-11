@@ -56,6 +56,10 @@ switch($acao)
         $token = bin2hex(openssl_random_pseudo_bytes(20));
         $secure = rand(1000000000, 9999999999);
         
+        
+
+
+
         $dados = [
             'Username' => $username,
             'Nome' => $Nome,

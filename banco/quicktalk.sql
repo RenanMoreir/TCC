@@ -194,7 +194,7 @@ VALUES ('1', 'admin', 'Admin', 'superuser', '12 34567-8123', '1234567812345678',
 INSERT INTO `user` (`Id`, `Username`, `Email`, `Password`, `Nome`, `Dtnasc`, 
 `Telefone`, `Cpf`, `Cep`, `Rua`, `Numero`, `Bairro`, `Cidade`, `Picture`, `Online`, 
 `Token`, `Secure`, `Creation`, `Porte`, `Especie`, `Sexo`, `Pelagem`, `Tipo`, `Adm` ) 
-VALUES ('1', 'admin', 'admin_user@gmail.com', '$2y$10$MYZDSMZqmBKHpGuD.SMMgu6l/qH2WKOwBNYrYaafcoVqaLdmglPra', 
+VALUES ('100', 'admin', 'admin_user@gmail.com', '$2y$10$MYZDSMZqmBKHpGuD.SMMgu6l/qH2WKOwBNYrYaafcoVqaLdmglPra', 
 'admin', '', '12 34567-8123', '12345678912', '16201235', 'Rua Luiz Catharin', '595', 'Residencial S&atilde;o Jos&eacute;', 
 'Birig&uuml;i', 'user.jpg', '2023-11-27 17:49:16.000000', 
 'e71704763742cb5560ed5c598584a3b73bc8ccaa', '2547483576', '2023-11-27 17:49:16.000000', 

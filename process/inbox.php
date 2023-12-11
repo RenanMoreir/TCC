@@ -9,7 +9,7 @@
     <?php */
 if ($_COOKIE['ESCOLHA'] == 0){   
     // Query
-    $stmt = $con->prepare("SELECT * FROM conversations WHERE (MainUser = ?) ORDER BY Modification DESC");
+    $stmt = $con->prepare("SELECT * FROM conversations WHERE (OtherUser = ?) ORDER BY Modification DESC");
     $stmt->bind_param("i", $uid);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -21,7 +21,7 @@ if ($_COOKIE['ESCOLHA'] == 0){
 
     while ($inbox = $result->fetch_assoc()) {
         $stmt = $con->prepare("SELECT Id, Username, Picture FROM User WHERE (Id LIKE ?) LIMIT 1");
-        $stmt->bind_param("i", $inbox["OtherUser"]);
+        $stmt->bind_param("i", $inbox["MainUser"]);
         $stmt->execute();
         $user = $stmt->get_result()->fetch_assoc();
 
