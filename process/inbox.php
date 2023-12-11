@@ -16,7 +16,7 @@ if ($_COOKIE['ESCOLHA'] == 0){
     $count = $result->num_rows;
 
     if ($count < 1) {
-        echo '<div class="empty"><p>Pesquise um utilizador e começe um chat!</p></div>';
+        echo '<div class="empty"><p>Pesquise um utilizador e comece um chat!</p></div>';
     }
 
     while ($inbox = $result->fetch_assoc()) {

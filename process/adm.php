@@ -31,14 +31,16 @@
     <title>Feed</title>
 </head>
 <body>
-    <div class="container" style="width: 100%; height: 88vh; overflow-y: scroll;" >
+    <div class="row">
+    <div class="container" style="width: 50%; height: 88vh; overflow-y: scroll;" >
+                <h3>Usuários</h3>
     <?php
     $i=0;
         foreach ($usuarios as $usuario)
         {
             ?>
 
-            <div class="card col-md-8" style="height: auto;  margin:auto; border: 3px solid blue;">
+            <div class="card col-md-12" style="height: 75vh;  margin:auto; border: 3px solid blue;">
             <div class="card-title"><h3>Usuario: <?php echo $usuarios[$i]['Nome'] ?></h3></div>
             <div class="card-body">            
             <p><strong>ID: </strong><?php echo $usuarios[$i]['Id'] ?></p>
@@ -61,6 +63,7 @@
             $i++;
         }
     ?>
+</div>
     <?php
         $abrigos = buscar(
             'usuario_abrigo',
@@ -75,14 +78,15 @@
         );
     
     ?>
-    <div class="container" style="width: 100%; height: 88vh; overflow-y: scroll;" >
+    <div class="container" style="width: 50%; height: 88vh; overflow-y: scroll;" >
+        <h3>Abrigos</h3>
         <?php
         $o=0;
             foreach ($abrigos as $abrigo)
             {
                 ?>
     
-                <div class="card col-md-8" style="height: auto;  margin:auto; border: 3px solid blue;">
+                <div class="card col-md-12" style="height: 75vh;  margin:auto; border: 3px solid blue;">
                 <div class="card-title"><h3>Abrigo: <?php echo $abrigos[$o]['Nome'] ?></h3></div>
                 <div class="card-body">            
                 <p><strong>ID: </strong><?php echo $abrigos[$o]['Id_abrigo'] ?></p>
@@ -105,8 +109,8 @@
             }
         ?>  
  
-    </div>          
-    
+    </div>    
+    </div>      
     <script>
     $('.delete-form2').on('submit', function (e) {
         e.preventDefault();
