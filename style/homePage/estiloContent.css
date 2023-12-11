@@ -155,7 +155,21 @@ p{
 }
 
 /* FIM FOOTER*/
-@media all and (max-width: 820px) {
+@media all and (max-width: 600px) {
+  .sub img{
+    max-width: 128px;
+    max-height: 128px;
+  }
+  .sub a{
+    color: #000;
+    font-size: 36px;
+    padding: 0px;
+    margin: 0px;
+  }
+  .sub {
+    display: flex;
+    align-items: center;
+  }
   section.module h2 {
     font-size: 32px;
   }
@@ -172,5 +186,45 @@ p{
 
   section.module.parallax h1 {
     font-size: 36px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .sub img{
+    max-width: 128px;
+    max-height: 128px;
+    padding: 10px;
+    margin: 10px;
+  }
+  .sub a{
+    color: #000;
+    font-size: 36px;
+    padding: 0px;
+    margin: 0px;
+  }
+  .sub {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1920px) {
+  .sub img{
+    max-width: 128px;
+    max-height: 128px;
+    padding: 0px;
+    margin: 10px;
+    margin-left: 30%;
+  }
+  .sub a{
+    color: #000;
+    font-size: 36px;
+    padding: 0px;
+    margin: 0px;
+  }
+  .sub {
+    display: flex;
+    align-items: center;
   }
 }
