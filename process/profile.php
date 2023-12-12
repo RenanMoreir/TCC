@@ -1,5 +1,3 @@
-
-
 <?php
 include("check.php");
 
@@ -16,9 +14,9 @@ if ($id == 0) {
 ?>
     <form method="POST" enctype="multipart/form-data" id="uploadPic">
         <input type='file' name="imgInp" accept="image/x-png,image/jpeg" id="imgInp" hidden />
-        <div class="pictureContainer">
+        <div class="pictureContainer" >
             <img id="userImg" src="../profilePics/<?php echo $user_picture; ?>" />
-            <label for="imgInp"></label>
+            <label for="imgInp" style="display: flex;"></label>
         </div>
     </form>
 <?php
@@ -55,7 +53,12 @@ if ($id == 0) {
 
 <p class="name"><?php echo $username; ?></p>
 <p class="row">Online <?php echo timing($user_online); ?></p>
-<p class="row">Membro desde <?php echo $user_creation; ?></p>
+<p class="row">Membro desde <?php echo $user_creation; ?>
+   
+</p>
+
+
+
 
 <?php
 if ($_COOKIE['ESCOLHA'] == 0) {
@@ -67,22 +70,20 @@ if ($_COOKIE['ESCOLHA'] == 1) {
 ?>
 
     <p class="row"><button class="btn btn-primary" onclick="$('#chat').load('../page/preferencias.php')">Minhas Preferencias</button></p>
-    <p class="row">
+    <!-- <p class="row">
         <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapse">
             Descrição
         </button>
     </p>
-    <div class="collapse" id="collapse">
-        <div class="card card-body">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-        </div>
-    </div>
+ -->  
 <?php
 }
 
 ?>
 
 <script>
+
+
     function previewUpload(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();

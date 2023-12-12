@@ -3,7 +3,7 @@
 #profile .pictureContainer {
     display: block;
     margin: 20px auto;
-    width: 90%;
+    width: 100%;
     max-width: 200px;
 }
 
@@ -16,6 +16,8 @@
     object-fit: cover;
     object-position: center;
 }
+
+
 
 #profile .pictureContainer label {
     /* position: absolute; */

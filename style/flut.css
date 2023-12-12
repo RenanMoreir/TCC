@@ -1,0 +1,45 @@
+.hide {
+    display: none;   
+}
+
+#modal{
+    width: 7vw;
+    z-index: 10000;
+}
+
+.modal-bg {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: gainsboro;
+    opacity: 0.7;
+}
+
+.modal-content {
+    position: absolute;
+    margin: 0 auto;
+    width: 200px;
+    height: 100px;
+    top: 50px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: white;
+    box-shadow: 0px 0px 10px black;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.modal-close {
+    font-size: 2rem;
+    line-height: 1;
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #AAAAAA;
+    font-family: 'Helvetica Neue', Helvetica, Helvetica, Arial, sans-serif;
+}

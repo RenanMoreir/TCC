@@ -75,7 +75,7 @@ switch($acao)
             'Email' => $email,
             'Senha' => $senha,
             'Secure' => $secure,
-            'Creation' => 'now()',
+            // 'Creation' => 'now()',
             'Token' => $token,
         ];
 
