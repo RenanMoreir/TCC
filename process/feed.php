@@ -53,13 +53,12 @@
         // Verifique se pelo menos uma das variáveis de busca foi fornecida
         if ($porte !== '' || $especie !== '' || $sexo !== ''|| $pelagem !== '') {
                 $animais = buscaAnimais($porte, $especie, $sexo, $pelagem);
-
+            
             // Exibir os animais encontrados
             if (!empty($animais)) {
                 foreach ($animais as $animal) {
                     $sql_abrigo = "SELECT Nome, Email, Telefone, Id_abrigo FROM usuario_abrigo where Id_abrigo = " . $animal['FK_id_abrigo'];
                     $result_abrigo = $con->query($sql_abrigo);
-
                     if ($result_abrigo and mysqli_num_rows($result_abrigo) != 0) {
                         $row_abrigo = $result_abrigo->fetch_assoc();
 

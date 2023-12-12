@@ -1,9 +1,9 @@
 <?php
-function buscaAnimais($porte, $especie, $sexo) {
+function buscaAnimais($porte, $especie, $sexo, $pelagem) {
     include('../process/connection/connect.php');
 
     // Monta a consulta SQL com os valores fornecidos como parâmetros
-    $sql = "SELECT * FROM animal WHERE porte='$porte' OR especie='$especie' OR sexo='$sexo'";
+    $sql = "SELECT * FROM animal WHERE Porte='$porte' AND Especie='$especie' AND Sexo='$sexo' AND Pelagem='$pelagem'";
 
     // Executa a consulta e obtém o resultado
     $result = $con->query($sql);
